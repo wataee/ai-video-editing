@@ -1,0 +1,111 @@
+{
+  "$schema": "palette_vault_v1",
+  "styles": {
+    "iman_gadzhi_noir": {
+      "name": "Iman Gadzhi — Cinematic Luxury / Documentary Noir",
+      "canvas_bg": "#0B0B0B",
+      "card_surface": "#141416",
+      "card_elevated": "#1A1D24",
+      "card_border": "rgba(255, 255, 255, 0.12)",
+      "text_primary": "#FFFFFF",
+      "text_muted": "#A0A0A0",
+      "accent_gold": "#D4AF37",
+      "accent_cyan": "#38BDF8",
+      "accent_green": "#10B981",
+      "typography": {
+        "header_font": "Unbounded",
+        "body_font": "Inter",
+        "header_tracking": -0.02,
+        "eyebrow_tracking": 0.08
+      },
+      "grid_overlay": {
+        "cell_size_px": 70,
+        "border_width_px": 1.0,
+        "color": "#FFFFFF",
+        "opacity": 0.12,
+        "blend_mode": "Screen"
+      },
+      "vignette": {
+        "amount": -3.0,
+        "midpoint": 30,
+        "feather": 90
+      }
+    },
+    "alex_hormozi_clean": {
+      "name": "Alex Hormozi (Clean Modern 2.0) — High-Converting Performance",
+      "canvas_bg": "#000000",
+      "callout_dark_fill": "rgba(24, 24, 27, 0.85)",
+      "callout_border": "rgba(255, 255, 255, 0.15)",
+      "text_primary": "#FFFFFF",
+      "text_muted": "#94A3B8",
+      "accent_yellow": "#FFD93D",
+      "accent_green": "#22C55E",
+      "accent_red": "#EF4444",
+      "accent_blue": "#3B82F6",
+      "typography": {
+        "header_font": "Montserrat",
+        "body_font": "Inter",
+        "case": "Sentence"
+      },
+      "callout_box": {
+        "border_radius_px": 14,
+        "padding": "20px 28px",
+        "drop_shadow": "0 10px 25px -5px rgba(0, 0, 0, 0.45)",
+        "backdrop_blur_px": 16,
+        "motion_curve": "cubic-bezier(0.34, 1.56, 0.64, 1)",
+        "duration_frames": 7
+      }
+    },
+    "dan_koe_monochrome": {
+      "name": "Dan Koe — Monochromatic Minimalist Diagram System",
+      "canvas_bg": "#000000",
+      "canvas_soft_bg": "#0A0A0A",
+      "node_surface": "#111111",
+      "text_primary": "#FFFFFF",
+      "text_muted": "#737373",
+      "vector_active": "#FFFFFF",
+      "vector_inactive": "#262626",
+      "accent_focal": "#38BDF8",
+      "typography": {
+        "header_font": "Inter",
+        "body_font": "Inter",
+        "title_weight": "SemiBold 600",
+        "body_weight": "Regular 400"
+      },
+      "vector_specs": {
+        "stroke_width_px": 1.5,
+        "line_cap": "round",
+        "line_join": "round",
+        "node_radius_px": 8,
+        "glow_intensity": 0.30
+      }
+    },
+    "magnates_media_documentary": {
+      "name": "Magnates Media — Tactile Investigative Documentary",
+      "shadow_navy": "#0B0F19",
+      "parchment_base": "#F4ECD8",
+      "cardboard_kraft": "#D7C49E",
+      "ink_black": "#1A1A1A",
+      "highlighter_yellow": "#CCFF00",
+      "highlighter_cyan": "#00F0FF",
+      "highlighter_red": "#FF3333",
+      "typography": {
+        "header_font": "Oswald",
+        "body_font": "Inter"
+      },
+      "paper_rules": {
+        "document_blend_mode": "Multiply",
+        "paper_grain_blend_mode": "Overlay",
+        "paper_grain_opacity": 0.22,
+        "displacement_map_px": 2.0
+      },
+      "highlighter_specs": {
+        "blend_mode_on_paper": "Multiply",
+        "blend_mode_on_dark": "Screen",
+        "stroke_width_px": 24,
+        "roughen_edge_border": 2.0,
+        "trim_duration_frames": 14
+      }
+    }
+  }
+}

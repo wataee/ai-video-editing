@@ -1,0 +1,96 @@
+{
+  "$schema": "edit_plan_v2",
+  "project_id": "client_sample_01",
+  "engine": "after_effects",
+  "aspect_ratio": "9:16",
+  "resolution": [1080, 1920],
+  "fps": 30,
+  "style": {
+    "font_pair": {
+      "header_font": "Unbounded",
+      "body_font": "Inter",
+      "rationale": "Tech / IT стиль, авторитетный гротеск"
+    },
+    "color_palette": {
+      "text_primary": "#FFFFFF",
+      "text_accent": "#FACC15",
+      "background_tint": "#09090B"
+    }
+  },
+  "hook": {
+    "type": "contrarian",
+    "hook_text": "Большинство монтируют видео неправильно",
+    "headline_visual": "ЭТО УБИВАЕТ УДЕРЖАНИЕ",
+    "source_in": 134.5,
+    "source_out": 138.2,
+    "sound_design": "assets/sfx/hits/sub_bass_thud.wav"
+  },
+  "timeline": {
+    "total_duration_sec": 42.0,
+    "cuts": [
+      {
+        "id": "scene_01_hook",
+        "motivation": "EMOTIONAL_PUNCH",
+        "energy_level": 5,
+        "source_file": "raw/source.mp4",
+        "source_in": 134.5,
+        "source_out": 138.2,
+        "timeline_in": 0.0,
+        "timeline_out": 3.7,
+        "camera_framing": "punch_in_115",
+        "proof_asset": null,
+        "sfx_cue": "assets/sfx/hits/sub_bass_thud.wav",
+        "caption_style": "headline_highlight"
+      },
+      {
+        "id": "scene_02_context",
+        "motivation": "THESIS_SHIFT",
+        "energy_level": 3,
+        "source_file": "raw/source.mp4",
+        "source_in": 138.2,
+        "source_out": 145.0,
+        "timeline_in": 3.7,
+        "timeline_out": 10.5,
+        "camera_framing": "wide_100",
+        "proof_asset": null,
+        "sfx_cue": null,
+        "caption_style": "standard_phrase"
+      },
+      {
+        "id": "scene_03_proof",
+        "motivation": "PROOF_INJECTION",
+        "energy_level": 4,
+        "source_file": "raw/source.mp4",
+        "source_in": 145.0,
+        "source_out": 155.0,
+        "timeline_in": 10.5,
+        "timeline_out": 20.5,
+        "camera_framing": "wide_100",
+        "proof_asset": "assets/proof/analytics_chart.png",
+        "sfx_cue": "assets/sfx/clicks/click_mouse_crisp.wav",
+        "caption_style": "standard_phrase"
+      },
+      {
+        "id": "scene_04_reflection",
+        "motivation": "RHYTHMIC_CONTRAST",
+        "energy_level": 2,
+        "source_file": "raw/source.mp4",
+        "source_in": 155.0,
+        "source_out": 159.0,
+        "timeline_in": 20.5,
+        "timeline_out": 24.5,
+        "camera_framing": "slow_push_in",
+        "proof_asset": null,
+        "sfx_cue": null,
+        "caption_style": "standard_phrase"
+      }
+    ]
+  },
+  "audio": {
+    "voice_track": "source_audio",
+    "bg_music": "assets/music/subtle_ambient_loop.mp3",
+    "music_volume_db": -20.0,
+    "target_lufs": -14.0,
+    "true_peak_dbtp": -1.0
+  }
+}

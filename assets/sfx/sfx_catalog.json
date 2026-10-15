@@ -1,0 +1,133 @@
+{
+  "$schema": "sfx_catalog_v2",
+  "categories": {
+    "hits": {
+      "description": "Смысловые удары, появление хука, ключевой тезис, переломный момент",
+      "target_volume_db": -16.0,
+      "items": [
+        {
+          "id": "sub_bass_thud",
+          "file": "assets/sfx/hits/sub_bass_thud.wav",
+          "ideal_for": "Первый кадр хука (0.0с), шокирующий факт, поворот сюжета"
+        }
+      ]
+    },
+    "whooshes": {
+      "description": "Быстрые переходы и пролёты крупных графических плашек. Запрещено ставить на зумы лица!",
+      "target_volume_db": -20.0,
+      "items": [
+        {
+          "id": "whoosh_clean_fast",
+          "file": "assets/sfx/whooshes/whoosh_clean_fast.wav",
+          "ideal_for": "Быстрый вылет плашки или карточки сбоку"
+        },
+        {
+          "id": "whoosh_subtle_air",
+          "file": "assets/sfx/whooshes/whoosh_subtle_air.wav",
+          "ideal_for": "Мягкая смена экрана, слайд презентации"
+        }
+      ]
+    },
+    "clicks": {
+      "description": "Появление интерфейсных элементов, переключатели, маркеры",
+      "target_volume_db": -18.0,
+      "items": [
+        {
+          "id": "click_01",
+          "file": "assets/sfx/clicks/click_01.wav",
+          "ideal_for": "Клик по кнопке в UI, появление скриншота"
+        },
+        {
+          "id": "click_02",
+          "file": "assets/sfx/clicks/click_02.wav",
+          "ideal_for": "Микро-клик, короткая отсечка"
+        },
+        {
+          "id": "select_01",
+          "file": "assets/sfx/clicks/select_01.wav",
+          "ideal_for": "Выбор пункта из списка, галочка"
+        },
+        {
+          "id": "switch_01",
+          "file": "assets/sfx/clicks/switch_01.wav",
+          "ideal_for": "Тумблер, переключение режима 'До/После'"
+        }
+      ]
+    },
+    "pops": {
+      "description": "Мягкие всплытия плашек, чисел и текстовых бейджей",
+      "target_volume_db": -18.0,
+      "items": [
+        {
+          "id": "pop_01",
+          "file": "assets/sfx/pops/pop_01.wav",
+          "ideal_for": "Всплытие цифры или бейджа"
+        },
+        {
+          "id": "pop_02",
+          "file": "assets/sfx/pops/pop_02.wav",
+          "ideal_for": "Появление карточки доказательства"
+        },
+        {
+          "id": "glass_pop",
+          "file": "assets/sfx/pops/glass_pop.wav",
+          "ideal_for": "Премиальный стеклянный звук (Iman Gadzhi UI)"
+        }
+      ]
+    },
+    "textures": {
+      "description": "Тактильные звуки бумаги, царапин, плёнки (Magnates Media)",
+      "target_volume_db": -22.0,
+      "items": [
+        {
+          "id": "scratch_01",
+          "file": "assets/sfx/textures/scratch_01.wav",
+          "ideal_for": "Появление архивного документа или фото"
+        },
+        {
+          "id": "scratch_02",
+          "file": "assets/sfx/textures/scratch_02.wav",
+          "ideal_for": "Тактильный сдвиг слоя"
+        }
+      ]
+    },
+    "glitches": {
+      "description": "Короткие цифровые сбои на слове 'ОШИБКА' или проблеме",
+      "target_volume_db": -20.0,
+      "items": [
+        {
+          "id": "glitch_01",
+          "file": "assets/sfx/glitches/glitch_01.wav",
+          "ideal_for": "Разрыв шаблона, сбой в системе"
+        },
+        {
+          "id": "glitch_02",
+          "file": "assets/sfx/glitches/glitch_02.wav",
+          "ideal_for": "Критическая ошибка, баг"
+        }
+      ]
+    },
+    "risers": {
+      "description": "Нарастание напряжения перед кульминацией",
+      "target_volume_db": -18.0,
+      "items": [
+        {
+          "id": "riser_subtle",
+          "file": "assets/sfx/risers/riser_subtle.wav",
+          "ideal_for": "Разгон к кульминационной фразе (30-40с)"
+        }
+      ]
+    },
+    "ambience": {
+      "description": "Фоновая подложка под паузы и размышления (Breathing Room)",
+      "target_volume_db": -28.0,
+      "items": [
+        {
+          "id": "tech_drone_subtle",
+          "file": "assets/sfx/ambience/tech_drone_subtle.wav",
+          "ideal_for": "Интрига, мыслительный процесс, тишина после взрыва"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,135 @@
+[
+  {
+    "text": " Добро",
+    "startMs": 0,
+    "endMs": 520,
+    "timestampMs": 0,
+    "confidence": 0.887
+  },
+  {
+    "text": " пожаловать",
+    "startMs": 520,
+    "endMs": 1240,
+    "timestampMs": 520,
+    "confidence": 0.98
+  },
+  {
+    "text": " в",
+    "startMs": 1240,
+    "endMs": 1420,
+    "timestampMs": 1240,
+    "confidence": 0.994
+  },
+  {
+    "text": " рабочую",
+    "startMs": 1420,
+    "endMs": 1960,
+    "timestampMs": 1420,
+    "confidence": 0.995
+  },
+  {
+    "text": " станцию",
+    "startMs": 1960,
+    "endMs": 2580,
+    "timestampMs": 1960,
+    "confidence": 0.859
+  },
+  {
+    "text": " для",
+    "startMs": 2580,
+    "endMs": 2900,
+    "timestampMs": 2580,
+    "confidence": 0.994
+  },
+  {
+    "text": " монтажа",
+    "startMs": 2900,
+    "endMs": 3500,
+    "timestampMs": 2900,
+    "confidence": 0.94
+  },
+  {
+    "text": " видео.",
+    "startMs": 3500,
+    "endMs": 3880,
+    "timestampMs": 3500,
+    "confidence": 0.516
+  },
+  {
+    "text": " Современный",
+    "startMs": 4860,
+    "endMs": 5700,
+    "timestampMs": 4860,
+    "confidence": 0.865
+  },
+  {
+    "text": " контент",
+    "startMs": 5700,
+    "endMs": 6200,
+    "timestampMs": 5700,
+    "confidence": 0.964
+  },
+  {
+    "text": " требует",
+    "startMs": 6200,
+    "endMs": 6840,
+    "timestampMs": 6200,
+    "confidence": 0.995
+  },
+  {
+    "text": " качественного",
+    "startMs": 6840,
+    "endMs": 7760,
+    "timestampMs": 6840,
+    "confidence": 0.991
+  },
+  {
+    "text": " монтажа,",
+    "startMs": 7760,
+    "endMs": 8540,
+    "timestampMs": 7760,
+    "confidence": 0.994
+  },
+  {
+    "text": " чистого",
+    "startMs": 8800,
+    "endMs": 9340,
+    "timestampMs": 8800,
+    "confidence": 0.796
+  },
+  {
+    "text": " звука",
+    "startMs": 9340,
+    "endMs": 9760,
+    "timestampMs": 9340,
+    "confidence": 0.987
+  },
+  {
+    "text": " и",
+    "startMs": 9760,
+    "endMs": 9960,
+    "timestampMs": 9760,
+    "confidence": 0.996
+  },
+  {
+    "text": " точных",
+    "startMs": 9960,
+    "endMs": 10400,
+    "timestampMs": 9960,
+    "confidence": 0.964
+  },
+  {
+    "text": " динамических",
+    "startMs": 10400,
+    "endMs": 11200,
+    "timestampMs": 10400,
+    "confidence": 0.97
+  },
+  {
+    "text": " субтитров.",
+    "startMs": 11200,
+    "endMs": 12100,
+    "timestampMs": 11200,
+    "confidence": 0.911
+  }
+]

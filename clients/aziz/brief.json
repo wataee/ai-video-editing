@@ -1,0 +1,36 @@
+{
+  "client_name": "Template Client",
+  "project_title": "Shorts / Reels Episode",
+  "target_platform": "TikTok / Reels / Shorts",
+  "aspect_ratio": "9:16",
+  "resolution": {
+    "width": 1080,
+    "height": 1920
+  },
+  "fps": 30,
+  "style": {
+    "font_family": "TheBoldFont",
+    "font_size": 72,
+    "colors": {
+      "primary_text": "#FFFFFF",
+      "highlight_text": "#FFD700",
+      "stroke": "#000000",
+      "background": "#000000"
+    },
+    "animation": "punch-in",
+    "subtitle_style": "karaoke-word-highlight",
+    "words_per_line": "semantic-clause"
+  },
+  "audio": {
+    "target_lufs": -14.0,
+    "max_true_peak_db": -1.0,
+    "music_ducking_db": -18.0
+  },
+  "safe_zones": {
+    "top_px": 220,
+    "bottom_px": 380,
+    "right_px": 130,
+    "left_px": 50
+  },
+  "notes": "Укажите специфические пожелания клиента, запретные темы или обязательные дисклеймеры."
+}

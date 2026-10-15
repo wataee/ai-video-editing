@@ -1,0 +1,9 @@
+--- a/faster_whisper/audio.py
++++ b/faster_whisper/audio.py
+@@ -46,1 +46,5 @@
+-    with av.open(input_file, mode="r", metadata_errors="ignore") as container:
++    try:
++        container = av.open(input_file, mode="r", metadata_errors="ignore")
++    except TypeError:
++        container = av.open(input_file, mode="r")
++    with container:

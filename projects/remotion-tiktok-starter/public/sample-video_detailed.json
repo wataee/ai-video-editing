@@ -1,0 +1,176 @@
+{
+  "audio_file": "sample-video.mp4",
+  "language": "en",
+  "language_probability": 0.991,
+  "duration": 11.97,
+  "segments": [
+    {
+      "id": 1,
+      "start": 0.0,
+      "end": 3.46,
+      "text": "Using remotions TikTok template you can create engaging,",
+      "words": [
+        {
+          "text": "Using",
+          "start": 0.0,
+          "end": 0.26,
+          "confidence": 0.95
+        },
+        {
+          "text": "remotions",
+          "start": 0.26,
+          "end": 0.86,
+          "confidence": 0.636
+        },
+        {
+          "text": "TikTok",
+          "start": 0.86,
+          "end": 1.16,
+          "confidence": 0.592
+        },
+        {
+          "text": "template",
+          "start": 1.16,
+          "end": 1.76,
+          "confidence": 0.926
+        },
+        {
+          "text": "you",
+          "start": 1.76,
+          "end": 2.02,
+          "confidence": 0.502
+        },
+        {
+          "text": "can",
+          "start": 2.02,
+          "end": 2.16,
+          "confidence": 0.994
+        },
+        {
+          "text": "create",
+          "start": 2.16,
+          "end": 2.5,
+          "confidence": 0.996
+        },
+        {
+          "text": "engaging,",
+          "start": 2.5,
+          "end": 3.46,
+          "confidence": 0.913
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "start": 3.76,
+      "end": 7.34,
+      "text": "reals and TikToks by transcribing your audio",
+      "words": [
+        {
+          "text": "reals",
+          "start": 3.76,
+          "end": 4.38,
+          "confidence": 0.64
+        },
+        {
+          "text": "and",
+          "start": 4.38,
+          "end": 4.54,
+          "confidence": 0.642
+        },
+        {
+          "text": "TikToks",
+          "start": 4.54,
+          "end": 5.48,
+          "confidence": 0.848
+        },
+        {
+          "text": "by",
+          "start": 5.48,
+          "end": 5.86,
+          "confidence": 0.91
+        },
+        {
+          "text": "transcribing",
+          "start": 5.86,
+          "end": 6.58,
+          "confidence": 0.981
+        },
+        {
+          "text": "your",
+          "start": 6.58,
+          "end": 6.92,
+          "confidence": 0.991
+        },
+        {
+          "text": "audio",
+          "start": 6.92,
+          "end": 7.34,
+          "confidence": 0.996
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "start": 7.34,
+      "end": 11.76,
+      "text": "using Whisper CPP and animating your captions with React.",
+      "words": [
+        {
+          "text": "using",
+          "start": 7.34,
+          "end": 7.84,
+          "confidence": 0.983
+        },
+        {
+          "text": "Whisper",
+          "start": 7.84,
+          "end": 8.38,
+          "confidence": 0.602
+        },
+        {
+          "text": "CPP",
+          "start": 8.38,
+          "end": 8.94,
+          "confidence": 0.851
+        },
+        {
+          "text": "and",
+          "start": 8.94,
+          "end": 9.78,
+          "confidence": 0.837
+        },
+        {
+          "text": "animating",
+          "start": 9.78,
+          "end": 10.34,
+          "confidence": 0.994
+        },
+        {
+          "text": "your",
+          "start": 10.34,
+          "end": 10.6,
+          "confidence": 0.983
+        },
+        {
+          "text": "captions",
+          "start": 10.6,
+          "end": 11.06,
+          "confidence": 0.988
+        },
+        {
+          "text": "with",
+          "start": 11.06,
+          "end": 11.46,
+          "confidence": 0.955
+        },
+        {
+          "text": "React.",
+          "start": 11.46,
+          "end": 11.76,
+          "confidence": 0.512
+        }
+      ]
+    }
+  ]
+}

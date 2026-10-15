@@ -1,0 +1,16 @@
+{
+  "file": "sample-video.mp4",
+  "verdict": "ТРЕБУЕТ ПРАВОК",
+  "duration_sec": 11.97,
+  "resolution": "1080x1920",
+  "fps": 59.94,
+  "is_vfr": false,
+  "loudness_lufs": -16.97,
+  "true_peak_dbtp": -2.69,
+  "issues_count": 1,
+  "issues": [
+    "Audio loudness out of spec: I=-16.97 LUFS, TP=-2.69 dBTP"
+  ],
+  "contact_sheet": "contact_sheet.png",
+  "safe_zones_frame": "safe_zones_overlay.png"
+}

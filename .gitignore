@@ -1,0 +1,60 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environments
+venv/
+venv-*/
+.venv/
+tools/venv-*/
+
+# Node / Remotion
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+.remotion/
+
+# Temporary and Cache files
+.tmp/
+*.tmp
+*.log
+_tmp_download/
+_archive/
+
+# Large media & client footage (keep code, presets, fonts, SVG graphics, SFX)
+clients/**/raw/
+clients/**/work/
+clients/**/out/
+*.MOV
+*.mp4
+
+# After Effects IPC runtime
+work/.ae-mcp/instances/
+work/.ae-mcp/*.tmp
+work/.ae-mcp/*.log
+
+# OS files
+Thumbs.db
+Desktop.ini
+.DS_Store

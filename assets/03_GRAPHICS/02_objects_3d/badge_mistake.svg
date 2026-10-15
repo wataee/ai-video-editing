@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="190" height="48" viewBox="0 0 190 48" fill="none">
+    <rect x="1" y="1" width="188" height="46" rx="12" fill="#1F1315" fill-opacity="0.95" stroke="#EF4444" stroke-width="2" />
+    <path d="M 20 18 L 28 26 M 28 18 L 20 26" stroke="#EF4444" stroke-width="2.5" stroke-linecap="round" />
+    <text x="104" y="31" fill="#FFFFFF" font-family="Inter, sans-serif" font-size="16" font-weight="700" text-anchor="middle" letter-spacing="1">ОШИБКА</text>
+</svg>

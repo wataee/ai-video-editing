@@ -1,0 +1,173 @@
+{
+  "name": "Ultimate Viral Video Editing Asset Library",
+  "version": "2.0.0",
+  "standard": "Joseph / Ultimate Editors & Mahabur Rahman Specification",
+  "root": "assets",
+  "sfx": {
+    "whooshes": {
+      "role": "Movement (slides, pans, zooms, camera moves, scene transitions)",
+      "target_level_db": -12.0,
+      "max_level_db": -10.0,
+      "alignment_rule": "Peak of whoosh locked to the fastest frame of movement",
+      "categories": {
+        "deep_voice": {
+          "description": "Textured sci-fi low sweep, primary default for standard animations and zooms",
+          "files": [
+            "assets/01_SFX/01_whooshes/deep_voice/deep_voice_whoosh_01.wav",
+            "assets/01_SFX/01_whooshes/deep_voice/deep_voice_whoosh_02.wav",
+            "assets/01_SFX/01_whooshes/deep_voice/deep_voice_whoosh_03.wav"
+          ]
+        },
+        "hollow": {
+          "description": "Resonant texture for standard text slides and camera pans",
+          "files": [
+            "assets/01_SFX/01_whooshes/hollow/hollow_whoosh_01.wav",
+            "assets/01_SFX/01_whooshes/hollow/hollow_whoosh_02.wav"
+          ]
+        },
+        "futuristic": {
+          "description": "High-tech rapid motion swoosh",
+          "files": [
+            "assets/01_SFX/01_whooshes/futuristic/whoosh_clean_fast.wav"
+          ]
+        },
+        "organic_wind": {
+          "description": "Soft gentle air for slow camera drifts and subtle reveals",
+          "files": [
+            "assets/01_SFX/01_whooshes/organic_wind/whoosh_subtle_air.wav"
+          ]
+        },
+        "transitions": {
+          "description": "Scene-to-scene transition swooshes with sci-fi edge",
+          "files": [
+            "assets/01_SFX/01_whooshes/transitions/synthetic_transition_whoosh.wav",
+            "assets/01_SFX/01_whooshes/transitions/transition_spacey_whoosh.wav"
+          ]
+        }
+      }
+    },
+    "textures": {
+      "role": "Events that happen without sliding (pops, clicks, reveals, typewriter, UI)",
+      "target_level_db": -6.5,
+      "alignment_rule": "Placed exactly on the event frame",
+      "categories": {
+        "pops": {
+          "description": "Clean pop-up for UI elements and graphics",
+          "files": [
+            "assets/01_SFX/02_textures/pops/pop_cartoon_clean.wav",
+            "assets/01_SFX/02_textures/pops/pop_bubble_high.wav",
+            "assets/01_SFX/02_textures/pops/glass_pop.wav",
+            "assets/01_SFX/02_textures/pops/pop_01.wav",
+            "assets/01_SFX/02_textures/pops/pop_02.wav"
+          ]
+        },
+        "clicks_ui": {
+          "description": "Tactile clicks for buttons, toggles and state changes",
+          "files": [
+            "assets/01_SFX/02_textures/clicks_ui/mouse_click_soft.wav",
+            "assets/01_SFX/02_textures/clicks_ui/mechanical_button.wav",
+            "assets/01_SFX/02_textures/clicks_ui/switch_01.wav",
+            "assets/01_SFX/02_textures/clicks_ui/click_01.wav",
+            "assets/01_SFX/02_textures/clicks_ui/click_02.wav",
+            "assets/01_SFX/02_textures/clicks_ui/select_01.wav"
+          ]
+        },
+        "gears_typewriter": {
+          "description": "Letter-by-letter text write-outs and mechanical sequence pop-ups",
+          "files": [
+            "assets/01_SFX/02_textures/gears_typewriter/tiny_gearwheel_loop.wav",
+            "assets/01_SFX/02_textures/gears_typewriter/complex_mechanism_gizmo.wav",
+            "assets/01_SFX/02_textures/gears_typewriter/scratch_01.wav",
+            "assets/01_SFX/02_textures/gears_typewriter/scratch_02.wav"
+          ]
+        },
+        "sci_fi_hits": {
+          "description": "Impact hits when a brand new UI or object is revealed into scene",
+          "files": [
+            "assets/01_SFX/02_textures/sci_fi_hits/sci_fi_impact_reveal.wav",
+            "assets/01_SFX/02_textures/sci_fi_hits/activate_energy_hit.wav",
+            "assets/01_SFX/02_textures/sci_fi_hits/glitch_01.wav",
+            "assets/01_SFX/02_textures/sci_fi_hits/glitch_02.wav"
+          ]
+        },
+        "camera_shutter": {
+          "description": "Camera click on cuts, screen flashes or picture take",
+          "files": [
+            "assets/01_SFX/02_textures/camera_shutter/camera_click_fast.wav"
+          ]
+        }
+      }
+    },
+    "risers_hits": {
+      "role": "Anticipation and release at chapter/scene boundaries",
+      "target_level_db": -5.0,
+      "alignment_rule": "Riser ends on the transition frame; Hit sits directly underneath it",
+      "rules": [
+        "First sharp bass riser placed ~5s after hook",
+        "Minimum 2 sharp bass + 2 metallic risers across video"
+      ],
+      "categories": {
+        "sharp_bass_risers": {
+          "description": "Punchy low-end pitch bend up, Joseph favorite #1",
+          "files": [
+            "assets/01_SFX/03_risers_hits/sharp_bass_risers/sharp_bass_riser_01.wav",
+            "assets/01_SFX/03_risers_hits/sharp_bass_risers/sharp_bass_riser_02.wav",
+            "assets/01_SFX/03_risers_hits/sharp_bass_risers/sharp_bass_riser_fast.wav"
+          ]
+        },
+        "metallic_risers": {
+          "description": "Shimmering metallic tension build, Joseph favorite #2",
+          "files": [
+            "assets/01_SFX/03_risers_hits/metallic_risers/metallic_riser_01.wav",
+            "assets/01_SFX/03_risers_hits/metallic_risers/metallic_riser_02.wav"
+          ]
+        },
+        "suck_back_risers": {
+          "description": "Slow steep crescendo into sudden drop (very loud or very low)",
+          "files": [
+            "assets/01_SFX/03_risers_hits/suck_back_risers/suck_back_riser_01.wav",
+            "assets/01_SFX/03_risers_hits/suck_back_risers/suck_back_riser_fast.wav",
+            "assets/01_SFX/03_risers_hits/suck_back_risers/riser_subtle.wav"
+          ]
+        },
+        "impact_hits": {
+          "description": "Cinematic booms placed under risers to resolve transitions",
+          "files": [
+            "assets/01_SFX/03_risers_hits/impact_hits/cinematic_boom_01.wav",
+            "assets/01_SFX/03_risers_hits/impact_hits/bass_drop_hit_01.wav",
+            "assets/01_SFX/03_risers_hits/impact_hits/sub_bass_thud.wav"
+          ]
+        }
+      }
+    }
+  },
+  "fonts": {
+    "pairing_rule": "Every title lockup must combine a heavy bold Sans font with an expressive cursive Script font",
+    "primary_sans": [
+      { "name": "Montserrat", "postscript": "Montserrat-Black", "role": "Primary bold hook/title" },
+      { "name": "Inter", "postscript": "Inter-Black", "role": "Clean technical UI/data" },
+      { "name": "Oswald", "postscript": "Oswald-Bold", "role": "Tall condensed punch" }
+    ],
+    "secondary_script": [
+      { "name": "Caveat", "postscript": "Caveat-Regular", "style": "Bold", "role": "Casual brush handwriting, -9 deg tilt, overlapping" },
+      { "name": "Segoe Script", "postscript": "SegoeScript-Bold", "role": "Secondary handwriting fallback" }
+    ]
+  },
+  "graphics": {
+    "overlays": {
+      "film_grain": "assets/03_GRAPHICS/01_overlays/film_grain_35mm_loop.mp4",
+      "tech_grid": "assets/03_GRAPHICS/01_overlays/tech_grid_1080x1920.svg"
+    },
+    "objects_3d": {
+      "badges": [
+        "assets/03_GRAPHICS/02_objects_3d/badge_fact.svg",
+        "assets/03_GRAPHICS/02_objects_3d/badge_mistake.svg",
+        "assets/03_GRAPHICS/02_objects_3d/badge_result.svg",
+        "assets/03_GRAPHICS/02_objects_3d/verified_badge.svg"
+      ],
+      "pointers": [
+        "assets/03_GRAPHICS/02_objects_3d/callout_arrow.svg"
+      ]
+    }
+  }
+}

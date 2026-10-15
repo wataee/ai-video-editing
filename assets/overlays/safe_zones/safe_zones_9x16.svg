@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1920" viewBox="0 0 1080 1920" fill="none">
+    <!-- Верхняя зона интерфейса (Поиск, статус-бар: 220px) -->
+    <rect x="0" y="0" width="1080" height="220" fill="#EF4444" fill-opacity="0.22" />
+    <text x="540" y="120" fill="#EF4444" font-family="Arial, sans-serif" font-size="28" font-weight="bold" text-anchor="middle">ВЕРХНЯЯ ЗОНА ИНТЕРФЕЙСА (НЕ ЗАНИМАТЬ)</text>
+
+    <!-- Нижняя зона (Описание, звук, CTA: 380px) -->
+    <rect x="0" y="1540" width="1080" height="380" fill="#EF4444" fill-opacity="0.22" />
+    <text x="540" y="1740" fill="#EF4444" font-family="Arial, sans-serif" font-size="28" font-weight="bold" text-anchor="middle">НИЖНЯЯ ЗОНА ОПИСАНИЯ И ЗВУКА (380px)</text>
+
+    <!-- Правая зона (Лайки, комменты, репосты: 130px) -->
+    <rect x="950" y="220" width="130" height="1320" fill="#F59E0B" fill-opacity="0.25" />
+    <text x="1015" y="700" fill="#F59E0B" font-family="Arial, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" transform="rotate(90, 1015, 700)">КНОПКИ ТИКТОК / REELS</text>
+
+    <!-- Рекомендуемая центральная зона внимания для субтитров и спикера -->
+    <rect x="130" y="920" width="820" height="420" stroke="#10B981" stroke-width="2" stroke-dasharray="8 8" fill="none" />
+    <text x="540" y="1140" fill="#10B981" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle">ЗОНА СУБТИТРОВ И АКЦЕНТОВ (Y: 920..1340)</text>
+</svg>

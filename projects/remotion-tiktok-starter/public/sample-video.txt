@@ -1,0 +1,3 @@
+Using remotions TikTok template you can create engaging,
+reals and TikToks by transcribing your audio
+using Whisper CPP and animating your captions with React.
