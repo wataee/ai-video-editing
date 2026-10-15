@@ -146,6 +146,30 @@ export const STYLE_PRESETS: Record<string, StylePreset> = {
       mass: 0.6,
     },
   },
+  "devin-jatho-saas": {
+    id: "devin-jatho-saas",
+    name: "Devin Jatho SaaS",
+    description: "High-velocity SaaS motion design with frosted dark glass, isometric tilts, and tactile clicks",
+    colors: {
+      background: "#0B0E14",
+      card: "rgba(18, 22, 31, 0.65)",
+      cardBorder: "1.5px solid rgba(255, 255, 255, 0.12)",
+      textPrimary: "#FFFFFF",
+      textSecondary: "rgba(255, 255, 255, 0.6)",
+      accent: "#6366F1",
+      accentSecondary: "#10B981",
+    },
+    fonts: {
+      primary: "Inter, sans-serif",
+      secondary: "Inter, sans-serif",
+    },
+    cameraDefault: "push-in",
+    springConfig: {
+      damping: 24,
+      stiffness: 280,
+      mass: 0.85,
+    },
+  },
 } as const;
 
 export type StylePresetId = keyof typeof STYLE_PRESETS;
