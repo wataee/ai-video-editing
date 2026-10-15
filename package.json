@@ -1,0 +1,31 @@
+{
+  "name": "vertical-video-engine",
+  "version": "1.0.0",
+  "description": "Production-ready 9:16 vertical video editing engine based on Remotion",
+  "private": true,
+  "scripts": {
+    "dev": "remotion studio src/index.ts",
+    "build": "remotion bundle src/index.ts",
+    "draft": "remotion render src/index.ts Main out/draft.mp4 --props=\"{}\" --scale=0.5 --video-image-format=jpeg",
+    "render:clip": "remotion render src/index.ts",
+    "render:greenscreen": "remotion render src/index.ts GreenScreenOverlay out/greenscreen_overlay.mp4 --props=\"{\\\"chromaMode\\\":true}\"",
+    "upgrade": "remotion upgrade"
+  },
+  "dependencies": {
+    "@remotion/animation-utils": "4.0.535",
+    "@remotion/captions": "4.0.535",
+    "@remotion/cli": "4.0.535",
+    "@remotion/layout-utils": "4.0.535",
+    "@remotion/media-utils": "4.0.535",
+    "@remotion/zod-types": "4.0.535",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "remotion": "4.0.535",
+    "zod": "4.5.4"
+  },
+  "devDependencies": {
+    "@types/react": "19.2.7",
+    "@types/react-dom": "19.2.3",
+    "typescript": "5.9.3"
+  }
+}

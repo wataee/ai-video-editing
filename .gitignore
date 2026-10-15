@@ -41,6 +41,7 @@ yarn-error.log*
 *.log
 _tmp_download/
 _archive/
+out/
 
 # Large media & client footage (keep code, presets, fonts, SVG graphics, SFX)
 clients/**/raw/

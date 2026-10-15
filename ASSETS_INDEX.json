@@ -1,0 +1,361 @@
+{
+  "version": "1.0.0",
+  "root": "assets",
+  "sfx": {
+    "whooshes": [
+      {
+        "id": "deep_voice_whoosh_01",
+        "name": "Deep Voice Whoosh 01",
+        "path": "assets/01_SFX/01_whooshes/deep_voice/deep_voice_whoosh_01.wav",
+        "category": "whooshes",
+        "defaultVolume": 0.35
+      },
+      {
+        "id": "deep_voice_whoosh_02",
+        "name": "Deep Voice Whoosh 02",
+        "path": "assets/01_SFX/01_whooshes/deep_voice/deep_voice_whoosh_02.wav",
+        "category": "whooshes",
+        "defaultVolume": 0.35
+      },
+      {
+        "id": "deep_voice_whoosh_03",
+        "name": "Deep Voice Whoosh 03",
+        "path": "assets/01_SFX/01_whooshes/deep_voice/deep_voice_whoosh_03.wav",
+        "category": "whooshes",
+        "defaultVolume": 0.35
+      },
+      {
+        "id": "whoosh_clean_fast",
+        "name": "Whoosh Clean Fast",
+        "path": "assets/01_SFX/01_whooshes/futuristic/whoosh_clean_fast.wav",
+        "category": "whooshes",
+        "defaultVolume": 0.30
+      },
+      {
+        "id": "hollow_whoosh_01",
+        "name": "Hollow Whoosh 01",
+        "path": "assets/01_SFX/01_whooshes/hollow/hollow_whoosh_01.wav",
+        "category": "whooshes",
+        "defaultVolume": 0.30
+      },
+      {
+        "id": "hollow_whoosh_02",
+        "name": "Hollow Whoosh 02",
+        "path": "assets/01_SFX/01_whooshes/hollow/hollow_whoosh_02.wav",
+        "category": "whooshes",
+        "defaultVolume": 0.30
+      },
+      {
+        "id": "whoosh_subtle_air",
+        "name": "Whoosh Subtle Air",
+        "path": "assets/01_SFX/01_whooshes/organic_wind/whoosh_subtle_air.wav",
+        "category": "whooshes",
+        "defaultVolume": 0.25
+      },
+      {
+        "id": "synthetic_transition_whoosh",
+        "name": "Synthetic Transition Whoosh",
+        "path": "assets/01_SFX/01_whooshes/transitions/synthetic_transition_whoosh.wav",
+        "category": "whooshes",
+        "defaultVolume": 0.32
+      },
+      {
+        "id": "transition_spacey_whoosh",
+        "name": "Transition Spacey Whoosh",
+        "path": "assets/01_SFX/01_whooshes/transitions/transition_spacey_whoosh.wav",
+        "category": "whooshes",
+        "defaultVolume": 0.32
+      }
+    ],
+    "textures": [
+      {
+        "id": "camera_click_fast",
+        "name": "Camera Click Fast",
+        "path": "assets/01_SFX/02_textures/camera_shutter/camera_click_fast.wav",
+        "category": "textures",
+        "defaultVolume": 0.28
+      },
+      {
+        "id": "click_01",
+        "name": "Click 01",
+        "path": "assets/01_SFX/02_textures/clicks_ui/click_01.wav",
+        "category": "textures",
+        "defaultVolume": 0.22
+      },
+      {
+        "id": "click_02",
+        "name": "Click 02",
+        "path": "assets/01_SFX/02_textures/clicks_ui/click_02.wav",
+        "category": "textures",
+        "defaultVolume": 0.22
+      },
+      {
+        "id": "mechanical_button",
+        "name": "Mechanical Button",
+        "path": "assets/01_SFX/02_textures/clicks_ui/mechanical_button.wav",
+        "category": "textures",
+        "defaultVolume": 0.25
+      },
+      {
+        "id": "mouse_click_soft",
+        "name": "Mouse Click Soft",
+        "path": "assets/01_SFX/02_textures/clicks_ui/mouse_click_soft.wav",
+        "category": "textures",
+        "defaultVolume": 0.20
+      },
+      {
+        "id": "select_01",
+        "name": "Select 01",
+        "path": "assets/01_SFX/02_textures/clicks_ui/select_01.wav",
+        "category": "textures",
+        "defaultVolume": 0.22
+      },
+      {
+        "id": "switch_01",
+        "name": "Switch 01",
+        "path": "assets/01_SFX/02_textures/clicks_ui/switch_01.wav",
+        "category": "textures",
+        "defaultVolume": 0.24
+      },
+      {
+        "id": "complex_mechanism_gizmo",
+        "name": "Complex Mechanism Gizmo",
+        "path": "assets/01_SFX/02_textures/gears_typewriter/complex_mechanism_gizmo.wav",
+        "category": "textures",
+        "defaultVolume": 0.25
+      },
+      {
+        "id": "scratch_01",
+        "name": "Scratch 01",
+        "path": "assets/01_SFX/02_textures/gears_typewriter/scratch_01.wav",
+        "category": "textures",
+        "defaultVolume": 0.22
+      },
+      {
+        "id": "scratch_02",
+        "name": "Scratch 02",
+        "path": "assets/01_SFX/02_textures/gears_typewriter/scratch_02.wav",
+        "category": "textures",
+        "defaultVolume": 0.22
+      },
+      {
+        "id": "tiny_gearwheel_loop",
+        "name": "Tiny Gearwheel Loop",
+        "path": "assets/01_SFX/02_textures/gears_typewriter/tiny_gearwheel_loop.wav",
+        "category": "textures",
+        "defaultVolume": 0.18
+      }
+    ],
+    "pops": [
+      {
+        "id": "glass_pop",
+        "name": "Glass Pop",
+        "path": "assets/01_SFX/02_textures/pops/glass_pop.wav",
+        "category": "pops",
+        "defaultVolume": 0.28
+      },
+      {
+        "id": "pop_01",
+        "name": "Pop 01",
+        "path": "assets/01_SFX/02_textures/pops/pop_01.wav",
+        "category": "pops",
+        "defaultVolume": 0.25
+      },
+      {
+        "id": "pop_02",
+        "name": "Pop 02",
+        "path": "assets/01_SFX/02_textures/pops/pop_02.wav",
+        "category": "pops",
+        "defaultVolume": 0.25
+      },
+      {
+        "id": "pop_bubble_high",
+        "name": "Pop Bubble High",
+        "path": "assets/01_SFX/02_textures/pops/pop_bubble_high.wav",
+        "category": "pops",
+        "defaultVolume": 0.24
+      },
+      {
+        "id": "pop_cartoon_clean",
+        "name": "Pop Cartoon Clean",
+        "path": "assets/01_SFX/02_textures/pops/pop_cartoon_clean.wav",
+        "category": "pops",
+        "defaultVolume": 0.26
+      }
+    ],
+    "sciFi": [
+      {
+        "id": "activate_energy_hit",
+        "name": "Activate Energy Hit",
+        "path": "assets/01_SFX/02_textures/sci_fi_hits/activate_energy_hit.wav",
+        "category": "sciFi",
+        "defaultVolume": 0.32
+      },
+      {
+        "id": "glitch_01",
+        "name": "Glitch 01",
+        "path": "assets/01_SFX/02_textures/sci_fi_hits/glitch_01.wav",
+        "category": "sciFi",
+        "defaultVolume": 0.25
+      },
+      {
+        "id": "glitch_02",
+        "name": "Glitch 02",
+        "path": "assets/01_SFX/02_textures/sci_fi_hits/glitch_02.wav",
+        "category": "sciFi",
+        "defaultVolume": 0.25
+      },
+      {
+        "id": "sci_fi_impact_reveal",
+        "name": "Sci-Fi Impact Reveal",
+        "path": "assets/01_SFX/02_textures/sci_fi_hits/sci_fi_impact_reveal.wav",
+        "category": "sciFi",
+        "defaultVolume": 0.35
+      }
+    ],
+    "impacts": [
+      {
+        "id": "bass_drop_hit_01",
+        "name": "Bass Drop Hit 01",
+        "path": "assets/01_SFX/03_risers_hits/impact_hits/bass_drop_hit_01.wav",
+        "category": "impacts",
+        "defaultVolume": 0.40
+      },
+      {
+        "id": "cinematic_boom_01",
+        "name": "Cinematic Boom 01",
+        "path": "assets/01_SFX/03_risers_hits/impact_hits/cinematic_boom_01.wav",
+        "category": "impacts",
+        "defaultVolume": 0.42
+      },
+      {
+        "id": "sub_bass_thud",
+        "name": "Sub Bass Thud",
+        "path": "assets/01_SFX/03_risers_hits/impact_hits/sub_bass_thud.wav",
+        "category": "impacts",
+        "defaultVolume": 0.40
+      }
+    ],
+    "risers": [
+      {
+        "id": "metallic_riser_01",
+        "name": "Metallic Riser 01",
+        "path": "assets/01_SFX/03_risers_hits/metallic_risers/metallic_riser_01.wav",
+        "category": "risers",
+        "defaultVolume": 0.30
+      },
+      {
+        "id": "metallic_riser_02",
+        "name": "Metallic Riser 02",
+        "path": "assets/01_SFX/03_risers_hits/metallic_risers/metallic_riser_02.wav",
+        "category": "risers",
+        "defaultVolume": 0.30
+      },
+      {
+        "id": "sharp_bass_riser_01",
+        "name": "Sharp Bass Riser 01",
+        "path": "assets/01_SFX/03_risers_hits/sharp_bass_risers/sharp_bass_riser_01.wav",
+        "category": "risers",
+        "defaultVolume": 0.32
+      },
+      {
+        "id": "sharp_bass_riser_02",
+        "name": "Sharp Bass Riser 02",
+        "path": "assets/01_SFX/03_risers_hits/sharp_bass_risers/sharp_bass_riser_02.wav",
+        "category": "risers",
+        "defaultVolume": 0.32
+      },
+      {
+        "id": "sharp_bass_riser_fast",
+        "name": "Sharp Bass Riser Fast",
+        "path": "assets/01_SFX/03_risers_hits/sharp_bass_risers/sharp_bass_riser_fast.wav",
+        "category": "risers",
+        "defaultVolume": 0.34
+      },
+      {
+        "id": "riser_subtle",
+        "name": "Riser Subtle",
+        "path": "assets/01_SFX/03_risers_hits/suck_back_risers/riser_subtle.wav",
+        "category": "risers",
+        "defaultVolume": 0.28
+      },
+      {
+        "id": "suck_back_riser_01",
+        "name": "Suck Back Riser 01",
+        "path": "assets/01_SFX/03_risers_hits/suck_back_risers/suck_back_riser_01.wav",
+        "category": "risers",
+        "defaultVolume": 0.30
+      },
+      {
+        "id": "suck_back_riser_fast",
+        "name": "Suck Back Riser Fast",
+        "path": "assets/01_SFX/03_risers_hits/suck_back_risers/suck_back_riser_fast.wav",
+        "category": "risers",
+        "defaultVolume": 0.32
+      }
+    ],
+    "ambience": [
+      {
+        "id": "tech_drone_subtle",
+        "name": "Tech Drone Subtle",
+        "path": "assets/sfx/ambience/tech_drone_subtle.wav",
+        "category": "ambience",
+        "defaultVolume": 0.15
+      }
+    ]
+  },
+  "fonts": {
+    "inter": {
+      "family": "Inter",
+      "weights": ["400", "500", "600", "700", "800", "900"],
+      "regular": "assets/02_FONTS/01_sans/Inter[opsz,wght].ttf",
+      "italic": "assets/02_FONTS/01_sans/Inter-Italic[opsz,wght].ttf"
+    },
+    "montserrat": {
+      "family": "Montserrat",
+      "weights": ["400", "600", "700", "800", "900"],
+      "regular": "assets/02_FONTS/01_sans/Montserrat[wght].ttf",
+      "italic": "assets/02_FONTS/01_sans/Montserrat-Italic[wght].ttf"
+    },
+    "oswald": {
+      "family": "Oswald",
+      "weights": ["400", "600", "700"],
+      "regular": "assets/02_FONTS/01_sans/Oswald[wght].ttf"
+    },
+    "rubik": {
+      "family": "Rubik",
+      "weights": ["400", "600", "700", "800", "900"],
+      "regular": "assets/02_FONTS/01_sans/Rubik[wght].ttf",
+      "italic": "assets/02_FONTS/01_sans/Rubik-Italic[wght].ttf"
+    },
+    "unbounded": {
+      "family": "Unbounded",
+      "weights": ["400", "700", "900"],
+      "regular": "assets/02_FONTS/01_sans/Unbounded[wght].ttf"
+    },
+    "caveat": {
+      "family": "Caveat",
+      "weights": ["700"],
+      "regular": "assets/02_FONTS/02_script/Caveat.ttf"
+    },
+    "segoeScript": {
+      "family": "Segoe Script",
+      "weights": ["400", "700"],
+      "regular": "assets/02_FONTS/02_script/segoesc.ttf",
+      "bold": "assets/02_FONTS/02_script/segoescb.ttf"
+    }
+  },
+  "graphics": {
+    "overlays": {
+      "filmGrainLoop": "assets/03_GRAPHICS/01_overlays/film_grain_35mm_loop.mp4",
+      "techGrid": "assets/03_GRAPHICS/01_overlays/tech_grid_1080x1920.svg"
+    },
+    "badges": {
+      "badgeFact": "assets/03_GRAPHICS/02_objects_3d/badge_fact.svg",
+      "badgeMistake": "assets/03_GRAPHICS/02_objects_3d/badge_mistake.svg",
+      "badgeResult": "assets/03_GRAPHICS/02_objects_3d/badge_result.svg",
+      "calloutArrow": "assets/03_GRAPHICS/02_objects_3d/callout_arrow.svg",
+      "verifiedBadge": "assets/03_GRAPHICS/02_objects_3d/verified_badge.svg"
+    }
+  }
+}

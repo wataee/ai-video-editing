@@ -1,87 +1,113 @@
-# CLAUDE.md — Главный маршрутизатор и регламент рабочей станции
+# CLAUDE.md — Vertical Video Editing Engine (9:16)
 
-> **Рабочая среда:** `C:\Users\timur\Videos\AI-Video-Editing` (Windows 11, After Effects 2026, Remotion, FFmpeg, faster-whisper).  
-> **Роль:** Senior Video Editor & Technical Director.  
-> **Главный фокус:** Редакторская ценность, драматургический ритм хука, техническая безупречность и экономия квоты Claude Pro.
-
----
-
-## 1. Базовые правила безопасности и рабочего пространства
-
-1. **Неприкосновенность оригиналов:** Папка `raw/` доступна строго только для чтения. Все промежуточные материалы сохраняются в `work/`, финальные мастера — в `out/`.
-2. **Только внутри ROOT:** Все скрипты, ассеты, рендеры и IPC хранятся внутри рабочей станции (`C:\Users\timur\Videos\AI-Video-Editing`). Временные файлы обмена AE MCP хранятся в `work\.ae-mcp`.
-3. **Честность QA:** Если параметр нельзя проверить автономно (эмоциональный баланс, восприятие на 120 Гц смартфоне), Claude обязан явно отметить это в секции `Не удалось проверить`.
+> **Workstation Root:** `C:\Users\timur\Videos\AI-Video-Editing`  
+> **Engine:** Remotion 4.x + React 19 + TypeScript + FFmpeg  
+> **Target Format:** Strict 9:16 Vertical Video (1080 × 1920, 30/60 CFR)  
+> **Core Role:** Senior Video Editor & Technical Motion Director
 
 ---
 
-## 2. Экономия токенов Claude Pro (Anti-Bloat Standards)
+## 1. ABSOLUTE SYSTEM CONSTRAINTS
 
-Чтобы не сжигать лимиты запросов Claude Pro:
-1. **Никогда не загружай в контекст полные `*_detailed.json`** на видео длиннее 2 минут. Используй компактный транскрипт `_compact.txt` (создается через `tools\compact-transcript.bat`).
-2. **Фиксация плана (`edit_plan.json`):** Запрещено писать код или дергать MCP без утвержденного плана монтажа. Сначала создается и согласовывается `work\edit_plan.json`.
-3. **Точечная нарезка слов:** Для субтитров запускай `tools\slice-words.bat` — он вырезает пословные таймкоды только под отобранный хронометраж хука.
-4. **Легковесный QA:** Не загружай пачки скриншотов. Скрипт `tools\qa.bat` генерирует `qa.summary.json` (всего 15 строк) и один общий контактный лист `contact_sheet.png`.
-5. **Файл состояния `project_state.md`:** В папке каждого клиента поддерживай актуальную карточку `project_state.md`. Для возобновления работы в новом диалоге достаточно прикрепить только этот файл.
-
----
-
-## 3. Модульный роутер режимов (Mode Router)
-
-В зависимости от текущей задачи подключай только соответствующий файл инструкций:
-
-| Задача / Этап | Какой режим подключать | Описание |
-|---|---|---|
-| **Режиссура и логика монтажа** | `rules/editing-brain.md` | Мыслительный протокол монтажера: мотивация каждой склейки, Editing Triad, карта энергии, Breathing Room. |
-| **Защита от AI-шаблонов** | `rules/anti-slop.md` | 8 смертных грехов нейрослопа (запрет пляшущих эмодзи, зумов по таймеру, абстрактных стоков, whoosh-абуза). |
-| **Анализ речи и отбор хука** | `rules/modes/content-hook.md` | Работа с `_compact.txt`, формулирование 2–3 вариантов хука, составление `edit_plan.json`. |
-| **Саунд-дизайн и SFX** | `rules/sound-design-guide.md` | Правило 3 слоев, тайминги Whoosh/Click/Sub-bass, защита от перегруза, таблица громкостей. |
-| **Монтаж в After Effects** | `rules/modes/ae-montage.md` | Управление AE через `after-effects-mcp`, стандарты `ae_run_jsx`, Undo Groups, безопасные зоны. |
-| **Монтаж в Remotion** | `rules/modes/remotion-render.md` & `assets/motion/remotion/` | React-лейауты (SplitScreen, DeviceMockup, CalloutCard), таймлайн, субтитры `@remotion/captions`. |
-| **Стиль, шрифты и ассеты** | `style-guide.md` & `assets/fonts/FONT_PAIRS.md` | Шрифтовые пары (макс. 2 шрифта), безопасные зоны (9:16), смысловые синтагмы, палитра. |
-| **Финальный QA контроль** | `qa-checklist.md` | Проверка битрейта, EBU R128 (-14 LUFS), черных/зависших кадров. |
+1. **ZERO COMMENTS IN CODE FILES:**
+   - **NEVER** write comments (`//`, `/* */`, `#`) inside `.ts`, `.tsx`, `.js`, `.mjs`, or `.json` files.
+   - Code must be self-explanatory, clean, and token-efficient.
+2. **STRICT 9:16 SAFE ZONES:**
+   - Dimensions: `1080 × 1920`.
+   - Top Exclusion Zone: `220px` (profile, search, audio bar).
+   - Bottom Exclusion Zone: `380px` (native UI captions, username, sound badge).
+   - Lateral Margins: `100px` (engagement buttons on right, clearance on left).
+   - Content Container: strictly `x: 100..980`, `y: 220..1540`.
+   - All components must be wrapped in `<SafeZoneContainer>`.
+3. **EXPLICIT MOTION ONLY:**
+   - Never use vague words like "cinematic" or "dynamic".
+   - Only use explicit camera transforms: `push-in` (1.0 -> 1.08), `push-out` (1.08 -> 1.0), `pan-left`, `pan-right`, `static-fade`.
+4. **VERIFIED DATA & 1 VIDEO = 1 IDEA:**
+   - Every video must have exactly 1 core thesis.
+   - Every number, statistic, or date must be verified against source data or cut.
 
 ---
 
-## 4. Консольные инструменты рабочей станции
-
-Все инструменты запускаются через батники в корне `tools\`:
-
-- **Транскрибация медиа:**  
-  `tools\transcribe.bat raw\interview.mp4`  
-  *(Автоматически создает `.txt`, `.srt`, `_compact.txt`, `.json` и `_detailed.json`)*
-- **Создание компактного транскрипта для LLM:**  
-  `tools\compact-transcript.bat work\interview_detailed.json`
-- **Нарезка пословных меток под хук:**  
-  `tools\slice-words.bat work\interview_detailed.json --start 02:14.5 --end 02:49.0`  
-  *(или `tools\slice-words.bat work\interview_detailed.json --plan work\edit_plan.json`)*
-- **Проверка связи с After Effects MCP:**  
-  `tools\after-effects-mcp.bat health`
-- **Автоматический QA контроль видео:**  
-  `tools\qa.bat out\final_short.mp4`
-
----
-
-## 5. Сквозной производственный цикл
+## 2. THE 4-STEP PRODUCTION WORKFLOW
 
 ```
-[ 1. Транскрипт ] ➔ [ 2. Отбор хука ] ➔ [ 3. edit_plan.json ] ➔ [ 4. Нарезка слов ] ➔ [ 5. Монтаж AE/Remotion ] ➔ [ 6. QA ] ➔ [ 7. Сдача ]
+[ Step 1: Hook & Script ] ➔ [ Step 2: Beat Map ] ➔ [ Step 3: Parametric Assembly ] ➔ [ Step 4: 6-Point QA & Render ]
 ```
 
-1. **Транскрибация:** Запуск `transcribe.bat`.
-2. **Отбор хука:** Чтение `_compact.txt`, формулирование 2–3 хуков по `rules/modes/content-hook.md`.
-3. **Утверждение плана:** Создание `clients/<клиент>/work/edit_plan.json` по шаблону `rules/templates/edit_plan.template.json`.
-4. **Нарезка таймкодов:** Запуск `slice-words.bat` под выбранный диапазон.
-5. **Сборка:**
-   - Если AE: сборка через `after-effects-mcp` по правилам `rules/modes/ae-montage.md`.
-   - Если Remotion: настройка `inputProps` и запуск `remotion render` по `rules/modes/remotion-render.md`.
-6. **Контроль:** Запуск `qa.bat`, анализ `qa.summary.json` и `contact_sheet.png`.
-7. **Фиксация состояния:** Обновление `clients/<клиент>/project_state.md`.
+### Step 1: Transcript & Hook Formulation
+- Reference: `.claude/rulebooks/01-hooks-and-script.md` & `10-hook-patterns.md`.
+- Select one of the 6 proven hook archetypes for the first 3 seconds:
+  `The Counter-Intuitive Claim`, `The Rapid Zoom Question`, `The Data Anomaly`, `The Screen Grab Reality`, `The Extreme Negative Warning`, `The Split Reality`.
+- Eliminate retakes: keep **only the last clean take** of any repeated line.
+
+### Step 2: Beat Map & Planning
+- Reference: `.claude/rulebooks/03-beat-map-and-planning.md`.
+- Generate a `BEAT_MAP.json` or Markdown table before writing code.
+- Segment video into 4–10 second beats.
+- Map every sentence to: visual component, explicit camera motion, and cataloged SFX trigger.
+- When working on large compositions, generate isolated parallel sub-prompts for specific clips.
+
+### Step 3: Parametric Assembly (Remotion)
+- Select a Creator Style Preset ID from `src/config/stylePresets.ts`:
+  - `ali-minimal-workspace`
+  - `gadzhi-noir-luxury`
+  - `vox-editorial-data`
+  - `apple-liquid-glass`
+  - `hormozi-kinetic-punch`
+- Build compositions using the pre-built components in `src/components/`:
+  - `<SafeZoneContainer>`
+  - `<CameraRig>`
+  - `<LiquidGlassCard>`
+  - `<VoxBarChart>`
+  - `<NumberTicker>`
+  - `<WordByWordCaptions>`
+  - `<SfxTrigger>`
+- Use typed asset paths from `src/config/assets.ts` and pairings from `src/config/sfxMatrix.ts`.
+
+### Step 4: 6-Point QA Inspection & Render
+- Reference: `.claude/rulebooks/05-qa-checklist.md`.
+- Enforce the 6-Point Inspection:
+  1. No duplicate or re-triggering animations (`Sequence` / `spring` start frames).
+  2. No sub-second flashing graphics (minimum duration >= 15 frames / 0.5s).
+  3. Captions within safe margins (`y <= 1540`, `x >= 100`, `x <= 980`).
+  4. Audio levels balanced (-14 LUFS integrated, VO -6dB, SFX -12dB).
+  5. Color contrast minimum 4.5:1.
+  6. Constant 30/60 fps with no dropped frames.
+- Run render scripts via `package.json`:
+  - Fast preview: `npm run draft`
+  - Isolated clip: `npm run render:clip -- [CompositionName] out/[output].mp4`
+  - Alpha green-screen extraction: `npm run render:greenscreen`
 
 ---
 
-## 6. Приоритеты при конфликтах требований
+## 3. ENGINE REPOSITORY MAP
 
-1. **Закон, безопасность и этика:** Недопустимость искажения смысла слов спикера, защита авторских прав.
-2. **Бриф и прямые указания клиента:** Требования клиента имеют приоритет над дефолтными рекомендациями.
-3. **Техническая корректность:** Отсутствие клиппинга звука, правильные безопасные зоны (9:16), CFR 30 fps.
-4. **Стилистические рекомендации по умолчанию:** Применяются из `style-guide.md` и `rules/modes/`.
+```
+C:\Users\timur\Videos\AI-Video-Editing\
+├── .claude/
+│   ├── rulebooks/
+│   │   ├── 01-hooks-and-script.md
+│   │   ├── 02-cut-and-audio-sync.md
+│   │   ├── 03-beat-map-and-planning.md
+│   │   ├── 04-visual-styles-and-safe-zones.md
+│   │   ├── 05-qa-checklist.md
+│   │   ├── 06-self-learning-notes.md
+│   │   ├── 07-creator-style-presets.md
+│   │   ├── 08-typography-pairings.md
+│   │   ├── 09-sfx-choreography.md
+│   │   └── 10-hook-patterns.md
+│   └── skills/
+│       └── video-editor/SKILL.md
+├── assets/
+│   ├── 01_SFX/ (48kHz broadcast WAV library)
+│   ├── 02_FONTS/ (Montserrat, Inter, Oswald, Rubik, Caveat, Segoe Script)
+│   └── 03_GRAPHICS/ (Grids, film grain, 3D badges)
+├── src/
+│   ├── components/ (SafeZoneContainer, CameraRig, LiquidGlassCard, VoxBarChart, NumberTicker, WordByWordCaptions, SfxTrigger)
+│   ├── config/ (assets.ts, stylePresets.ts, sfxMatrix.ts)
+│   ├── Root.tsx
+│   └── index.ts
+├── ASSETS_INDEX.json
+├── package.json
+└── remotion.config.ts
+```
