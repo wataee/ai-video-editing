@@ -39,7 +39,7 @@
         "mass": 0.8
       },
       "sfx": {
-        "sample": "assets/01_SFX/hits/sub_bass_thud.wav",
+        "sample": "assets/sfx/hits/sub_bass_thud.wav",
         "frame_offset": 0,
         "volume_db": -14,
         "duration_in_frames": 60
@@ -72,7 +72,7 @@
         "mass": 0.9
       },
       "sfx": {
-        "sample": "assets/01_SFX/whooshes/whoosh_clean_fast.wav",
+        "sample": "assets/sfx/whooshes/whoosh_clean_fast.wav",
         "frame_offset": 0,
         "volume_db": -20,
         "duration_in_frames": 45
@@ -104,7 +104,7 @@
         "mass": 1.0
       },
       "sfx": {
-        "sample": "assets/01_SFX/pops/glass_pop.wav",
+        "sample": "assets/sfx/pops/glass_pop.wav",
         "frame_offset": 0,
         "volume_db": -16,
         "duration_in_frames": 40

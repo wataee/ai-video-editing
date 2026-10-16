@@ -158,7 +158,6 @@ export const ALLOWED_LOCAL_FONTS = [
   "Oswald",
   "Rubik",
   "Caveat",
-  "Segoe Script",
 ] as const;
 
 export const assertValidFont = (fontName: string): void => {

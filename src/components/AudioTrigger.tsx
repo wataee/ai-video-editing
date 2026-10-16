@@ -26,7 +26,10 @@ const resolveSfxPath = (samplePath: string): string => {
   if (normalized.startsWith("assets/")) {
     return normalized.replace("assets/", "");
   }
-  if (normalized.startsWith("sfx/") || normalized.startsWith("01_SFX/")) {
+  if (normalized.startsWith("01_SFX/")) {
+    return normalized.replace("01_SFX/", "sfx/");
+  }
+  if (normalized.startsWith("sfx/")) {
     return normalized;
   }
   return `sfx/${normalized}`;

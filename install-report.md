@@ -17,7 +17,7 @@
 | **npm** | `11.19.0` | В составе Node.js LTS | `C:\Program Files\nodejs\npm.cmd` | **УСТАНОВЛЕНО И ПРОВЕРЕНО** |
 | **Python** | `3.12.10` (64-bit) | `winget install Python.Python.3.12` | `C:\Users\timur\AppData\Local\Programs\Python\Python312\python.exe` | **УСТАНОВЛЕНО И ПРОВЕРЕНО** |
 | **auto-editor** | `29.3.1` | Standalone binary + venv (Python 3.12) | `C:\Users\timur\Videos\AI-Video-Editing\tools\auto-editor.bat` | **УСТАНОВЛЕНО И ПРОВЕРЕНО** |
-| **faster-whisper** | `1.2.1` (CTranslate2 4.8.3) | Изолированный venv (Python 3.12) | `C:\Users\timur\Videos\AI-Video-Editing\tools\transcribe.bat` | **УСТАНОВЛЕНО И ПРОВЕРЕНО** |
+| **faster-whisper** | `1.2.1` (CTranslate2 4.8.3, CUDA 12.9) | Изолированный venv (Python 3.12) + NVIDIA cu12 DLLs | `C:\Users\timur\Videos\AI-Video-Editing\tools\transcribe.bat` | **УСТАНОВЛЕНО И ПРОВЕРЕНО (GPU CUDA)** |
 | **Remotion CLI / Core** | `4.0.535` | npm пакеты в стартовых проектах | `projects\remotion-*-starter\node_modules` | **УСТАНОВЛЕНО И ПРОВЕРЕНО** |
 | **Remotion Starter (TikTok)** | `4.0.535` | `npx create-video --tiktok` | `projects\remotion-tiktok-starter` | **УСТАНОВЛЕНО И ПРОВЕРЕНО** |
 | **Remotion Starter (Blank)** | `4.0.535` | `npx create-video --blank` | `projects\remotion-blank-starter` | **УСТАНОВЛЕНО И ПРОВЕРЕНО** |
@@ -101,9 +101,8 @@
 2. **Несовместимость PyAV 14+ и faster-whisper:**
    - *Проблема:* В свежих релизах PyAV у метода `av.open()` был удалён параметр `metadata_errors`, из-за чего вызов падал с `TypeError: open() got an unexpected keyword argument 'metadata_errors'`.
    - *Решение:* Функция `decode_audio` в `tools/venv-whisper/.../faster_whisper/audio.py` пропатчена отказоустойчивым блоком `try...except TypeError`, обеспечивающим полную совместимость с любой версией PyAV.
-3. **Отсутствие CUDA 12 Toolkit DLLs (`cublas64_12.dll`):**
-   - *Проблема:* При наличии GPU драйвера NVIDIA, библиотеки `cublas64_12.dll` не входят в стандартный драйвер Windows.
-   - *Решение:* В `tools/transcribe.py` встроен автоматический перехват отсутствия DLL и бесшовный мгновенный фоллбэк на CPU (int8). Благодаря 14-ядерному процессору i7-12700H транскрибация выполняется почти мгновенно без падений.
+3. **Поддержка CUDA 12 Toolkit DLLs (`cublas64_12.dll`, `cudnn64_9.dll`):**
+   - *Решение:* В виртуальное окружение `tools/venv-whisper` установлены пакеты `nvidia-cublas-cu12`, `nvidia-cudnn-cu12` и `nvidia-cuda-nvrtc-cu12`. В `tools/transcribe.bat` и `tools/transcribe.py` настроено автоматическое добавление директорий DLL в `PATH` и `os.add_dll_directory()`. Транскрибация аппаратно ускорена на NVIDIA GeForce RTX 3060 Laptop GPU (режим `cuda float16`), фоллбэк на CPU больше не требуется.
 4. **Кодировка консоли Windows (CP1251 vs UTF-8):**
    - *Решение:* Во всех батниках (`transcribe.bat`, `auto-editor.bat`) в первой строке вызывается `chcp 65001 >nul`, гарантируя корректное отображение кириллицы в консоли и логах.
 5. **Git Clone davila7/claude-code-templates:**
@@ -142,7 +141,7 @@
 ### 4. Какие ограничения или проблемы были обнаружены?
 - **Лицензия Remotion:** Полностью бесплатна для персонального использования, опенсорса и команд до 3 человек. Для коммерческих компаний от 4 человек требуется лицензия Remotion Company.
 - **DaVinci Resolve:** Требует ручного скачивания с официального сайта Blackmagic Design из-за персональной регистрационной формы и UAC установщика.
-- **CUDA 12 DLLs:** Отсутствие скомпилированных `cublas64_12.dll` в системном каталоге Windows автоматически компенсировано CPU int8 режимом. При необходимости максимальной скорости на GPU можно установить CUDA Toolkit 12.
+- **CUDA 12 DLLs:** Поддержка CUDA 12 полностью настроена и проверена на GPU NVIDIA RTX 3060. Пакеты `nvidia-cublas-cu12` и `nvidia-cudnn-cu12` интегрированы в виртуальное окружение. Транскрибация аппаратно ускорена на GPU.
 
 ### 5. Что нужно сделать пользователю вручную (с пошаговыми инструкциями)?
 1. **Установка DaVinci Resolve** (если планируется работа в NLE):

@@ -176,3 +176,21 @@
 - Во всех 29 карточках `references/library/cards/` статус приведен к `ссылка подтверждена (oEmbed), монтаж не просматривался`, а числовые параметры (ASL, число смен кадров, dB, координаты) переведены в `НЕ ИЗМЕРЕНО`.
 - Сформирован сводный индекс `references/library/index.md` на 29 подтвержденных позиций с колонками `НЕ ИЗМЕРЕНО`.
 - В `references/library/patterns.md` удалена псевдостатистика (проценты и числовые охваты), документ реструктурирован в качественные наблюдения с обязательной пометкой источника наблюдения.
+
+### Шаг 9. Ассеты, лицензии и аппаратное ускорение CUDA 12
+- Из каталогов и индексов (`ASSETS_INDEX.json`, `assets/catalog.json`, `src/config/stylePresets.ts`) удален системный проприетарный шрифт `SegoeScript`. В репозитории оставлены исключительно проверенные локальные шрифты со свободной лицензией SIL Open Font License (OFL 1.1): Montserrat, Inter, Manrope, Onest, Oswald, Rubik, Unbounded, Caveat.
+- Библиотека фоновой музыки (`assets/music/`): загружены 5 треков с OpenGameArt.org со строгой лицензией CC0 1.0 Universal (Public Domain) под ключевые архетипы: `tech_minimal.mp3` (Poilo), `dark_cinematic.mp3` (Evil Awaits), `energetic_beat.mp3` (OMW to beat the big bad), `lofi_background.mp3` (Bartender), `dark_investigation.mp3` (Unsolved Investigation). Все аудиофайлы приведены через FFmpeg к студийному стандарту 48 000 Гц stereo 192k MP3, внесены в `assets/music/README.md`, `license-register.md`, `ASSETS_INDEX.json` и `assets/catalog.json`.
+- Оверлеи и текстуры:
+  - Сгенерированы 3 процедурные текстуры бумаги 1080x1920 PNG в `assets/overlays/paper_textures/` (`paper_texture_01.png`, `paper_texture_02.png`, `paper_rough.png`) с моделированием микроволокон и зернистости (CC0).
+  - Сгенерированы 3 видеооверлея световых бликов/боке Light Leaks 1080x1920 30fps MP4 через фильтры FFmpeg в `assets/overlays/light_leaks/` (`light_leak_warm.mp4`, `light_leak_cool.mp4`, `light_leak_soft.mp4`) под режимы Screen/Add (CC0).
+  - Создан комплект из 10 векторных SVG-иконок в `assets/ui/icons/` (`check`, `cross`, `warning`, `fire`, `dollar`, `clock`, `chart`, `lock`, `bolt`, `eye`) по спецификации Lucide/Feather (MIT / CC0).
+  - Все новые ассеты зарегистрированы в `ASSETS_INDEX.json`, `assets/catalog.json` и `license-register.md`.
+- Аппаратное ускорение faster-whisper на GPU NVIDIA GeForce RTX 3060:
+  - В виртуальное окружение `tools/venv-whisper` установлены официальные пакеты `nvidia-cublas-cu12`, `nvidia-cudnn-cu12` и `nvidia-cuda-nvrtc-cu12` (CUDA 12.9).
+  - В `tools/transcribe.bat` настроен препенд путей к бинарникам cu12 в системную переменную `PATH`.
+  - В `tools/transcribe.py` настроен импорт директорий через `os.add_dll_directory` и автоматический выбор устройства `cuda (float16)` при `ctranslate2.get_cuda_device_count() > 0`.
+  - Проведено боевое тестирование на тестовом файле: транскрибация выполнена на `cuda (float16)` за 2.52 с без падений и без фоллбэка на CPU.
+- Верификация сборки:
+  - `npm run check` (`python tools/check_paths.py`) подтвердил целостность всех путей (PASS: All referenced paths exist).
+  - `npm run draft` успешно отрендерил 600 кадров композиции в `out/draft.mp4` без ошибок.
+

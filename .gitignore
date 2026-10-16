@@ -42,6 +42,7 @@ _sandbox/
 _scratch/
 out/
 .tmp/
+tmp/
 *.tmp
 *.log
 _tmp_download/

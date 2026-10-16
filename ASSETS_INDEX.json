@@ -318,14 +318,6 @@
         "Rubik[wght].ttf"
       ]
     },
-    "SegoeScript": {
-      "family": "SegoeScript",
-      "path": "assets/fonts/SegoeScript",
-      "files": [
-        "segoesc.ttf",
-        "segoescb.ttf"
-      ]
-    },
     "Unbounded": {
       "family": "Unbounded",
       "path": "assets/fonts/Unbounded",
@@ -334,6 +326,38 @@
       ]
     }
   },
+  "music": [
+    {
+      "id": "tech_minimal",
+      "name": "Tech Minimal (Poilo)",
+      "path": "assets/music/tech_minimal.mp3",
+      "archetype": "tech/minimal"
+    },
+    {
+      "id": "dark_cinematic",
+      "name": "Dark Cinematic (Evil Awaits)",
+      "path": "assets/music/dark_cinematic.mp3",
+      "archetype": "dark cinematic"
+    },
+    {
+      "id": "energetic_beat",
+      "name": "Energetic Beat (OMW)",
+      "path": "assets/music/energetic_beat.mp3",
+      "archetype": "energetic beat"
+    },
+    {
+      "id": "lofi_background",
+      "name": "Lo-Fi Background (Bartender)",
+      "path": "assets/music/lofi_background.mp3",
+      "archetype": "lo-fi background"
+    },
+    {
+      "id": "dark_investigation",
+      "name": "Dark Investigation",
+      "path": "assets/music/dark_investigation.mp3",
+      "archetype": "dark cinematic"
+    }
+  ],
   "overlays": {
     "film_grain": [
       "assets/overlays/film_grain/film_grain_35mm_loop.mp4"
@@ -341,8 +365,16 @@
     "grids": [
       "assets/overlays/grids/tech_grid_1080x1920.svg"
     ],
-    "light_leaks": [],
-    "paper_textures": [],
+    "light_leaks": [
+      "assets/overlays/light_leaks/light_leak_cool.mp4",
+      "assets/overlays/light_leaks/light_leak_soft.mp4",
+      "assets/overlays/light_leaks/light_leak_warm.mp4"
+    ],
+    "paper_textures": [
+      "assets/overlays/paper_textures/paper_rough.png",
+      "assets/overlays/paper_textures/paper_texture_01.png",
+      "assets/overlays/paper_textures/paper_texture_02.png"
+    ],
     "safe_zones": [
       "assets/overlays/safe_zones/safe_zones_9x16.svg"
     ]
@@ -357,6 +389,17 @@
       "assets/ui/badges/badge_result.svg",
       "assets/ui/badges/verified_badge.svg"
     ],
-    "icons": []
+    "icons": [
+      "assets/ui/icons/bolt.svg",
+      "assets/ui/icons/chart.svg",
+      "assets/ui/icons/check.svg",
+      "assets/ui/icons/clock.svg",
+      "assets/ui/icons/cross.svg",
+      "assets/ui/icons/dollar.svg",
+      "assets/ui/icons/eye.svg",
+      "assets/ui/icons/fire.svg",
+      "assets/ui/icons/lock.svg",
+      "assets/ui/icons/warning.svg"
+    ]
   }
 }

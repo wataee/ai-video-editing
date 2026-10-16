@@ -1,6 +1,6 @@
 # ⚖️ Реестр лицензий компонентов рабочей среды (License Register)
 
-> **Дата актуализации:** 16 октября 2026 г.  
+> **Дата актуализации:** 17 октября 2026 г.  
 > **Статус проверки:** Проверено по фактическим файлам лицензий (`LICENSE`, `OFL.txt`, коду генераторов и метаданным пакетов) непосредственно на локальном диске.  
 > Реестр описывает **только те компоненты, которые фактически присутствуют на диске**.
 
@@ -27,11 +27,27 @@
 | **Шрифт Inter** (`assets/fonts/Inter/`) | [google/fonts/ofl/inter](https://github.com/google/fonts/tree/main/ofl/inter) | **SIL OFL 1.1** | 2026-10-15 | Агент | Разрешено коммерческое использование. Файл `OFL.txt` сохранён в папке. |
 | **Шрифт Unbounded** (`assets/fonts/Unbounded/`) | [google/fonts/ofl/unbounded](https://github.com/google/fonts/tree/main/ofl/unbounded) | **SIL OFL 1.1** | 2026-10-15 | Агент | Разрешено коммерческое использование. Файл `OFL.txt` сохранён в папке. |
 | **Шрифт Caveat** (`assets/fonts/Caveat/`) | [google/fonts/ofl/caveat](https://github.com/google/fonts/tree/main/ofl/caveat) | **SIL OFL 1.1** | 2026-10-16 | Агент | Разрешено свободное коммерческое использование. Файл `OFL.txt` сохранён в папке `assets/fonts/Caveat/`. |
-| **Библиотека звуковых эффектов (41 WAV)** (`assets/sfx/`) | Процедурная генерация через `tools/generate_pro_sfx_library.py` | **Собственная генерация (Лицензия автора репозитория / CC0)** | 2026-10-16 | Агент | Файлы синтезированы локально математическими методами (синусоидальные генераторы, огибающие, фильтрованный шум). Разрешено неограниченное коммерческое использование в любых проектах клиента без отчислений. |
+| **Библиотека звуковых эффектов (41 WAV)** (`assets/sfx/`) | Процедурная генерация через `tools/generate_pro_sfx_library.py` | **Собственная генерация (Лицензия автора репозитория / CC0)** | 2026-10-16 | Агент | Файлы синтезированы локально математическими методами. Неограниченное коммерческое использование. |
+| **Фоновая музыка (5 треков MP3, 48 kHz stereo)** (`assets/music/`) | OpenGameArt.org (авторы: cinameng, bosslevelaudio, Fupi, TAD, isaiah658) | **CC0 1.0 Universal (Public Domain)** | 2026-10-17 | Агент | 100% CC0 Public Domain. Разрешено коммерческое использование без обязательной атрибуции и роялти. |
+| **Текстуры бумаги (3 PNG, 1080x1920)** (`assets/overlays/paper_textures/`) | Процедурная генерация (`tools/generate_paper_textures.py`) | **Собственная генерация / CC0** | 2026-10-17 | Агент | Синтез шума, волокон и микроструктуры бумаги. Разрешено любое коммерческое использование. |
+| **Световые оверлеи Light Leaks (3 MP4, 1080x1920 30fps)** (`assets/overlays/light_leaks/`) | Процедурный рендеринг FFmpeg (`tools/generate_light_leaks.py`) | **Собственная генерация / CC0** | 2026-10-17 | Агент | Мягкие кинематографичные градиенты боке и бликов под режим наложения Screen/Add. CC0. |
+| **Набор векторных UI-иконок (10 SVG)** (`assets/ui/icons/`) | Lucide / Feather icon specification (`tools/generate_icons.py`) | **MIT License / CC0** | 2026-10-17 | Агент | Чистая векторная графика (`check`, `cross`, `warning`, `fire`, `dollar`, `clock`, `chart`, `lock`, `bolt`, `eye`). |
 
 ---
 
-## 2. Перечень фактических файлов SFX (`assets/sfx/`, 41 файл)
+## 2. Перечень фактических файлов музыки (`assets/music/`, 5 файлов)
+
+Все 5 треков приведены к стандарту студийного монтажа: 48 000 Гц, стерео, 192 kbps MP3:
+
+1. `tech_minimal.mp3` — трек «Poilo», автор cinameng ([opengameart.org/content/poilo](https://opengameart.org/content/poilo)), лицензия CC0 1.0 Universal.
+2. `dark_cinematic.mp3` — трек «Evil Awaits», автор bosslevelaudio ([opengameart.org/content/evil-awaits](https://opengameart.org/content/evil-awaits)), лицензия CC0 1.0 Universal.
+3. `energetic_beat.mp3` — трек «OMW to beat the big bad», автор Fupi ([opengameart.org/content/omw-to-beat-the-big-bad](https://opengameart.org/content/omw-to-beat-the-big-bad)), лицензия CC0 1.0 Universal.
+4. `lofi_background.mp3` — трек «Bartender (lofi compilation)», автор TAD ([opengameart.org/content/lofi-compilation](https://opengameart.org/content/lofi-compilation)), лицензия CC0 1.0 Universal.
+5. `dark_investigation.mp3` — трек «Unsolved Investigation», автор isaiah658 ([opengameart.org/content/unsolved-investigation](https://opengameart.org/content/unsolved-investigation)), лицензия CC0 1.0 Universal.
+
+---
+
+## 3. Перечень фактических файлов SFX (`assets/sfx/`, 41 файл)
 
 Все 41 файл сгенерированы локально скриптом `tools/generate_pro_sfx_library.py` (частота дискретизации 48 000 Гц, 16 бит, стерео/моно PCM WAV):
 
