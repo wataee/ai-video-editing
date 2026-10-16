@@ -32,6 +32,8 @@ export const VoxBarChart: React.FC<VoxBarChartProps> = ({
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
+  const innerHeight = Math.max(0, height - 64);
+  const barAreaHeight = Math.max(0, innerHeight - 74);
   const computedMax = maxValue ?? Math.max(...items.map((item) => item.value), 1);
 
   return (
@@ -75,6 +77,7 @@ export const VoxBarChart: React.FC<VoxBarChartProps> = ({
           alignItems: "flex-end",
           justifyContent: "space-around",
           gap: 20,
+          minHeight: 0,
         }}
       >
         {items.map((item, index) => {
@@ -90,7 +93,7 @@ export const VoxBarChart: React.FC<VoxBarChartProps> = ({
           });
 
           const normalizedHeight = Math.min(1, Math.max(0, item.value / computedMax));
-          const currentHeightPercent = normalizedHeight * springProgress * 100;
+          const currentBarHeight = normalizedHeight * springProgress * barAreaHeight;
           const barColor = item.color ?? accentColor;
 
           return (
@@ -109,7 +112,8 @@ export const VoxBarChart: React.FC<VoxBarChartProps> = ({
               <div
                 style={{
                   fontSize: 22,
-                  fontFamily: "Space Mono, monospace",
+                  fontFamily: "Inter, sans-serif",
+                  fontVariantNumeric: "tabular-nums",
                   fontWeight: 700,
                   color: barColor,
                   opacity: springProgress > 0.1 ? 1 : 0,
@@ -121,8 +125,7 @@ export const VoxBarChart: React.FC<VoxBarChartProps> = ({
               <div
                 style={{
                   width: "100%",
-                  maxHeight: "72%",
-                  height: `${currentHeightPercent}%`,
+                  height: currentBarHeight,
                   backgroundColor: barColor,
                   borderRadius: "8px 8px 4px 4px",
                   boxShadow: `0 0 20px ${barColor}44`,

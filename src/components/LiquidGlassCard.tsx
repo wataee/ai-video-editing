@@ -48,7 +48,7 @@ export const LiquidGlassCard: React.FC<LiquidGlassCardProps> = ({
         boxSizing: "border-box",
         padding,
         borderRadius: 28,
-        backgroundColor: chromaMode ? "#00FF00" : "rgba(255, 255, 255, 0.14)",
+        backgroundColor: chromaMode ? "#1C1C20" : "rgba(255, 255, 255, 0.14)",
         backdropFilter: chromaMode ? undefined : "blur(24px) saturate(180%)",
         WebkitBackdropFilter: chromaMode ? undefined : "blur(24px) saturate(180%)",
         border: chromaMode ? undefined : "1px solid rgba(255, 255, 255, 0.28)",
@@ -77,7 +77,7 @@ export const LiquidGlassCard: React.FC<LiquidGlassCardProps> = ({
                 padding: "6px 16px",
                 borderRadius: 999,
                 backgroundColor: chromaMode ? "#000000" : "rgba(255, 255, 255, 0.2)",
-                color: chromaMode ? "#FFFFFF" : "#FFFFFF",
+                color: "#FFFFFF",
                 fontSize: 20,
                 fontFamily: "Inter, sans-serif",
                 fontWeight: 700,
@@ -93,7 +93,7 @@ export const LiquidGlassCard: React.FC<LiquidGlassCardProps> = ({
             <h3
               style={{
                 margin: 0,
-                color: chromaMode ? "#000000" : "#FFFFFF",
+                color: "#FFFFFF",
                 fontSize: 36,
                 fontFamily: "Inter, sans-serif",
                 fontWeight: 800,
@@ -111,7 +111,7 @@ export const LiquidGlassCard: React.FC<LiquidGlassCardProps> = ({
         <p
           style={{
             margin: 0,
-            color: chromaMode ? "#222222" : "rgba(255, 255, 255, 0.8)",
+            color: chromaMode ? "#D4D4D8" : "rgba(255, 255, 255, 0.8)",
             fontSize: 24,
             fontFamily: "Inter, sans-serif",
             fontWeight: 500,
@@ -126,7 +126,7 @@ export const LiquidGlassCard: React.FC<LiquidGlassCardProps> = ({
         <div
           style={{
             width: "100%",
-            color: chromaMode ? "#000000" : "#FFFFFF",
+            color: "#FFFFFF",
           }}
         >
           {children}

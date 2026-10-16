@@ -1,82 +1,83 @@
-# 🎬 AI Video Editing — Viral Automation Engine
+# 🎬 AI Video Editing — Vertical Video Engine (v2)
 
-Automated short-form video editing pipeline powered by **Claude / Antigravity**, **Adobe After Effects (MCP)**, **Remotion**, and the production standards of **Joseph (Ultimate Editors)** and **Mahabur Rahman (@mahdibgfx)**.
+Production-ready vertical short-form video editing engine (9:16) powered by **Remotion 4.x (React 19 + TypeScript)**, **FFmpeg**, and **After Effects ExtendScript** (secondary engine).
 
 ---
 
 ## 🚀 Key Features
 
-* **Live After Effects MCP Bridge:** Real-time bi-directional IPC control of Adobe After Effects 2026. Zero GUI manual clicking — automated cuts, keyframing, typography, effects, and frame capture.
-* **Joseph / Ultimate Editors Production Standards:**
-  * Strict 3-family sound design (`Whooshes`, `Textures`, `Risers & Hits`) with standardized target decibels (`-12 dB`, `-6.5 dB`, `-5 dB`, `-19 dB`).
-  * 4-pass sequential editing workflow.
-  * 4 core animation categories: `Text-Centric`, `Object-Centric`, `Character-Centric`, `Video-Centric`.
-* **The 2-Font Viral Formula (Sans + Script):**
-  * Primary hook word in bold 3D geometric sans (`Montserrat Black`) with bevel, drop shadow, and neon bloom.
-  * Overlapping secondary word in expressive brush script (`Caveat Bold`) with a -9° negative tilt.
-* **Color Science & HDR Ingest:**
-  * Native iPhone Apple Log / Dolby Vision BT.2020 HLG to SDR Rec.709 tonemapping via `libplacebo` and `BT.2390`.
-  * Studio background vignette falloff for subject separation.
+* **Primary Engine: Remotion (React 19):** Frame-accurate parametric motion design, kinetic karaoke captions, procedural camera rigs, and automated headless rendering.
+* **Secondary Engine: After Effects ExtendScript:** Driven via generated monolithic ExtendScript scripts (`scripts/build_ae_project.jsx` and `scripts/import_to_ae.jsx`) executed manually via `File -> Scripts -> Run Script File...` with undo group protection and safe plugin fallbacks (`safeApplyEffect`). No MCP bridge or external daemons needed.
+* **Calibrated Sound Design (Relative to Speech RMS):**
+  * Hits & Risers: `−14 dB` relative to measured speech RMS.
+  * Textures (Clicks, Pops): `−16 dB` relative to speech RMS.
+  * Whooshes (Air sweeps): `−20 dB` relative to speech RMS.
+  * Music Bed: `−22 dB` and lower with sidechain ducking.
+  * Maximum 6 SFX per 30s. Zooms without sound.
+* **Approved Cyrillic Typography Formula:**
+  * Headline: `Montserrat` (ExtraBold / Black).
+  * Body / Captions: `Manrope` or `Inter` (Regular / Medium / SemiBold).
+  * Accent signature (2nd layer only): `Caveat` (Bold).
+  * `TheBoldFont` is strictly prohibited.
+* **Color Science & Hardware Ingest:**
+  * Mandatory pre-ingest via `tools/ingest.py` (libplacebo BT.2390 or zscale to SDR Rec.709, CFR 30 fps, 720p proxy).
+  * Exposure adjustment layers to "fix" HDR in AE are strictly forbidden.
+* **Human-in-the-Loop Quality Assurance:**
+  * Sentence-by-sentence Beat Table (`edit_plan.json`) with `line`, `visual`, `proof_source`, `camera`, `cut_motivation`, `sfx`, `why`.
+  * Pre-render Contact Sheet (`contact_sheet_plan.png`).
+  * Approval Gate (`approved: false` by default; final render refused until approved).
+  * 10 FPS Automated Inspection (`tools/qa.py`).
 
 ---
 
-## 📂 Asset Library Taxonomy (`assets/`)
+## 📂 Asset Taxonomy (`assets/`)
 
 ```text
 assets/
-├── 01_SFX/                          # Broadcast 48,000 Hz WAV audio library
-│   ├── 01_whooshes/                 # Movement (zooms, pans, slides) -> -12 dB
-│   │   ├── deep_voice/              # Textured sci-fi low sweeps (default)
-│   │   ├── hollow/                  # Resonant whooshes for standard slides
-│   │   ├── futuristic/              # Rapid high-tech swooshes
-│   │   ├── organic_wind/            # Gentle air for camera drifts
-│   │   └── transitions/             # Spacey scene-to-scene transitions
-│   ├── 02_textures/                 # Non-sliding events -> -6.5 dB
-│   │   ├── pops/                    # UI & graphics pop-ups
-│   │   ├── clicks_ui/               # Tactile buttons & toggles
-│   │   ├── gears_typewriter/        # Letter-by-letter mechanical reveals
-│   │   ├── sci_fi_hits/             # Impact reveals for new elements
-│   │   └── camera_shutter/          # Shutter clicks on fast cuts
-│   └── 03_risers_hits/              # Anticipation & release -> -5 dB
-│       ├── sharp_bass_risers/       # Punchy low pitch bends (5s post-hook)
-│       ├── metallic_risers/         # Shimmering tension builds
-│       ├── suck_back_risers/        # Reverse crescendo into drops
-│       └── impact_hits/             # Cinematic booms under risers
-├── 02_FONTS/
-│   ├── 01_sans/                     # Montserrat Black, Inter, Oswald, Rubik
-│   └── 02_script/                   # Caveat Bold (Cyrillic + Latin), Segoe Script
-├── 03_GRAPHICS/
-│   ├── 01_overlays/                 # 35mm film grain loop, tech grids, safe zones
-│   ├── 02_objects_3d/               # Verified badges, callout arrows, icons
-│   └── 03_studio_lighting/          # Studio vignette masks & ambient bloom
-├── 04_PRESETS/
-│   ├── ae_expressions/             # Spring bounce overshoot, cascade delay
-│   └── color_luts/                  # Rec.709 BT.2390 tonemapping curves
-└── 05_RULES/
-    ├── CLAUDE_EDITING_SYSTEM_RULES.md # Complete guidelines for AI editors
-    └── catalog.json                 # Machine-readable asset manifest
+├── sfx/                             # Calibrated 48kHz WAV audio library
+│   ├── hits/                        # Sub bass drops, semantic punches (-14 dB)
+│   ├── risers/                      # Pre-hook and climax risers (-14 dB)
+│   ├── textures/                    # Friction, scratches (-16 dB)
+│   ├── clicks/                      # UI toggles, switches (-16 dB)
+│   ├── pops/                        # Modal popups, clean bubbles (-16 dB)
+│   ├── glitches/                    # Digital accents (-16 dB)
+│   ├── whooshes/                    # Fast air & scene transitions (-20 dB)
+│   └── ambience/                    # Low drones
+├── fonts/                           # OFL fonts with 100% Cyrillic support
+│   ├── Montserrat/
+│   ├── Manrope/
+│   ├── Inter/
+│   ├── Oswald/
+│   ├── Rubik/
+│   └── Caveat/
+└── overlays/
+    └── film_grain/                  # 35mm film grain loop (1080x1920)
 ```
 
 ---
 
-## 🧠 System Rules for AI Agents (`GEMINI.md`)
+## 🛠️ Essential Commands
 
-The repository root includes `GEMINI.md`, which enforces:
-1. **Rule of Fonts:** Always pair heavy Sans + expressive Script. Never use plain multi-line subtitles.
-2. **Rule of Levels:** Dialogue (0 dB) > Risers (-5 dB) > Textures (-6.5 dB) > Whooshes (-12 dB) > Music (-19 dB).
-3. **Rule of Placement:** Whoosh peak aligns to the fastest frame. Textures align to event frames. Risers end on transition cuts.
-4. **Order of Operations:** Pass 1 (Whooshes) → Pass 2 (Textures) → Pass 3 (Risers/Hits) → Pass 4 (Music).
+```bash
+# Ingest HDR video to SDR Rec.709 + CFR 30 fps + proxy
+python tools/ingest.py path/to/raw_video.MOV
 
----
+# Transcribe audio with glossary
+tools\transcribe.bat work/ingest/video_sdr_cfr30.mp4 --glossary clients/client/glossary.txt
 
-## 🛠 Tech Stack
+# Generate Beat Table and Contact Sheet
+python tools/beat_table.py work/plan/edit_plan.json
+python tools/plan_contact_sheet.py work/plan/edit_plan.json
 
-* **Automation & Scripting:** Node.js (ESM), Python 3.12+, ExtendScript (JSX).
-* **Video Engines:** Adobe After Effects 2026, Remotion, FFmpeg 9.0 (`libplacebo`).
-* **AI & Transcription:** Faster-Whisper, Claude, Gemini.
+# Draft Remotion preview (half-res)
+npm run draft
 
----
+# Calibrate and mix audio
+python tools/mix.py work/audio/voice.wav work/plan/edit_plan.json
 
-## 📜 License
+# 10 FPS QA Inspection
+python tools/qa.py out/final_video.mp4 work/plan/edit_plan.json
 
-MIT License. Designed for automated high-retention video production.
+# Final render (requires approved: true in edit_plan.json)
+npm run render:clip -- [CompositionName] out/final_video.mp4
+```

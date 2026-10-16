@@ -10,7 +10,7 @@ import sys
 import datetime
 from pathlib import Path
 
-ROOT = Path(r"C:\Users\timur\Videos\AI-Video-Editing")
+ROOT = Path(os.environ.get("ROOT", Path(__file__).resolve().parent.parent))
 
 # Пути к Рабочему столу
 desktop_paths = [

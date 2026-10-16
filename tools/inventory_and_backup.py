@@ -4,10 +4,11 @@ import sys
 import shutil
 import zipfile
 import subprocess
+import datetime
 from pathlib import Path
 
-ROOT = Path(r"C:\Users\timur\Videos\AI-Video-Editing")
-ARCHIVE = ROOT / "_archive" / "2026-10-15"
+ROOT = Path(os.environ.get("ROOT", Path(__file__).resolve().parent.parent))
+ARCHIVE = ROOT / "_archive" / datetime.date.today().isoformat()
 LOGS = ROOT / "logs"
 
 ARCHIVE.mkdir(parents=True, exist_ok=True)

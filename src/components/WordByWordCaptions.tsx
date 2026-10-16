@@ -1,5 +1,7 @@
 import React from "react";
-import { useCurrentFrame } from "remotion";
+import { interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
+import { ACTIVE_STYLE } from "../config/stylePresets";
+import { CAPTION_RECT, shrinkForCamera } from "../config/safeZones";
 
 export interface CaptionWord {
   text: string;
@@ -15,39 +17,51 @@ export interface WordByWordCaptionsProps {
   fontSize?: number;
   fontFamily?: string;
   highlightScale?: number;
+  top?: number;
+  cameraScale?: number;
+  cameraShiftX?: number;
   style?: React.CSSProperties;
 }
 
 export const WordByWordCaptions: React.FC<WordByWordCaptionsProps> = ({
   words,
-  activeColor = "#FFD60A",
-  inactiveColor = "#FFFFFF",
-  backgroundColor = "rgba(0, 0, 0, 0.45)",
-  fontSize = 52,
-  fontFamily = "Montserrat, sans-serif",
+  activeColor = ACTIVE_STYLE.subtitles.activeColor,
+  inactiveColor = ACTIVE_STYLE.subtitles.inactiveColor,
+  backgroundColor = ACTIVE_STYLE.subtitles.bgBox,
+  fontSize = ACTIVE_STYLE.subtitles.fontSize,
+  fontFamily = ACTIVE_STYLE.fonts.headline,
   highlightScale = 1.08,
+  top,
+  cameraScale = 1,
+  cameraShiftX = 0,
   style,
 }) => {
   const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const band = shrinkForCamera(CAPTION_RECT, cameraScale, cameraShiftX);
 
   const visibleWords = words.filter((w) => {
     const isAroundCurrent = frame >= w.startFrame - 15 && frame <= w.endFrame + 15;
     return isAroundCurrent;
   });
 
-  const displayList = visibleWords.length > 0 ? visibleWords : words.slice(0, 4);
+  if (visibleWords.length === 0) {
+    return null;
+  }
+
+  const displayList = visibleWords;
 
   return (
     <div
       style={{
         position: "absolute",
-        left: 0,
-        right: 0,
-        bottom: 400,
+        left: band.left,
+        top: top ?? band.top,
+        width: band.right - band.left,
+        height: band.bottom - (top ?? band.top),
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        padding: "0 40px",
         boxSizing: "border-box",
         pointerEvents: "none",
         ...style,
@@ -60,36 +74,48 @@ export const WordByWordCaptions: React.FC<WordByWordCaptionsProps> = ({
           justifyContent: "center",
           alignItems: "center",
           gap: "12px 16px",
-          maxWidth: 860,
+          maxWidth: "100%",
+          boxSizing: "border-box",
           backgroundColor,
           padding: "16px 28px",
           borderRadius: 20,
-          backdropFilter: "blur(12px)",
-          WebkitBackdropFilter: "blur(12px)",
+          border: "1px solid rgba(255, 255, 255, 0.12)",
+          boxShadow: "0 10px 30px rgba(0, 0, 0, 0.5)",
         }}
       >
         {displayList.map((word, index) => {
           const isActive = frame >= word.startFrame && frame <= word.endFrame;
-          const isPast = frame > word.endFrame;
+
+          const relFrame = Math.max(0, frame - word.startFrame);
+          const pop = spring({
+            frame: relFrame,
+            fps,
+            config: {
+              damping: 12,
+              stiffness: 200,
+            },
+          });
+
+          const scale = isActive
+            ? interpolate(pop, [0, 1], [1, highlightScale])
+            : 1.0;
 
           return (
             <span
               key={`${word.text}-${index}-${word.startFrame}`}
               style={{
-                fontSize,
                 fontFamily,
+                fontSize,
                 fontWeight: 900,
                 textTransform: "uppercase",
                 letterSpacing: "-0.01em",
                 color: isActive ? activeColor : inactiveColor,
-                opacity: isActive ? 1.0 : isPast ? 0.75 : 0.5,
-                transform: isActive ? `scale(${highlightScale})` : "scale(1.0)",
-                transformOrigin: "center bottom",
+                transform: `scale(${scale})`,
                 display: "inline-block",
                 transition: "none",
                 textShadow: isActive
-                  ? `0 0 20px ${activeColor}88, 0 4px 12px rgba(0,0,0,0.8)`
-                  : "0 4px 12px rgba(0,0,0,0.8)",
+                  ? `0 0 20px ${activeColor}88, 0 4px 10px rgba(0,0,0,0.8)`
+                  : "0 2px 4px rgba(0,0,0,0.6)",
               }}
             >
               {word.text}

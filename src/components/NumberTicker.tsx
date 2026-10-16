@@ -10,6 +10,7 @@ export interface NumberTickerProps {
   suffix?: string;
   decimals?: number;
   useLocale?: boolean;
+  locale?: string;
   fontSize?: number;
   color?: string;
   fontFamily?: string;
@@ -25,6 +26,7 @@ export const NumberTicker: React.FC<NumberTickerProps> = ({
   suffix = "",
   decimals = 0,
   useLocale = true,
+  locale = "en-US",
   fontSize = 96,
   color = "#FFFFFF",
   fontFamily = "Montserrat, sans-serif",
@@ -52,7 +54,7 @@ export const NumberTicker: React.FC<NumberTickerProps> = ({
   const currentValue = from + (to - from) * clampedProgress;
 
   const formattedNumber = useLocale
-    ? currentValue.toLocaleString(undefined, {
+    ? currentValue.toLocaleString(locale, {
         minimumFractionDigits: decimals,
         maximumFractionDigits: decimals,
       })

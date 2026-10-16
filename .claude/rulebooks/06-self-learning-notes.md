@@ -2,7 +2,13 @@
 
 ## Purpose
 This file acts as a persistent memory bank for user feedback, style corrections, and aesthetic preferences.
-Whenever the user specifies a correction (e.g. "don't make captions yellow", "increase chart padding", "use lower whoosh volume"), record it here immediately to prevent making the same mistake in subsequent sessions.
+
+## 1. Протокол обработки замечаний человека (Revision Protocol)
+Когда человек пишет замечания по смонтированному ролику:
+1. **(а) Точечно исправь ролик**: устрани симптом в коде или плане монтажа (`edit_plan.json`, Remotion-компоненты).
+2. **(б) Найди правило, предотвращающее ошибку**: определи, почему система допустила дефект (в каком рулбуке или чеклисте не хватило строгости формулировки).
+3. **(в) Перепиши существующее правило, а не добавляй второе рядом**: найди целевой файл и отредактируй его, исключая дублирование и противоречия.
+4. **(г) Зафиксируй запись в журнале**: добавь строку в таблицу истории правок: `Дата | Симптом / Замечание | Измененный файл и строка | Предотвращающее действие`.
 
 ---
 

@@ -1,141 +1,185 @@
 import React from "react";
-import { Composition, AbsoluteFill } from "remotion";
+import { Composition, AbsoluteFill, Sequence } from "remotion";
 import {
   SafeZoneContainer,
-  CameraRig,
   LiquidGlassCard,
-  VoxBarChart,
-  NumberTicker,
-  WordByWordCaptions,
-  SfxTrigger,
+  ProofCard,
+  SpeakerBadge,
+  HookHeadline,
 } from "./components";
+import { Scene01_Intro, Scene02_Main, Scene03_Outro } from "./scenes";
+import beatSheet from "./data/beat_sheet.json";
+import { BeatSheet } from "./types/beatSheet";
+import { loadProjectFonts } from "./config";
 
-const MainComposition: React.FC = () => {
+loadProjectFonts();
+
+const sheet = beatSheet as unknown as BeatSheet;
+
+const MainVideo: React.FC = () => {
   return (
-    <AbsoluteFill style={{ backgroundColor: "#09090B" }}>
-      <SfxTrigger sfxKey="bassDrop01" frame={0} />
-      <SfxTrigger sfxKey="cleanFast" frame={15} />
-
-      <CameraRig motion="push-in" intensity={1.0}>
-        <SafeZoneContainer showGuides={false}>
-          <div
-            style={{
-              height: "100%",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "space-between",
-              alignItems: "center",
-              padding: "20px 0",
-            }}
-          >
-            <div style={{ textAlign: "center", marginTop: 40 }}>
-              <NumberTicker
-                from={0}
-                to={4820000}
-                prefix="$"
-                fontSize={84}
-                color="#FFD60A"
-              />
-              <div
-                style={{
-                  fontSize: 26,
-                  fontFamily: "Inter, sans-serif",
-                  fontWeight: 600,
-                  color: "rgba(255, 255, 255, 0.7)",
-                  marginTop: 8,
-                }}
-              >
-                CAPITAL ALLOCATED IN Q3
-              </div>
-            </div>
-
-            <LiquidGlassCard
-              badge="VERIFIED METRIC"
-              title="Growth Velocity"
-              subtitle="Quarterly transaction volume across 12 markets."
-              enterFrame={10}
-            >
-              <VoxBarChart
-                items={[
-                  { label: "Q1", value: 34, formattedValue: "+34%" },
-                  { label: "Q2", value: 62, formattedValue: "+62%" },
-                  { label: "Q3", value: 94, formattedValue: "+94%", color: "#FF3B30" },
-                ]}
-                height={260}
-                startFrame={25}
-              />
-            </LiquidGlassCard>
-
-            <WordByWordCaptions
-              words={[
-                { text: "LOOK", startFrame: 0, endFrame: 15 },
-                { text: "AT", startFrame: 16, endFrame: 25 },
-                { text: "THESE", startFrame: 26, endFrame: 40 },
-                { text: "NUMBERS", startFrame: 41, endFrame: 70 },
-                { text: "RIGHT", startFrame: 71, endFrame: 90 },
-                { text: "NOW", startFrame: 91, endFrame: 120 },
-              ]}
-              activeColor="#FF3B30"
-            />
-          </div>
-        </SafeZoneContainer>
-      </CameraRig>
+    <AbsoluteFill style={{ backgroundColor: sheet.global_styles.color_background }}>
+      <Sequence from={0} durationInFrames={180}>
+        <Scene01_Intro renderMode="full" />
+      </Sequence>
+      <Sequence from={180} durationInFrames={240}>
+        <Scene02_Main renderMode="full" />
+      </Sequence>
+      <Sequence from={420} durationInFrames={180}>
+        <Scene03_Outro renderMode="full" />
+      </Sequence>
     </AbsoluteFill>
   );
 };
 
-const GreenScreenComposition: React.FC<{ chromaMode?: boolean }> = ({
-  chromaMode = true,
-}) => {
+const Scene01StemsComp: React.FC = () => <Scene01_Intro renderMode="ui_only_alpha" />;
+const Scene02StemsComp: React.FC = () => <Scene02_Main renderMode="ui_only_alpha" />;
+const Scene03StemsComp: React.FC = () => <Scene03_Outro renderMode="ui_only_alpha" />;
+
+const GreenScreenComposition: React.FC<{ chromaMode?: boolean }> = ({ chromaMode = true }) => {
   return (
     <AbsoluteFill
       style={{
         backgroundColor: chromaMode ? "#00FF00" : "transparent",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
       }}
     >
-      <SafeZoneContainer>
-        <div
-          style={{
-            height: "100%",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <LiquidGlassCard
-            badge="OVERLAY"
-            title="Liquid Glass Modal"
-            subtitle="Extracted alpha layer for NLE composite."
-            chromaMode={chromaMode}
-            enterFrame={5}
-          />
-        </div>
+      <SafeZoneContainer showGuides={false}>
+        <LiquidGlassCard
+          badge="ГИБРИДНЫЙ ЭКСПОРТ"
+          title="Стемы в ProRes 4444"
+          subtitle="Чистый прозрачный UI без потерь качества"
+          width={860}
+        />
       </SafeZoneContainer>
     </AbsoluteFill>
   );
 };
+
+const PreviewProofCardComp: React.FC = () => (
+  <AbsoluteFill style={{ backgroundColor: "#08090C", display: "flex", alignItems: "center", justifyContent: "center" }}>
+    <SafeZoneContainer showGuides={true}>
+      <ProofCard
+        badge="ДОКАЗАТЕЛЬСТВО"
+        title="Метрики проверены"
+        subtitle="Аудит показал рост удержания на 42%"
+      />
+    </SafeZoneContainer>
+  </AbsoluteFill>
+);
+
+const PreviewSpeakerBadgeComp: React.FC = () => (
+  <AbsoluteFill style={{ backgroundColor: "#08090C", display: "flex", alignItems: "center", justifyContent: "center" }}>
+    <SafeZoneContainer showGuides={true}>
+      <SpeakerBadge name="ТИМУР ВАТАЕВ" role="MOTION DIRECTOR" />
+    </SafeZoneContainer>
+  </AbsoluteFill>
+);
+
+const PreviewHookHeadlineComp: React.FC = () => (
+  <AbsoluteFill style={{ backgroundColor: "#08090C", display: "flex", alignItems: "center", justifyContent: "center" }}>
+    <SafeZoneContainer showGuides={true}>
+      <HookHeadline headline="ГЛАВНЫЙ СЕКРЕТ МОНТАЖА В 2026 ГОДУ" accentWord="СЕКРЕТ" categoryBadge="РАЗБОР" />
+    </SafeZoneContainer>
+  </AbsoluteFill>
+);
 
 export const Root: React.FC = () => {
   return (
     <>
       <Composition
         id="Main"
-        component={MainComposition}
-        durationInFrames={300}
-        fps={30}
+        component={MainVideo}
+        durationInFrames={600}
+        fps={60}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="Scene01-Intro"
+        component={Scene01_Intro}
+        durationInFrames={180}
+        fps={60}
+        width={1080}
+        height={1920}
+        defaultProps={{ renderMode: "full" as const }}
+      />
+      <Composition
+        id="Scene02-Main"
+        component={Scene02_Main}
+        durationInFrames={240}
+        fps={60}
+        width={1080}
+        height={1920}
+        defaultProps={{ renderMode: "full" as const }}
+      />
+      <Composition
+        id="Scene03-Outro"
+        component={Scene03_Outro}
+        durationInFrames={180}
+        fps={60}
+        width={1080}
+        height={1920}
+        defaultProps={{ renderMode: "full" as const }}
+      />
+      <Composition
+        id="Scene01-Stems"
+        component={Scene01StemsComp}
+        durationInFrames={180}
+        fps={60}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="Scene02-Stems"
+        component={Scene02StemsComp}
+        durationInFrames={240}
+        fps={60}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="Scene03-Stems"
+        component={Scene03StemsComp}
+        durationInFrames={180}
+        fps={60}
         width={1080}
         height={1920}
       />
       <Composition
         id="GreenScreenOverlay"
         component={GreenScreenComposition}
-        durationInFrames={150}
-        fps={30}
+        durationInFrames={180}
+        fps={60}
         width={1080}
         height={1920}
-        defaultProps={{
-          chromaMode: true,
-        }}
+        defaultProps={{ chromaMode: true }}
+      />
+      <Composition
+        id="PreviewProofCard"
+        component={PreviewProofCardComp}
+        durationInFrames={60}
+        fps={60}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="PreviewSpeakerBadge"
+        component={PreviewSpeakerBadgeComp}
+        durationInFrames={60}
+        fps={60}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="PreviewHookHeadline"
+        component={PreviewHookHeadlineComp}
+        durationInFrames={60}
+        fps={60}
+        width={1080}
+        height={1920}
       />
     </>
   );

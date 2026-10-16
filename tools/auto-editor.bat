@@ -2,7 +2,7 @@
 chcp 65001 >nul
 setlocal enabledelayedexpansion
 
-set "ROOT=C:\Users\timur\Videos\AI-Video-Editing"
+if "%ROOT%"=="" for %%i in ("%~dp0..") do set "ROOT=%%~fi"
 set "HAS_OUT="
 
 for %%A in (%*) do (

@@ -1,30 +1,38 @@
 # 09. Visual-to-SFX Choreography Matrix
 
-## 1. Synchronization Physics: The "Lead-In" Rule
+## 1. Hard Rule: Local SFX via <Audio/> with Frame Precision
+- **Local Folder Only**: Использовать звуки **исключительно** из локальной папки `assets/01_SFX/` (`assets/sfx/`). Внешние URL, сторонние генераторы на лету и системные звуки запрещены.
+- **Remotion <Audio/> Component**: Внутри Remotion композиций воспроизведение оформляется через `<SfxAudio />` или нативный `<Audio />` с точным расчетом фреймов:
+  - `startFrom`: точный номер кадра сдвига внутри аудиофайла.
+  - `durationInFrames`: длительность звучания клипа.
+  - `volume={(f) => ...}`: математическая огибающая с мягким `fadeInFrames` (1–3 кадра) и `fadeOutFrames` (4–8 кадров) для исключения щелчков на границах фрагментов.
+
+## 2. Synchronization Physics: The "Lead-In" Rule
 - Sound precedes vision in human perception.
-- Fast whooshes, air cuts, and camera snaps must start **1 to 2 frames BEFORE** the visual asset hits peak velocity or contacts the screen.
-- Hard impact hits (sub drops, thuds) must trigger on the **exact frame of visual contact** (scale = 1.0 or card arrival).
+- Fast whooshes, air sweeps, and scene transitions start **1 to 2 frames (33–66 ms @ 30fps) BEFORE** the visual asset cuts or reaches peak velocity.
+- Physical impact hits (sub drops, thuds) trigger on the **exact frame of visual contact** (scale = 1.0 or card arrival).
+- **Zooms Without Sound**: Camera punch-ins and zooms have NO sound effect (eyes do not make sound when focusing).
+- **Density Limit**: Maximum 6 SFX per 30 seconds of video.
 
-## 2. The 3-Layer Sound Design Rule (Joseph / Ultimate Editors)
-Never play isolated, naked SFX. A professional audio event consists of up to 3 complementary layers:
-1. **The Transient / Attack**: Fast whoosh, snap, or click that leads the motion.
-2. **The Body / Impact**: Low thud, resonant bell, or glass ping that gives weight.
-3. **The Texture / Tail**: Paper slide, vinyl crackle, or subtle reverb tail that creates atmosphere.
+## 3. Calibrated Loudness Staging (Relative to Speech RMS)
+SFX loudness is strictly relative to dialogue RMS, never an arbitrary fixed slider:
 
-## 3. Visual Event to SFX Mapping Matrix
+| Sound Family | Level Relative to Voice RMS | Placement Principle |
+|---|---|---|
+| **Hits & Risers** | `−14 dB` | Emotional punch, cold open hook, thesis climax |
+| **Textures (Clicks, Pops)** | `−16 dB` | Appearance of real proof, stats, switches |
+| **Whooshes (Fast Air)** | `−20 dB` | Fast scene transitions and graphic sweeps only |
+| **Background Music** | `−22 dB` and lower | Under voice only, with sidechain ducking (-4 to -6 dB during speech) |
+| **Camera Zooms** | **NO SOUND** | Never add sound to camera punch-ins |
 
-| Visual Event | Primary SFX (`assets/01_SFX/`) | Layer 2 (Optional) | Timing Offset | Remotion Volume |
-|---|---|---|---|---|
-| **Card / Modal Entrance** | `whooshes/fast-swish-air.wav` | `pops/soft-pop-wood.wav` | `-2 frames` | `0.35` |
-| **Data Bar Growth / Start** | `textures/paper-slide-light.wav` | `sci-fi/digital-click-accent.wav` | `0 frames` | `0.25` |
-| **Number Ticker Step** | `sci-fi/digital-tick-single.wav` | — | Per change | `0.18` |
-| **Camera Punch-In (1.0->1.08)** | `impacts/low-thud-cinematic.wav` | `whooshes/deep-air-whoosh.wav` | `0 frames` | `0.40` |
-| **Thesis Statement / Major Claim** | `impacts/heavy-cinematic-hit.wav` | `risers/sub-drop-short.wav` | `0 frames` | `0.45` |
-| **Word Highlight / Karaoke** | `sci-fi/clean-blip-high.wav` | — | Exact word start | `0.15` |
-| **Paper Document Slide-In** | `textures/paper-rustle-crisp.wav` | — | `-1 frame` | `0.30` |
-| **Scene Transition (Cut)** | `whooshes/transitional-air-pass.wav` | — | `-2 frames` | `0.30` |
+## 4. Visual Event to SFX Mapping
 
-## 4. Audio Gain Control
-- SFX must sit comfortably below dialogue.
-- Dialogue Voiceover: `-6 dB`
-- SFX: `-12 dB` to `-10 dB` (Volume `0.25` to `0.35` in Remotion props).
+| Visual Event | Primary SFX (`assets/01_SFX/`) | Timing Offset | Relative dB |
+|---|---|---|---|
+| **Card / Modal Entrance** | `pops/pop_bubble_high.wav` | `0 frames` | `−16 dB` |
+| **Scene Transition (Cut)** | `whooshes/whoosh_clean_fast.wav` | `-2 frames` | `−20 dB` |
+| **Soft Narrative Shift** | `whooshes/deep_voice_whoosh_01.wav` | `-2 frames` | `−20 dB` |
+| **Metric / Stat Click** | `clicks/mechanical_button.wav` | `0 frames` | `−16 dB` |
+| **Thesis Statement / Major Punch** | `hits/sub_bass_thud.wav` | `0 frames` | `−14 dB` |
+| **Anticipation Build** | `risers/metallic_riser_01.wav` | `-30 frames` | `−14 dB` peak |
+| **Camera Punch-In (Zoom)** | None | — | **NO SOUND** |

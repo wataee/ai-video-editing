@@ -1,0 +1,119 @@
+{
+  "project_id": "hybrid_stem_pipeline_01",
+  "title": "Гибридный пайплайн монтажа Remotion + AE",
+  "target_duration_sec": 10,
+  "fps": 60,
+  "width": 1080,
+  "height": 1920,
+  "render_mode": "full",
+  "global_styles": {
+    "font_family_headline": "Montserrat",
+    "font_family_body": "Inter",
+    "color_primary": "#FFD60A",
+    "color_background": "#08090C",
+    "color_accent": "#FF453A",
+    "color_card_bg": "rgba(22, 24, 29, 0.85)",
+    "color_text": "#FFFFFF"
+  },
+  "scenes": [
+    {
+      "id": "scene_01",
+      "name": "Scene01_Intro",
+      "start_frame": 0,
+      "duration_in_frames": 180,
+      "title": "СЕКРЕТ ВЫСОКОГО УДЕРЖАНИЯ",
+      "subtitle": "Разбор структуры удержания внимания",
+      "badge": "ИНСАЙТ #1",
+      "accent_word": "УДЕРЖАНИЯ",
+      "author_name": "ТИМУР ВАТАЕВ",
+      "author_role": "MOTION DIRECTOR",
+      "layout": {
+        "x_offset": 0,
+        "y_offset": 0,
+        "scale": 1.0,
+        "opacity": 1.0
+      },
+      "spring_config": {
+        "damping": 14,
+        "stiffness": 120,
+        "mass": 0.8
+      },
+      "sfx": {
+        "sample": "assets/01_SFX/hits/sub_bass_thud.wav",
+        "frame_offset": 0,
+        "volume_db": -14,
+        "duration_in_frames": 60
+      },
+      "captions": [
+        { "text": "ПОЧЕМУ", "start_frame": 10, "end_frame": 45 },
+        { "text": "РОЛИКИ", "start_frame": 46, "end_frame": 90 },
+        { "text": "СМОТРЯТ", "start_frame": 91, "end_frame": 135 },
+        { "text": "ДО КОНЦА?", "start_frame": 136, "end_frame": 180 }
+      ]
+    },
+    {
+      "id": "scene_02",
+      "name": "Scene02_Main",
+      "start_frame": 180,
+      "duration_in_frames": 240,
+      "title": "РОСТ ВОВЛЕЧЕННОСТИ",
+      "subtitle": "Сравнение метрик до и после внедрения гибридного пайплайна",
+      "badge": "МЕТРИКИ 2026",
+      "accent_word": "РОСТ",
+      "layout": {
+        "x_offset": 0,
+        "y_offset": 0,
+        "scale": 1.0,
+        "opacity": 1.0
+      },
+      "spring_config": {
+        "damping": 16,
+        "stiffness": 140,
+        "mass": 0.9
+      },
+      "sfx": {
+        "sample": "assets/01_SFX/whooshes/whoosh_clean_fast.wav",
+        "frame_offset": 0,
+        "volume_db": -20,
+        "duration_in_frames": 45
+      },
+      "chart_data": [
+        { "label": "БАЗОВЫЙ", "value": 24 },
+        { "label": "ДИНАМИЧНЫЙ", "value": 68 },
+        { "label": "ГИБРИДНЫЙ", "value": 94 }
+      ]
+    },
+    {
+      "id": "scene_03",
+      "name": "Scene03_Outro",
+      "start_frame": 420,
+      "duration_in_frames": 180,
+      "title": "ВНЕДРИТЕ В ПРОЕКТ",
+      "subtitle": "Автоматический экспорт стемов и прямая сборка в After Effects",
+      "badge": "ФИНАЛ",
+      "accent_word": "ПРОЕКТ",
+      "layout": {
+        "x_offset": 0,
+        "y_offset": 0,
+        "scale": 1.0,
+        "opacity": 1.0
+      },
+      "spring_config": {
+        "damping": 18,
+        "stiffness": 160,
+        "mass": 1.0
+      },
+      "sfx": {
+        "sample": "assets/01_SFX/pops/glass_pop.wav",
+        "frame_offset": 0,
+        "volume_db": -16,
+        "duration_in_frames": 40
+      },
+      "captions": [
+        { "text": "ПОДПИШИТЕСЬ", "start_frame": 430, "end_frame": 480 },
+        { "text": "НА НОВЫЙ", "start_frame": 481, "end_frame": 530 },
+        { "text": "РЕЗУЛЬТАТ", "start_frame": 531, "end_frame": 590 }
+      ]
+    }
+  ]
+}

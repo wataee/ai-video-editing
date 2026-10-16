@@ -1,0 +1,91 @@
+{
+  "$schema": "edit_plan_v2",
+  "project_id": "client_sample_01",
+  "engine": "remotion",
+  "aspect_ratio": "9:16",
+  "resolution": [1080, 1920],
+  "fps": 30,
+  "approved": false,
+  "style": {
+    "font_pair": {
+      "headline_font": "Montserrat",
+      "body_font": "Manrope",
+      "accent_font": "Caveat",
+      "rationale": "Экспертный гротеск с высокой читаемостью кириллицы"
+    },
+    "color_palette": {
+      "text_primary": "#FFFFFF",
+      "text_accent": "#FFD700",
+      "background_tint": "#09090B"
+    },
+    "safe_zones": {
+      "top_px": 220,
+      "bottom_px": 380,
+      "left_px": 100,
+      "right_px": 130
+    }
+  },
+  "audio": {
+    "voice_track": "work/ingest/source_sdr_cfr30.mp4",
+    "bg_music": "assets/music/subtle_ambient_loop.mp3",
+    "music_relative_db": -22.0,
+    "sfx_staging": {
+      "hits_relative_db": -14.0,
+      "risers_relative_db": -14.0,
+      "textures_relative_db": -16.0,
+      "whooshes_relative_db": -20.0
+    },
+    "target_lufs": -14.0,
+    "max_true_peak_dbtp": -1.0
+  },
+  "beats": [
+    {
+      "beat_index": 0,
+      "time_range": [0.0, 3.5],
+      "line": "Большинство людей сливают бюджет на неэффективный монтаж.",
+      "visual": "speaker",
+      "proof_source": null,
+      "camera": "push-in",
+      "cut_motivation": "EMOTIONAL_PUNCH",
+      "sfx": "hits/sub_bass_thud",
+      "why": "Хук привлекает внимание крупным планом спикера и резким смысловым ударом.",
+      "approved": false
+    },
+    {
+      "beat_index": 1,
+      "time_range": [3.5, 8.2],
+      "line": "Вот реальная статистика конверсии из нашего исследования.",
+      "visual": "chart",
+      "proof_source": "clients/sample/work/proof/analytics_chart.png",
+      "camera": "static",
+      "cut_motivation": "PROOF_INJECTION",
+      "sfx": "pops/glass_pop",
+      "why": "Подтверждаем тезис графиком реальных данных без использования абстрактных стоков.",
+      "approved": false
+    },
+    {
+      "beat_index": 2,
+      "time_range": [8.2, 13.0],
+      "line": "Когда вы убираете лишний визуальный шум, удержание растет на сорок процентов.",
+      "visual": "proof",
+      "proof_source": "clients/sample/work/proof/retention_graph.png",
+      "camera": "push-out",
+      "cut_motivation": "THESIS_SHIFT",
+      "sfx": "clicks/click_01",
+      "why": "Сдвиг к ключевому инсайту с демонстрацией скриншота метрик.",
+      "approved": false
+    },
+    {
+      "beat_index": 3,
+      "time_range": [13.0, 16.5],
+      "line": "Проверьте свои ролики по этому чек-листу прямо сейчас.",
+      "visual": "typography",
+      "proof_source": null,
+      "camera": "static",
+      "cut_motivation": "RHYTHMIC_CONTRAST",
+      "sfx": "none",
+      "why": "Фиксация призыва к действию контрастной плашкой в безопасной зоне.",
+      "approved": false
+    }
+  ]
+}

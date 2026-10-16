@@ -1,45 +1,57 @@
 # 03. Beat Map & Production Planning
 
-## 1. Mandatory Pre-Flight: The Beat Map
-Before authoring any React component or Remotion composition, create a formal `BEAT_MAP.json` or structured Markdown table.
-Every vertical video must be broken down into individual 4 to 10 second beats. Every single sentence of the transcript must have an exact 1:1 mapping to an on-screen asset, camera motion, and sound effect trigger.
+## 1. Production Pipeline Order (Mandatory Sequence)
+To prevent robotic AI slop and ensure the video meets live-editor quality, follow this exact sequence:
 
-## 2. Standard Beat Schema
-Each beat must specify:
-1. `beatIndex`: Integer (0-indexed).
-2. `timeRange`: Start and end timestamps (`MM:SS.ms` or frames).
-3. `spokenWords`: The exact transcript phrase.
-4. `visualFocus`: Concrete UI component or asset (e.g. `LiquidGlassCard`, `VoxBarChart`, `A-Roll Speaker`, `DeviceMockup`).
-5. `cameraMotion`: Explicit camera transform name. **NEVER** use subjective words like "cinematic", "dynamic", or "cool".
-6. `sfx`: Exact SFX filename from `assets/01_SFX/` or asset ID.
-
-## 3. Approved Camera Movements
-Only the following explicit camera movements are permitted:
-- `push-in`: Scale smoothly from `1.0` to `1.08` over beat duration.
-- `push-out`: Scale smoothly from `1.08` to `1.0` over beat duration.
-- `pan-left`: Horizontal translation `x: 0 -> -40px` with slight scale `1.04`.
-- `pan-right`: Horizontal translation `x: 0 -> +40px` with slight scale `1.04`.
-- `static-fade`: Constant scale `1.0`, opacity fade or hard cut.
-
-## 4. Markdown Beat Map Template
-| Beat # | Time / Frames | Spoken Line | Visual Component & Preset | Camera Rig | SFX Trigger |
-|---|---|---|---|---|---|
-| **01** | `00:00 - 00:03` (0-90) | "Almost everyone fails at..." | `SafeZoneContainer` + `LiquidGlassCard` hook | `push-in` | `whoosh-deep-reverb.wav` |
-| **02** | `00:03 - 00:07` (90-210) | "Look at these numbers from Q3" | `VoxBarChart` (Growth 0% -> 87%) | `static-fade` | `digital-click-accent.wav` |
-| **03** | `00:07 - 00:12` (210-360) | "They burnt 4 million dollars..." | `NumberTicker` ($4,200,000) | `push-out` | `heavy-impact-sub.wav` |
-
-## 5. Standalone Sub-Prompt Generator
-When developing multi-scene projects or delegating individual clip renders across parallel chats or subagents, generate isolated clip prompts:
-
-### Sub-Prompt Format:
-```markdown
-### PARALLEL CLIP PROMPT: CLIP [X]
-- **Target Composition**: `Clip_[X]`
-- **Duration**: [N] frames ([S] seconds @ 30fps)
-- **Visual Preset**: [e.g. `vox-editorial-data` / `apple-liquid-glass`]
-- **Spoken Audio / Transcript**: "[Exact line for this clip]"
-- **Camera Movement**: [e.g. `push-in` (1.0 -> 1.08)]
-- **Primary Component**: `[ComponentName]` from `src/components/`
-- **Assets Required**: [List filenames from `src/config/assets.ts`]
-- **Constraints**: 1080x1920, strictly inside safe zones, ZERO comments in code.
 ```
+[1. Transcript & Audio Slicing]
+        ↓
+[2. Beat Sheet JSON Generation (beat_sheet.json)]
+        ↓
+[3. Beat Table (Sentence-by-sentence plan)]
+        ↓
+[4. Plan Contact Sheet (Stills before render)]
+        ↓
+[5. Human Approval Gate (approved: true)]
+        ↓
+[6. Remotion Component Construction (Only after step 5!)]
+        ↓
+[7. Draft Preview (npm run draft)]
+        ↓
+[8. 10 FPS Automated QA Check]
+        ↓
+[9. Final Render (npm run render:clip)]
+```
+
+## 2. Hard Rule: Beat Sheet Before Code
+**Агент обязан первым шагом всегда выводить JSON-структуру таймлайна (`beat_sheet.json`):**
+- Точные тайминги сцен (`start_frame`, `end_frame`, `duration_frames`).
+- Кадры ударов (`hit_frames`), где смысловой акцент фразы совпадает с визуальным или звуковым триггером.
+- Смены ракурсов камеры (`camera_angle`: `push-in`, `static`, `push-out`).
+- Точки запуска SFX (`sfx_triggers`) с привязкой к локальным файлам `assets/01_SFX/`.
+- **Запрещено** приступать к написанию или редактированию React/Remotion компонентов до того, как структура утверждена человеком (`approved: true`).
+
+## 3. Mandatory Approval Gate
+- В `edit_plan.json` и `beat_sheet.json` поле `"approved"` по умолчанию равно `false`.
+- `npm run render:clip` блокирует рендер финального ролика с кодом ошибки 1, если `approved !== true`.
+- Черновые рендеры (`npm run draft`) разрешены в любой момент для промежуточной визуальной оценки.
+
+## 4. Beat Table Schema
+Каждое предложение или фраза спикера транскрипта формирует отдельный бит:
+
+| Field | Type | Valid Values / Description |
+|---|---|---|
+| `beat_index` | integer | Sequential index (0, 1, 2...) |
+| `line` | string | Exact spoken sentence or phrase |
+| `time_range` | string | `[start_sec, end_sec]` |
+| `visual` | enum | `speaker` \| `proof` \| `typography` \| `chart` \| `broll` |
+| `proof_source` | string / null | Path to real verified artifact (screenshot, code, product, doc) |
+| `camera` | enum | `static` \| `push-in` \| `push-out` \| `pan-left` \| `pan-right` |
+| `cut_motivation` | enum | `THESIS_SHIFT` \| `EMOTIONAL_PUNCH` \| `PROOF_INJECTION` \| `RHYTHMIC_CONTRAST` \| `FATIGUE_RESET` |
+| `sfx` | string / null | ID from `assets/01_SFX/` (`assets/sfx/sfx_catalog.json`) or `none` |
+| `why` | string | Exactly one sentence justifying the visual choice and cut |
+| `approved` | boolean | `false` by default, toggled to `true` by human review |
+
+## 5. Visual Balance & Anti-Slide Rule
+- **Proof-First**: Если спикер называет цифру, факт или результат, `visual` обязан быть `proof` или `chart` со ссылкой на реальный файл (`proof_source`).
+- **Анти-слайдшоу**: Если `visual: typography` встречается подряд более 2 раз, `tools/beat_table.py` выдает предупреждение: *"Ролик превращается в слайд-шоу из текста — добавьте лицо спикера или реальный материал (proof)"*.

@@ -1,133 +1,505 @@
 {
-  "$schema": "sfx_catalog_v2",
-  "categories": {
-    "hits": {
-      "description": "Смысловые удары, появление хука, ключевой тезис, переломный момент",
-      "target_volume_db": -16.0,
-      "items": [
-        {
-          "id": "sub_bass_thud",
-          "file": "assets/sfx/hits/sub_bass_thud.wav",
-          "ideal_for": "Первый кадр хука (0.0с), шокирующий факт, поворот сюжета"
-        }
-      ]
+  "version": "2.0.0",
+  "total_files": 41,
+  "families": [
+    "hit",
+    "riser",
+    "texture",
+    "whoosh",
+    "ambience"
+  ],
+  "catalog": [
+    {
+      "id": "ambience/tech_drone_subtle",
+      "filename": "tech_drone_subtle.wav",
+      "family": "ambience",
+      "category": "ambience",
+      "rel_path": "assets/sfx/ambience/tech_drone_subtle.wav",
+      "duration": 5.0,
+      "peak_db": -14.5,
+      "rms_db": -18.9,
+      "integrated_lufs": -24.3,
+      "gain_to_reference_db": -7.1
     },
-    "whooshes": {
-      "description": "Быстрые переходы и пролёты крупных графических плашек. Запрещено ставить на зумы лица!",
-      "target_volume_db": -20.0,
-      "items": [
-        {
-          "id": "whoosh_clean_fast",
-          "file": "assets/sfx/whooshes/whoosh_clean_fast.wav",
-          "ideal_for": "Быстрый вылет плашки или карточки сбоку"
-        },
-        {
-          "id": "whoosh_subtle_air",
-          "file": "assets/sfx/whooshes/whoosh_subtle_air.wav",
-          "ideal_for": "Мягкая смена экрана, слайд презентации"
-        }
-      ]
+    {
+      "id": "hits/bass_drop_hit_01",
+      "filename": "bass_drop_hit_01.wav",
+      "family": "hit",
+      "category": "hits",
+      "rel_path": "assets/sfx/hits/bass_drop_hit_01.wav",
+      "duration": 1.4,
+      "peak_db": -1.0,
+      "rms_db": -16.8,
+      "integrated_lufs": -21.6,
+      "gain_to_reference_db": 0.8
     },
-    "clicks": {
-      "description": "Появление интерфейсных элементов, переключатели, маркеры",
-      "target_volume_db": -18.0,
-      "items": [
-        {
-          "id": "click_01",
-          "file": "assets/sfx/clicks/click_01.wav",
-          "ideal_for": "Клик по кнопке в UI, появление скриншота"
-        },
-        {
-          "id": "click_02",
-          "file": "assets/sfx/clicks/click_02.wav",
-          "ideal_for": "Микро-клик, короткая отсечка"
-        },
-        {
-          "id": "select_01",
-          "file": "assets/sfx/clicks/select_01.wav",
-          "ideal_for": "Выбор пункта из списка, галочка"
-        },
-        {
-          "id": "switch_01",
-          "file": "assets/sfx/clicks/switch_01.wav",
-          "ideal_for": "Тумблер, переключение режима 'До/После'"
-        }
-      ]
+    {
+      "id": "hits/cinematic_boom_01",
+      "filename": "cinematic_boom_01.wav",
+      "family": "hit",
+      "category": "hits",
+      "rel_path": "assets/sfx/hits/cinematic_boom_01.wav",
+      "duration": 1.8,
+      "peak_db": -1.0,
+      "rms_db": -17.9,
+      "integrated_lufs": -22.1,
+      "gain_to_reference_db": 1.9
     },
-    "pops": {
-      "description": "Мягкие всплытия плашек, чисел и текстовых бейджей",
-      "target_volume_db": -18.0,
-      "items": [
-        {
-          "id": "pop_01",
-          "file": "assets/sfx/pops/pop_01.wav",
-          "ideal_for": "Всплытие цифры или бейджа"
-        },
-        {
-          "id": "pop_02",
-          "file": "assets/sfx/pops/pop_02.wav",
-          "ideal_for": "Появление карточки доказательства"
-        },
-        {
-          "id": "glass_pop",
-          "file": "assets/sfx/pops/glass_pop.wav",
-          "ideal_for": "Премиальный стеклянный звук (Iman Gadzhi UI)"
-        }
-      ]
+    {
+      "id": "hits/sub_bass_thud",
+      "filename": "sub_bass_thud.wav",
+      "family": "hit",
+      "category": "hits",
+      "rel_path": "assets/sfx/hits/sub_bass_thud.wav",
+      "duration": 0.7,
+      "peak_db": -8.5,
+      "rms_db": -15.4,
+      "integrated_lufs": -19.8,
+      "gain_to_reference_db": -0.6
     },
-    "textures": {
-      "description": "Тактильные звуки бумаги, царапин, плёнки (Magnates Media)",
-      "target_volume_db": -22.0,
-      "items": [
-        {
-          "id": "scratch_01",
-          "file": "assets/sfx/textures/scratch_01.wav",
-          "ideal_for": "Появление архивного документа или фото"
-        },
-        {
-          "id": "scratch_02",
-          "file": "assets/sfx/textures/scratch_02.wav",
-          "ideal_for": "Тактильный сдвиг слоя"
-        }
-      ]
+    {
+      "id": "risers/metallic_riser_01",
+      "filename": "metallic_riser_01.wav",
+      "family": "riser",
+      "category": "risers",
+      "rel_path": "assets/sfx/risers/metallic_riser_01.wav",
+      "duration": 2.4,
+      "peak_db": -1.0,
+      "rms_db": -11.8,
+      "integrated_lufs": -8.1,
+      "gain_to_reference_db": -6.2
     },
-    "glitches": {
-      "description": "Короткие цифровые сбои на слове 'ОШИБКА' или проблеме",
-      "target_volume_db": -20.0,
-      "items": [
-        {
-          "id": "glitch_01",
-          "file": "assets/sfx/glitches/glitch_01.wav",
-          "ideal_for": "Разрыв шаблона, сбой в системе"
-        },
-        {
-          "id": "glitch_02",
-          "file": "assets/sfx/glitches/glitch_02.wav",
-          "ideal_for": "Критическая ошибка, баг"
-        }
-      ]
+    {
+      "id": "risers/metallic_riser_02",
+      "filename": "metallic_riser_02.wav",
+      "family": "riser",
+      "category": "risers",
+      "rel_path": "assets/sfx/risers/metallic_riser_02.wav",
+      "duration": 1.8,
+      "peak_db": -1.0,
+      "rms_db": -11.8,
+      "integrated_lufs": -8.6,
+      "gain_to_reference_db": -6.2
     },
-    "risers": {
-      "description": "Нарастание напряжения перед кульминацией",
-      "target_volume_db": -18.0,
-      "items": [
-        {
-          "id": "riser_subtle",
-          "file": "assets/sfx/risers/riser_subtle.wav",
-          "ideal_for": "Разгон к кульминационной фразе (30-40с)"
-        }
-      ]
+    {
+      "id": "risers/riser_subtle",
+      "filename": "riser_subtle.wav",
+      "family": "riser",
+      "category": "risers",
+      "rel_path": "assets/sfx/risers/riser_subtle.wav",
+      "duration": 2.205,
+      "peak_db": -12.0,
+      "rms_db": -21.8,
+      "integrated_lufs": -22.0,
+      "gain_to_reference_db": 3.8
     },
-    "ambience": {
-      "description": "Фоновая подложка под паузы и размышления (Breathing Room)",
-      "target_volume_db": -28.0,
-      "items": [
-        {
-          "id": "tech_drone_subtle",
-          "file": "assets/sfx/ambience/tech_drone_subtle.wav",
-          "ideal_for": "Интрига, мыслительный процесс, тишина после взрыва"
-        }
-      ]
+    {
+      "id": "risers/sharp_bass_riser_01",
+      "filename": "sharp_bass_riser_01.wav",
+      "family": "riser",
+      "category": "risers",
+      "rel_path": "assets/sfx/risers/sharp_bass_riser_01.wav",
+      "duration": 2.2,
+      "peak_db": -1.0,
+      "rms_db": -10.1,
+      "integrated_lufs": -9.9,
+      "gain_to_reference_db": -7.9
+    },
+    {
+      "id": "risers/sharp_bass_riser_02",
+      "filename": "sharp_bass_riser_02.wav",
+      "family": "riser",
+      "category": "risers",
+      "rel_path": "assets/sfx/risers/sharp_bass_riser_02.wav",
+      "duration": 1.6,
+      "peak_db": -1.0,
+      "rms_db": -10.1,
+      "integrated_lufs": -10.5,
+      "gain_to_reference_db": -7.9
+    },
+    {
+      "id": "risers/sharp_bass_riser_fast",
+      "filename": "sharp_bass_riser_fast.wav",
+      "family": "riser",
+      "category": "risers",
+      "rel_path": "assets/sfx/risers/sharp_bass_riser_fast.wav",
+      "duration": 1.1,
+      "peak_db": -1.0,
+      "rms_db": -10.1,
+      "integrated_lufs": -10.9,
+      "gain_to_reference_db": -7.9
+    },
+    {
+      "id": "risers/suck_back_riser_01",
+      "filename": "suck_back_riser_01.wav",
+      "family": "riser",
+      "category": "risers",
+      "rel_path": "assets/sfx/risers/suck_back_riser_01.wav",
+      "duration": 1.8,
+      "peak_db": -1.0,
+      "rms_db": -21.0,
+      "integrated_lufs": -16.8,
+      "gain_to_reference_db": 3.0
+    },
+    {
+      "id": "risers/suck_back_riser_fast",
+      "filename": "suck_back_riser_fast.wav",
+      "family": "riser",
+      "category": "risers",
+      "rel_path": "assets/sfx/risers/suck_back_riser_fast.wav",
+      "duration": 1.2,
+      "peak_db": -1.0,
+      "rms_db": -20.3,
+      "integrated_lufs": -16.8,
+      "gain_to_reference_db": 2.3
+    },
+    {
+      "id": "clicks/click_01",
+      "filename": "click_01.wav",
+      "family": "texture",
+      "category": "clicks",
+      "rel_path": "assets/sfx/clicks/click_01.wav",
+      "duration": 0.1146,
+      "peak_db": -1.4,
+      "rms_db": -27.1,
+      "integrated_lufs": -70.0,
+      "gain_to_reference_db": 5.1
+    },
+    {
+      "id": "clicks/click_02",
+      "filename": "click_02.wav",
+      "family": "texture",
+      "category": "clicks",
+      "rel_path": "assets/sfx/clicks/click_02.wav",
+      "duration": 0.0116,
+      "peak_db": -0.9,
+      "rms_db": -16.2,
+      "integrated_lufs": -70.0,
+      "gain_to_reference_db": -5.8
+    },
+    {
+      "id": "clicks/mechanical_button",
+      "filename": "mechanical_button.wav",
+      "family": "texture",
+      "category": "clicks",
+      "rel_path": "assets/sfx/clicks/mechanical_button.wav",
+      "duration": 0.04,
+      "peak_db": -1.0,
+      "rms_db": -19.3,
+      "integrated_lufs": -70.0,
+      "gain_to_reference_db": -2.7
+    },
+    {
+      "id": "clicks/mouse_click_soft",
+      "filename": "mouse_click_soft.wav",
+      "family": "texture",
+      "category": "clicks",
+      "rel_path": "assets/sfx/clicks/mouse_click_soft.wav",
+      "duration": 0.04,
+      "peak_db": -1.0,
+      "rms_db": -23.2,
+      "integrated_lufs": -70.0,
+      "gain_to_reference_db": 1.2
+    },
+    {
+      "id": "clicks/select_01",
+      "filename": "select_01.wav",
+      "family": "texture",
+      "category": "clicks",
+      "rel_path": "assets/sfx/clicks/select_01.wav",
+      "duration": 0.0624,
+      "peak_db": -1.1,
+      "rms_db": -19.2,
+      "integrated_lufs": -70.0,
+      "gain_to_reference_db": -2.8
+    },
+    {
+      "id": "clicks/switch_01",
+      "filename": "switch_01.wav",
+      "family": "texture",
+      "category": "clicks",
+      "rel_path": "assets/sfx/clicks/switch_01.wav",
+      "duration": 0.6197,
+      "peak_db": -1.0,
+      "rms_db": -27.4,
+      "integrated_lufs": -19.7,
+      "gain_to_reference_db": 5.4
+    },
+    {
+      "id": "glitches/activate_energy_hit",
+      "filename": "activate_energy_hit.wav",
+      "family": "texture",
+      "category": "glitches",
+      "rel_path": "assets/sfx/glitches/activate_energy_hit.wav",
+      "duration": 0.9,
+      "peak_db": -1.0,
+      "rms_db": -18.7,
+      "integrated_lufs": -21.1,
+      "gain_to_reference_db": -3.3
+    },
+    {
+      "id": "glitches/glitch_01",
+      "filename": "glitch_01.wav",
+      "family": "texture",
+      "category": "glitches",
+      "rel_path": "assets/sfx/glitches/glitch_01.wav",
+      "duration": 0.0247,
+      "peak_db": -1.0,
+      "rms_db": -10.9,
+      "integrated_lufs": -70.0,
+      "gain_to_reference_db": -11.1
+    },
+    {
+      "id": "glitches/glitch_02",
+      "filename": "glitch_02.wav",
+      "family": "texture",
+      "category": "glitches",
+      "rel_path": "assets/sfx/glitches/glitch_02.wav",
+      "duration": 0.0363,
+      "peak_db": -1.2,
+      "rms_db": -14.8,
+      "integrated_lufs": -70.0,
+      "gain_to_reference_db": -7.2
+    },
+    {
+      "id": "glitches/sci_fi_impact_reveal",
+      "filename": "sci_fi_impact_reveal.wav",
+      "family": "texture",
+      "category": "glitches",
+      "rel_path": "assets/sfx/glitches/sci_fi_impact_reveal.wav",
+      "duration": 0.7,
+      "peak_db": -1.0,
+      "rms_db": -17.6,
+      "integrated_lufs": -21.1,
+      "gain_to_reference_db": -4.4
+    },
+    {
+      "id": "pops/glass_pop",
+      "filename": "glass_pop.wav",
+      "family": "texture",
+      "category": "pops",
+      "rel_path": "assets/sfx/pops/glass_pop.wav",
+      "duration": 0.2917,
+      "peak_db": -1.0,
+      "rms_db": -20.3,
+      "integrated_lufs": -70.0,
+      "gain_to_reference_db": -1.7
+    },
+    {
+      "id": "pops/pop_01",
+      "filename": "pop_01.wav",
+      "family": "texture",
+      "category": "pops",
+      "rel_path": "assets/sfx/pops/pop_01.wav",
+      "duration": 0.1117,
+      "peak_db": -0.0,
+      "rms_db": -20.9,
+      "integrated_lufs": -70.0,
+      "gain_to_reference_db": -1.1
+    },
+    {
+      "id": "pops/pop_02",
+      "filename": "pop_02.wav",
+      "family": "texture",
+      "category": "pops",
+      "rel_path": "assets/sfx/pops/pop_02.wav",
+      "duration": 0.1814,
+      "peak_db": -0.5,
+      "rms_db": -22.2,
+      "integrated_lufs": -70.0,
+      "gain_to_reference_db": 0.2
+    },
+    {
+      "id": "pops/pop_bubble_high",
+      "filename": "pop_bubble_high.wav",
+      "family": "texture",
+      "category": "pops",
+      "rel_path": "assets/sfx/pops/pop_bubble_high.wav",
+      "duration": 0.06,
+      "peak_db": -1.0,
+      "rms_db": -14.4,
+      "integrated_lufs": -70.0,
+      "gain_to_reference_db": -7.6
+    },
+    {
+      "id": "pops/pop_cartoon_clean",
+      "filename": "pop_cartoon_clean.wav",
+      "family": "texture",
+      "category": "pops",
+      "rel_path": "assets/sfx/pops/pop_cartoon_clean.wav",
+      "duration": 0.08,
+      "peak_db": -1.0,
+      "rms_db": -14.3,
+      "integrated_lufs": -70.0,
+      "gain_to_reference_db": -7.7
+    },
+    {
+      "id": "textures/camera_click_fast",
+      "filename": "camera_click_fast.wav",
+      "family": "texture",
+      "category": "textures",
+      "rel_path": "assets/sfx/textures/camera_click_fast.wav",
+      "duration": 0.18,
+      "peak_db": -1.0,
+      "rms_db": -24.7,
+      "integrated_lufs": -70.0,
+      "gain_to_reference_db": 2.7
+    },
+    {
+      "id": "textures/complex_mechanism_gizmo",
+      "filename": "complex_mechanism_gizmo.wav",
+      "family": "texture",
+      "category": "textures",
+      "rel_path": "assets/sfx/textures/complex_mechanism_gizmo.wav",
+      "duration": 0.41,
+      "peak_db": -1.0,
+      "rms_db": -23.4,
+      "integrated_lufs": -21.3,
+      "gain_to_reference_db": 1.4
+    },
+    {
+      "id": "textures/scratch_01",
+      "filename": "scratch_01.wav",
+      "family": "texture",
+      "category": "textures",
+      "rel_path": "assets/sfx/textures/scratch_01.wav",
+      "duration": 0.1611,
+      "peak_db": -0.9,
+      "rms_db": -12.9,
+      "integrated_lufs": -70.0,
+      "gain_to_reference_db": -9.1
+    },
+    {
+      "id": "textures/scratch_02",
+      "filename": "scratch_02.wav",
+      "family": "texture",
+      "category": "textures",
+      "rel_path": "assets/sfx/textures/scratch_02.wav",
+      "duration": 0.1611,
+      "peak_db": -1.0,
+      "rms_db": -12.3,
+      "integrated_lufs": -70.0,
+      "gain_to_reference_db": -9.7
+    },
+    {
+      "id": "textures/tiny_gearwheel_loop",
+      "filename": "tiny_gearwheel_loop.wav",
+      "family": "texture",
+      "category": "textures",
+      "rel_path": "assets/sfx/textures/tiny_gearwheel_loop.wav",
+      "duration": 0.225,
+      "peak_db": -1.0,
+      "rms_db": -24.2,
+      "integrated_lufs": -70.0,
+      "gain_to_reference_db": 2.2
+    },
+    {
+      "id": "whooshes/deep_voice_whoosh_01",
+      "filename": "deep_voice_whoosh_01.wav",
+      "family": "whoosh",
+      "category": "whooshes",
+      "rel_path": "assets/sfx/whooshes/deep_voice_whoosh_01.wav",
+      "duration": 0.7,
+      "peak_db": -1.0,
+      "rms_db": -12.1,
+      "integrated_lufs": -11.1,
+      "gain_to_reference_db": -7.9
+    },
+    {
+      "id": "whooshes/deep_voice_whoosh_02",
+      "filename": "deep_voice_whoosh_02.wav",
+      "family": "whoosh",
+      "category": "whooshes",
+      "rel_path": "assets/sfx/whooshes/deep_voice_whoosh_02.wav",
+      "duration": 0.9,
+      "peak_db": -1.0,
+      "rms_db": -12.3,
+      "integrated_lufs": -11.5,
+      "gain_to_reference_db": -7.7
+    },
+    {
+      "id": "whooshes/deep_voice_whoosh_03",
+      "filename": "deep_voice_whoosh_03.wav",
+      "family": "whoosh",
+      "category": "whooshes",
+      "rel_path": "assets/sfx/whooshes/deep_voice_whoosh_03.wav",
+      "duration": 0.5,
+      "peak_db": -1.0,
+      "rms_db": -11.6,
+      "integrated_lufs": -11.4,
+      "gain_to_reference_db": -8.4
+    },
+    {
+      "id": "whooshes/hollow_whoosh_01",
+      "filename": "hollow_whoosh_01.wav",
+      "family": "whoosh",
+      "category": "whooshes",
+      "rel_path": "assets/sfx/whooshes/hollow_whoosh_01.wav",
+      "duration": 0.65,
+      "peak_db": -1.0,
+      "rms_db": -16.5,
+      "integrated_lufs": -12.2,
+      "gain_to_reference_db": -3.5
+    },
+    {
+      "id": "whooshes/hollow_whoosh_02",
+      "filename": "hollow_whoosh_02.wav",
+      "family": "whoosh",
+      "category": "whooshes",
+      "rel_path": "assets/sfx/whooshes/hollow_whoosh_02.wav",
+      "duration": 0.85,
+      "peak_db": -1.0,
+      "rms_db": -18.4,
+      "integrated_lufs": -14.0,
+      "gain_to_reference_db": -1.6
+    },
+    {
+      "id": "whooshes/synthetic_transition_whoosh",
+      "filename": "synthetic_transition_whoosh.wav",
+      "family": "whoosh",
+      "category": "whooshes",
+      "rel_path": "assets/sfx/whooshes/synthetic_transition_whoosh.wav",
+      "duration": 1.1,
+      "peak_db": -1.0,
+      "rms_db": -8.4,
+      "integrated_lufs": -7.3,
+      "gain_to_reference_db": -11.6
+    },
+    {
+      "id": "whooshes/transition_spacey_whoosh",
+      "filename": "transition_spacey_whoosh.wav",
+      "family": "whoosh",
+      "category": "whooshes",
+      "rel_path": "assets/sfx/whooshes/transition_spacey_whoosh.wav",
+      "duration": 1.4,
+      "peak_db": -1.0,
+      "rms_db": -8.4,
+      "integrated_lufs": -6.5,
+      "gain_to_reference_db": -11.6
+    },
+    {
+      "id": "whooshes/whoosh_clean_fast",
+      "filename": "whoosh_clean_fast.wav",
+      "family": "whoosh",
+      "category": "whooshes",
+      "rel_path": "assets/sfx/whooshes/whoosh_clean_fast.wav",
+      "duration": 0.35,
+      "peak_db": -9.1,
+      "rms_db": -23.3,
+      "integrated_lufs": -70.0,
+      "gain_to_reference_db": 3.3
+    },
+    {
+      "id": "whooshes/whoosh_subtle_air",
+      "filename": "whoosh_subtle_air.wav",
+      "family": "whoosh",
+      "category": "whooshes",
+      "rel_path": "assets/sfx/whooshes/whoosh_subtle_air.wav",
+      "duration": 0.6,
+      "peak_db": 0.0,
+      "rms_db": -9.9,
+      "integrated_lufs": -11.3,
+      "gain_to_reference_db": -10.1
     }
-  }
+  ]
 }

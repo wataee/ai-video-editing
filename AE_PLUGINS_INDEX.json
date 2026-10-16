@@ -1,0 +1,180 @@
+{
+  "version": "1.0.0",
+  "generated_at": "2026-10-16",
+  "plugins": {
+    "standard": [
+      {
+        "id": "glow",
+        "displayName": "Glow",
+        "matchName": "ADBE Glo2",
+        "category": "Stylize",
+        "defaultParams": {
+          "ADBE Glo2-0001": 60,
+          "ADBE Glo2-0002": 15,
+          "ADBE Glo2-0003": 1.0
+        }
+      },
+      {
+        "id": "gaussian_blur",
+        "displayName": "Gaussian Blur",
+        "matchName": "ADBE Gaussian Blur 2",
+        "category": "Blur & Sharpen",
+        "defaultParams": {
+          "ADBE Gaussian Blur 2-0001": 25,
+          "ADBE Gaussian Blur 2-0002": 1,
+          "ADBE Gaussian Blur 2-0003": 1
+        }
+      },
+      {
+        "id": "directional_blur",
+        "displayName": "Directional Blur",
+        "matchName": "ADBE Motion Blur",
+        "category": "Blur & Sharpen",
+        "defaultParams": {
+          "ADBE Motion Blur-0001": 0,
+          "ADBE Motion Blur-0002": 15
+        }
+      },
+      {
+        "id": "noise",
+        "displayName": "Noise",
+        "matchName": "ADBE Noise2",
+        "category": "Noise & Grain",
+        "defaultParams": {
+          "ADBE Noise2-0001": 4,
+          "ADBE Noise2-0002": 0
+        }
+      },
+      {
+        "id": "optics_compensation",
+        "displayName": "Optics Compensation",
+        "matchName": "ADBE Optics Compensation",
+        "category": "Distort",
+        "defaultParams": {
+          "ADBE Optics Compensation-0001": 15,
+          "ADBE Optics Compensation-0002": 1
+        }
+      },
+      {
+        "id": "color_balance_hls",
+        "displayName": "Color Balance (HLS)",
+        "matchName": "ADBE Color Balance (HLS)",
+        "category": "Color Correction",
+        "defaultParams": {
+          "ADBE Color Balance (HLS)-0001": 0,
+          "ADBE Color Balance (HLS)-0002": 0,
+          "ADBE Color Balance (HLS)-0003": 0
+        }
+      },
+      {
+        "id": "curves",
+        "displayName": "Curves",
+        "matchName": "ADBE CurvesCustom",
+        "category": "Color Correction",
+        "defaultParams": {}
+      },
+      {
+        "id": "drop_shadow",
+        "displayName": "Drop Shadow",
+        "matchName": "ADBE Drop Shadow",
+        "category": "Perspective",
+        "defaultParams": {
+          "ADBE Drop Shadow-0002": 50,
+          "ADBE Drop Shadow-0003": 135,
+          "ADBE Drop Shadow-0004": 15,
+          "ADBE Drop Shadow-0005": 20
+        }
+      }
+    ],
+    "third_party": [
+      {
+        "id": "optical_glow",
+        "displayName": "Optical Glow",
+        "vendor": "Video Copilot",
+        "matchName": "VIDEOCOPILOT OpticalGlow",
+        "category": "Stylize",
+        "fallbackMatchName": "ADBE Glo2",
+        "fallbackParams": {
+          "ADBE Glo2-0001": 50,
+          "ADBE Glo2-0002": 25,
+          "ADBE Glo2-0003": 1.2
+        }
+      },
+      {
+        "id": "deep_glow",
+        "displayName": "Deep Glow",
+        "vendor": "Plugin Everything",
+        "matchName": "DEEP GLOW",
+        "category": "Stylize",
+        "fallbackMatchName": "ADBE Glo2",
+        "fallbackParams": {
+          "ADBE Glo2-0001": 45,
+          "ADBE Glo2-0002": 30,
+          "ADBE Glo2-0003": 1.5
+        }
+      },
+      {
+        "id": "rsmb",
+        "displayName": "ReelSmart Motion Blur",
+        "vendor": "RE:Vision Effects",
+        "matchName": "REVision Plug-ins RSMB",
+        "category": "Blur & Sharpen",
+        "fallbackMatchName": "ADBE Motion Blur",
+        "fallbackParams": {
+          "ADBE Motion Blur-0001": 0,
+          "ADBE Motion Blur-0002": 10
+        }
+      },
+      {
+        "id": "particular",
+        "displayName": "Trapcode Particular",
+        "vendor": "Red Giant",
+        "matchName": "RG Trapcode Particular",
+        "category": "RG Trapcode",
+        "fallbackMatchName": "ADBE Noise2",
+        "fallbackParams": {
+          "ADBE Noise2-0001": 6,
+          "ADBE Noise2-0002": 0
+        }
+      },
+      {
+        "id": "bcc_fast_film_glow",
+        "displayName": "BCC Fast Film Glow",
+        "vendor": "Boris FX",
+        "matchName": "BCC Fast Film Glow",
+        "category": "BCC Lights",
+        "fallbackMatchName": "ADBE Glo2",
+        "fallbackParams": {
+          "ADBE Glo2-0001": 55,
+          "ADBE Glo2-0002": 20,
+          "ADBE Glo2-0003": 1.1
+        }
+      },
+      {
+        "id": "sapphire_glow",
+        "displayName": "S_Glow",
+        "vendor": "Boris FX Sapphire",
+        "matchName": "S_Glow",
+        "category": "Sapphire Lighting",
+        "fallbackMatchName": "ADBE Glo2",
+        "fallbackParams": {
+          "ADBE Glo2-0001": 50,
+          "ADBE Glo2-0002": 20,
+          "ADBE Glo2-0003": 1.2
+        }
+      },
+      {
+        "id": "vc_twitch",
+        "displayName": "Twitch",
+        "vendor": "Video Copilot",
+        "matchName": "VIDEOCOPILOT Twitch",
+        "category": "Stylize",
+        "fallbackMatchName": "ADBE Noise2",
+        "fallbackParams": {
+          "ADBE Noise2-0001": 5,
+          "ADBE Noise2-0002": 0
+        }
+      }
+    ]
+  }
+}

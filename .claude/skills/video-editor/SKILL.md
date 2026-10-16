@@ -1,43 +1,56 @@
 ---
 name: video-editor
-description: Production-ready 9:16 vertical video editing engine based on Remotion, design system tokens, and viral storytelling rules.
+description: Production-ready vertical video editing engine based on Remotion, design system tokens, local assets, spring physics, and anti-slop rules.
 ---
 
-# Video Editor Engine (9:16)
+# Video Editor Engine
 
-This skill governs the end-to-end production of high-retention, broadcast-quality vertical short-form video (TikTok, Reels, Shorts) inside the Remotion environment.
+This skill governs the end-to-end production of high-retention, broadcast-quality short-form video inside the Remotion environment.
 
-## 1. Local Design System (`.claude/design-system/`)
+## 1. Mandatory Workflow Rule: Beat Sheet First
+- **ПЕРВЫЙ ШАГ (ОБЯЗАТЕЛЬНО):** Модель обязана первым шагом сгенерировать и согласовать покадровую структуру `beat_sheet.json` (точные тайминги сцен, кадры ударов `hit_frames`, физика переходов, смены ракурсов камеры и используемые SFX из локальной папки `assets/01_SFX/`).
+- **БЛОКИРОВКА ГЕНЕРАЦИИ КОДА:** Категорически запрещено переходить к генерации или модификации React/Remotion компонентов до того, как структура `beat_sheet.json` выведена, проверена и утверждена пользователем (`approved: true`).
+
+## 2. Local Design System (`.claude/design-system/`)
 Always reference the codified creator visual DNA and design tokens:
-- `creator-archetypes.md`: Visual DNA for Minimalist Productivity (Ali Abdaal), High-Retention Noir (Iman Gadzhi), Vox Editorial Data (Johnny Harris), Kinetic Punch (Alex Hormozi), and SaaS Tech Glass (Devin Jatho).
-- `typography-scale.md`: 1080x1920 font scale, 3-tier pairing formulas, dynamic karaoke rules, safe zone bounds (captions sweet spot `y: 1120..1380`).
-- `sfx-mapping.md`: Mappings from animation triggers to local `assets/01_SFX/` files with sub-frame lead-in offsets and calibrated dB levels.
+- `creator-archetypes.md`: Visual DNA for Minimalist Productivity, High-Retention Noir, Vox Editorial Data, and SaaS Tech Glass.
+- `typography-scale.md`: Font scale, approved local pairings (`Montserrat`, `Inter`, `Unbounded`, `Manrope`, `Caveat` from `assets/02_FONTS/`), safe zones (`x: 100..950, y: 220..1540`, captions sweet spot `y: 1120..1380`). System fonts (`Arial`, `Roboto`) are strictly prohibited.
+- `sfx-mapping.md`: Mappings from animation triggers to local `assets/01_SFX/` (`assets/sfx/`) files with calibrated relative dB levels.
 
-## 2. Modular Rulebooks (`.claude/rulebooks/`)
+## 3. Modular Rulebooks (`.claude/rulebooks/`)
 - `01-hooks-and-script.md`: 1 video = 1 idea, outlier hooks, fact checking.
-- `02-cut-and-audio-sync.md`: Silence removal, clean retake filtering, lip-sync offset, dB loudness.
-- `03-beat-map-and-planning.md`: Beat mapping, 4-10s shot segmentation, camera rig motion, parallel sub-prompts.
-- `04-visual-styles-and-safe-zones.md`: 9:16 geometry (1080x1920, x: 100..980, y: 220..1540), visual languages.
-- `05-qa-checklist.md`: The mandatory 6-point pre-render inspection.
+- `02-cut-and-audio-sync.md`: Silence removal, clean retake filtering, mandatory HDR ingest, relative SFX levels.
+- `03-beat-map-and-planning.md`: Beat Sheet first requirement, beat mapping, proof_source, approval gate, pre-render contact sheet.
+- `04-visual-styles-and-safe-zones.md`: Safe zones and geometry (220/380/100/130).
+- `05-qa-checklist.md`: The mandatory 10 fps multi-point pre-render inspection.
 - `06-self-learning-notes.md`: Continuous user corrections and preference bank.
-- `07-creator-style-presets.md`: 6 Creator archetypes (`ali-minimal-workspace`, `gadzhi-noir-luxury`, `vox-editorial-data`, `apple-liquid-glass`, `hormozi-kinetic-punch`, `devin-jatho-saas`).
-- `08-typography-pairings.md`: Typography scales and pairing matrix.
-- `09-sfx-choreography.md`: Visual-to-SFX mapping, timing offsets, 3-layer sound design.
+- `07-creator-style-presets.md`: Creator style archetypes.
+- `08-typography-pairings.md`: Local fonts only from `assets/02_FONTS/`. Strict ban on `Arial` and `Roboto`.
+- `09-sfx-choreography.md`: SFX from `assets/01_SFX/` via `<Audio/>` (`AudioTrigger`) with frame-accurate timing, volume curve, and fade-out.
 - `10-hook-patterns.md`: The 6 visual hook archetypes.
+- `11-hook-library.md`: Outlier hook structures.
+- `12-anti-slop.md`: 8 rules against cheap AI slop, procedural noise overlay (`AntiSlopOverlay`), and camera micro-drift.
+- `13-ae-secondary-engine.md`: Secondary After Effects ExtendScript rules (monolithic scripts, safeApplyEffect, no exposure HDR fix).
+- `14-production-pipeline.md`: The linear production pipeline with Beat Sheet gate.
 
-## 3. Parametric Components (`src/components/`)
+## 4. Parametric Components (`src/components/`)
+- `AntiSlopOverlay`: Post-processing wrapper with SVG `<feTurbulence>` noise (3–5%), camera micro-drift (1.0 to 1.03), and subtle vignette.
+- `AudioTrigger`: Synchronized local audio trigger linking to `assets/01_SFX/` with frame offset, volume envelope, and fade-out.
+- `ProceduralNoiseOverlay`: Standalone SVG grain overlay against sterile vector rendering.
 - `SafeZoneContainer`: Enforces strict 9:16 layout bounds and optional debug overlay.
-- `CameraRig`: Continuous procedural motion (`push-in`, `push-out`, `pan-left`, `pan-right`, `static-fade`).
+- `CameraRig`: Continuous procedural motion with micro-drift.
+- `ProofCard`: Frosted glass verification modal with spring physics and bounce-back overshoot.
+- `HookHeadline`: Dynamic opening hook headline with spring physics.
+- `SpeakerBadge`: Clean pill badge with animated spring entrance.
 - `LiquidGlassCard`: Frosted glass modal with optional chroma green-screen mode.
 - `VoxBarChart`: High-impact spring-driven data visualization.
 - `NumberTicker`: Fluid numeric counter with locale formatting and unit suffixes.
-- `WordByWordCaptions`: Frame-accurate karaoke captions styled per archetype.
-- `SfxTrigger`: Synchronized audio trigger linking directly to cataloged assets.
+- `WordByWordCaptions`: Frame-accurate karaoke captions with spring pop on active words.
 
-## 4. Verification & Studio Inspection
+## 5. Verification & Studio Inspection
 - Verify frame layout using headless Remotion (`npx remotion still src/index.ts [CompName] out/qa.jpeg --frame=[N]`).
-- Verify live After Effects comps using the HeroicSwan AE MCP bridge (`tools/after-effects-mcp`) and inspection scripts (`tools/capture_ae_frame.mjs`).
-- Run automated QA audit via `tools/qa.bat out/final_video.mp4`.
+- Run generated monolithic ExtendScript scripts (`scripts/build_ae_project.jsx` or `scripts/import_to_ae.jsx`) in After Effects via `File -> Scripts -> Run Script File...` wrapped in `app.beginUndoGroup("AI Video Build")`.
+- Run automated QA audit via `python tools/qa.py out/final_video.mp4`.
 
-## 5. Strict Development Rule
-- **ZERO COMMENTS IN CODE FILES**: Never emit code comments (`//`, `/* */`, `#`) in `.ts`, `.tsx`, `.js`, `.mjs`, or `.json` files.
+## 6. Strict Development Rule
+- **ZERO COMMENTS IN CODE FILES**: Never emit code comments (`//`, `/* */`, `#`) in `.ts`, `.tsx`, `.js`, `.mjs`, `.css`, `.json`, or `.jsx` files.

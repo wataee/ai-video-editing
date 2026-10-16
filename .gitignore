@@ -35,27 +35,39 @@ yarn-error.log*
 .pnpm-debug.log*
 .remotion/
 
-# Temporary and Cache files
+# Temporary, Cache & Work directories
+work/
+_archive/
+_sandbox/
+out/
 .tmp/
 *.tmp
 *.log
 _tmp_download/
-_archive/
-out/
+tests/fixtures/
 
-# Large media & client footage (keep code, presets, fonts, SVG graphics, SFX)
-clients/**/raw/
-clients/**/work/
-clients/**/out/
+# Private references
+references/library/_private/
+
+# Client data (only clients/_template is tracked)
+clients/*
+!clients/_template/
+
+# Project & Media binaries
+*.psd
+*.aep
+*.prproj
 *.MOV
 *.mp4
+!assets/**/*.mp4
 
-# After Effects IPC runtime
-work/.ae-mcp/instances/
-work/.ae-mcp/*.tmp
-work/.ae-mcp/*.log
+# Machine-specific configuration
+.mcp.json
 
 # OS files
 Thumbs.db
 Desktop.ini
 .DS_Store
+public/
+assets/01_SFX/
+assets/02_FONTS/
