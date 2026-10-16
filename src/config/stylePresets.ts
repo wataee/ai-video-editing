@@ -165,7 +165,7 @@ export const assertValidFont = (fontName: string): void => {
   for (const forbidden of FORBIDDEN_FONTS) {
     if (fontName.toLowerCase().includes(forbidden.toLowerCase())) {
       throw new Error(
-        `[Typography Violation] Font '${fontName}' is strictly prohibited. Use only local fonts from assets/02_FONTS/ (${ALLOWED_LOCAL_FONTS.join(", ")}).`
+        `[Typography Violation] Font '${fontName}' is strictly prohibited. Use only local fonts from assets/fonts/ (${ALLOWED_LOCAL_FONTS.join(", ")}).`
       );
     }
   }

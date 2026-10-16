@@ -9,6 +9,7 @@ import {
   PlanBeatStill,
 } from "./components";
 import { Scene01_Intro, Scene02_Main, Scene03_Outro } from "./scenes";
+import { ReelFromPlan } from "./compositions/ReelFromPlan";
 import beatSheet from "./data/beat_sheet.json";
 import { BeatSheet } from "./types/beatSheet";
 import { loadProjectFonts } from "./config";
@@ -65,7 +66,7 @@ const PreviewProofCardComp: React.FC = () => (
       <ProofCard
         badge="ДОКАЗАТЕЛЬСТВО"
         title="Метрики проверены"
-        subtitle="Аудит показал рост удержания на 42%"
+        subtitle="Аудит показал [ЦИФРА ИЗ ИСХОДНИКА]"
       />
     </SafeZoneContainer>
   </AbsoluteFill>
@@ -184,7 +185,7 @@ export const Root: React.FC = () => {
       />
       <Composition
         id="PlanBeatStill"
-        component={PlanBeatStill}
+        component={PlanBeatStill as any}
         durationInFrames={1}
         fps={30}
         width={1080}
@@ -198,6 +199,21 @@ export const Root: React.FC = () => {
           proofSource: null,
           sfx: "hits/sub_bass_thud",
           why: "Хук привлекает внимание спикером",
+        }}
+      />
+      <Composition
+        id="ReelFromPlan"
+        component={ReelFromPlan as any}
+        durationInFrames={450}
+        fps={30}
+        width={1080}
+        height={1920}
+        defaultProps={{
+          plan: {
+            project_id: "preview_reel",
+            target_duration_sec: 15,
+            beats: [],
+          },
         }}
       />
     </>

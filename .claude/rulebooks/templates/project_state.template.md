@@ -13,11 +13,11 @@
 - **Длительность на выходе:** ~{35} сек
 
 ## 2. Актуальные файлы
-- **План монтажа:** `work/edit_plan.json` [Утвержден / В работе]
-- **Субтитры:** `work/{base}_sliced_words.json`
-- **Проект/Скрипт сборки:** `work/assemble.jsx` или `projects/remotion-tiktok-starter`
-- **Текущий мастер:** `out/{render_file}.mp4`
-- **QA статус:** [Не запускался | Пройден | Требует правок] (см. `work/qa/{base}.qa.summary.json`)
+- **План монтажа:** `clients/{slug}/work/edit_plan.json` [Утвержден / В работе]
+- **Субтитры:** `clients/{slug}/work/{base}_sliced_words.json`
+- **Проект/Скрипт сборки:** `clients/{slug}/work/assemble.jsx` или `projects/remotion-tiktok-starter`
+- **Текущий мастер:** `clients/{slug}/out/{render_file}.mp4`
+- **QA статус:** [Не запускался | Пройден | Требует правок] (см. `clients/{slug}/work/qa/{base}.qa.summary.json`)
 
 ## 3. Следующий шаг
 - [Конкретное действие, которое нужно сделать прямо сейчас]

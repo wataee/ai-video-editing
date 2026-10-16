@@ -16,10 +16,8 @@ function safeApplyEffect(layer, primaryMatchName, fallbackMatchName, params) {
     }
     if (!appliedEffect && fallbackMatchName && fallbackMatchName !== "") {
         try {
-            $.writeln("[safeApplyEffect] Falling back from " + primaryMatchName + " to " + fallbackMatchName);
             appliedEffect = effectGroup.addProperty(fallbackMatchName);
         } catch (e2) {
-            $.writeln("[safeApplyEffect Error] Failed fallback " + fallbackMatchName + ": " + e2.toString());
             appliedEffect = null;
         }
     }
@@ -40,21 +38,41 @@ function safeApplyEffect(layer, primaryMatchName, fallbackMatchName, params) {
 }
 
 (function () {
-    app.beginUndoGroup("AI Video Build");
+    app.beginUndoGroup("Build AI Video Project");
 
     var scriptFile = new File($.fileName);
     var rootFolder = scriptFile.parent.parent;
-    var jsonFile = new File(rootFolder.fsName + "/src/data/beat_sheet.json");
 
-    if (!jsonFile.exists) {
-        alert("File not found: " + jsonFile.fsName);
+    var candidatePaths = [
+        rootFolder.fsName + "/work/plan/edit_plan.json",
+        rootFolder.fsName + "/clients/default/work/plan/edit_plan.json"
+    ];
+
+    var jsonFile = null;
+    for (var i = 0; i < candidatePaths.length; i++) {
+        var testF = new File(candidatePaths[i]);
+        if (testF.exists) {
+            jsonFile = testF;
+            break;
+        }
+    }
+
+    if (!jsonFile) {
+        var selected = File.openDialog("Select edit_plan.json for AE Build", "JSON Files:*.json");
+        if (selected && selected.exists) {
+            jsonFile = selected;
+        }
+    }
+
+    if (!jsonFile || !jsonFile.exists) {
+        alert("Error: edit_plan.json not found!\nPlease run tools/pipeline.py or select an edit_plan.json file.");
         app.endUndoGroup();
         return;
     }
 
     jsonFile.encoding = "UTF-8";
     if (!jsonFile.open("r")) {
-        alert("Failed to open: " + jsonFile.fsName);
+        alert("Error: Cannot read plan file at: " + jsonFile.fsName);
         app.endUndoGroup();
         return;
     }
@@ -62,141 +80,188 @@ function safeApplyEffect(layer, primaryMatchName, fallbackMatchName, params) {
     var jsonContent = jsonFile.read();
     jsonFile.close();
 
-    var data = null;
+    var plan = null;
     try {
         if (typeof JSON !== "undefined" && JSON.parse) {
-            data = JSON.parse(jsonContent);
+            plan = JSON.parse(jsonContent);
         } else {
-            data = eval("(" + jsonContent + ")");
+            plan = eval("(" + jsonContent + ")");
         }
     } catch (parseErr) {
-        alert("JSON parse error: " + parseErr.toString());
+        alert("JSON Parse Error in " + jsonFile.name + ": " + parseErr.toString());
         app.endUndoGroup();
         return;
     }
 
-    var compWidth = data.width || 1080;
-    var compHeight = data.height || 1920;
-    var compFps = data.fps || 60;
-    var compDuration = data.target_duration_sec || 10;
-    var compName = data.title || "AI_Video_Master";
+    var compWidth = 1080;
+    var compHeight = 1920;
+    var compFps = 30;
+    var compDuration = plan.target_duration_sec || 15.0;
+    var projId = plan.project_id || "Vertical_Reel";
+    var compName = projId + "_1080x1920_30fps";
 
     var comp = app.project.items.addComp(
         compName,
         compWidth,
         compHeight,
         1.0,
-        compDuration,
+        Math.max(1.0, compDuration),
         compFps
     );
 
-    for (var s = 0; s < data.scenes.length; s++) {
-        var sceneItem = data.scenes[s];
-        var stemFileName = rootFolder.fsName + "/out/stems/" + sceneItem.id + "_ui.mov";
-        var stemFile = new File(stemFileName);
-        if (!stemFile.exists) {
-            stemFileName = rootFolder.fsName + "/out/stems/scene_0" + (s + 1) + "_ui.mov";
-            stemFile = new File(stemFileName);
+    var controlsLayer = comp.layers.addNull();
+    controlsLayer.name = "CONTROLS";
+    controlsLayer.label = 1;
+
+    var colorFx = safeApplyEffect(controlsLayer, "ADBE Color Control", null, {});
+    if (colorFx && colorFx.property("ADBE Color Control-0001")) {
+        colorFx.name = "Accent Color";
+        colorFx.property("ADBE Color Control-0001").setValue([1.0, 0.84, 0.04, 1.0]);
+    }
+
+    var shadowFx = safeApplyEffect(controlsLayer, "ADBE Slider Control", null, {});
+    if (shadowFx && shadowFx.property("ADBE Slider Control-0001")) {
+        shadowFx.name = "Shadow Opacity";
+        shadowFx.property("ADBE Slider Control-0001").setValue(40);
+    }
+
+    var roundnessFx = safeApplyEffect(controlsLayer, "ADBE Slider Control", null, {});
+    if (roundnessFx && roundnessFx.property("ADBE Slider Control-0001")) {
+        roundnessFx.name = "Card Roundness";
+        roundnessFx.property("ADBE Slider Control-0001").setValue(24);
+    }
+
+    var sdrPath = plan.sdr_path || plan.proxy_path;
+    var videoLayer = null;
+    if (sdrPath) {
+        var vFile = new File(sdrPath);
+        if (!vFile.exists) {
+            vFile = new File(rootFolder.fsName + "/" + sdrPath.replace(/\\/g, "/"));
         }
-        if (stemFile.exists) {
+        if (vFile.exists) {
             try {
-                var importOpts = new ImportOptions(stemFile);
-                var footage = app.project.importFile(importOpts);
-                var layer = comp.layers.add(footage);
-                layer.startTime = sceneItem.start_frame / compFps;
-                layer.inPoint = sceneItem.start_frame / compFps;
-                layer.outPoint = (sceneItem.start_frame + sceneItem.duration_in_frames) / compFps;
-                layer.name = "Stem_" + sceneItem.name;
-            } catch (stemErr) {
-                $.writeln("[Stem Import Warning] " + stemErr.toString());
+                var vOpts = new ImportOptions(vFile);
+                var vItem = app.project.importFile(vOpts);
+                videoLayer = comp.layers.add(vItem);
+                videoLayer.name = "SDR_Speaker_Footage";
+                videoLayer.label = 9;
+                videoLayer.moveToEnd();
+
+                if (vItem.width > vItem.height) {
+                    var scaleFactor = (compHeight / vItem.height) * 100;
+                    videoLayer.property("ADBE Transform Group").property("ADBE Scale").setValue([scaleFactor, scaleFactor, 100]);
+                    videoLayer.property("ADBE Transform Group").property("ADBE Position").setValue([compWidth / 2, compHeight / 2]);
+                }
+            } catch (vErr) {
+                $.writeln("Video footage import failed: " + vErr.toString());
             }
         }
     }
 
-    for (var t = 0; t < data.scenes.length; t++) {
-        var sc = data.scenes[t];
-        if (sc.title) {
-            var textLayer = comp.layers.addText(sc.title);
-            textLayer.name = "Text_" + sc.name;
-            textLayer.startTime = sc.start_frame / compFps;
-            textLayer.inPoint = sc.start_frame / compFps;
-            textLayer.outPoint = (sc.start_frame + sc.duration_in_frames) / compFps;
+    var beats = plan.beats || [];
+    for (var b = 0; b < beats.length; b++) {
+        var beat = beats[b];
+        var tRange = beat.time_range || [0.0, 3.0];
+        var bStart = tRange[0];
+        var bEnd = tRange[1];
+        var bDur = Math.max(0.1, bEnd - bStart);
+
+        if (beat.line && beat.line !== "") {
+            var textLayer = comp.layers.addText(beat.line);
+            textLayer.name = "Caption_Beat_" + (beat.beat_index !== undefined ? beat.beat_index : b);
+            textLayer.label = 13;
+            textLayer.startTime = bStart;
+            textLayer.inPoint = bStart;
+            textLayer.outPoint = bEnd;
 
             var textProp = textLayer.property("ADBE Text Properties").property("ADBE Text Document");
             var textDoc = textProp.value;
-            textDoc.fontSize = 56;
+            textDoc.fontSize = 54;
             textDoc.fillColor = [1, 1, 1];
             textDoc.font = "Montserrat-ExtraBold";
             textDoc.justification = ParagraphJustification.CENTER_JUSTIFY;
             textProp.setValue(textDoc);
 
             var posProp = textLayer.property("ADBE Transform Group").property("ADBE Position");
-            posProp.setValue([compWidth / 2, compHeight * 0.28]);
+            posProp.setValue([compWidth / 2, 1250]);
 
             var scaleProp = textLayer.property("ADBE Transform Group").property("ADBE Scale");
-            var tStart = sc.start_frame / compFps;
-            scaleProp.setValueAtTime(tStart, [85, 85, 100]);
-            scaleProp.setValueAtTime(tStart + 0.25, [103, 103, 100]);
-            scaleProp.setValueAtTime(tStart + 0.45, [100, 100, 100]);
+            scaleProp.setValueAtTime(bStart, [85, 85, 100]);
+            scaleProp.setValueAtTime(bStart + 0.15, [104, 104, 100]);
+            scaleProp.setValueAtTime(bStart + 0.30, [100, 100, 100]);
 
-            var opacityProp = textLayer.property("ADBE Transform Group").property("ADBE Opacity");
-            opacityProp.setValueAtTime(tStart, 0);
-            opacityProp.setValueAtTime(tStart + 0.15, 100);
+            var opacProp = textLayer.property("ADBE Transform Group").property("ADBE Opacity");
+            opacProp.setValueAtTime(bStart, 0);
+            opacProp.setValueAtTime(bStart + 0.10, 100);
+
+            safeApplyEffect(textLayer, "ADBE Drop Shadow", null, {
+                "ADBE Drop Shadow-0001": [0, 0, 0, 1],
+                "ADBE Drop Shadow-0002": 180,
+                "ADBE Drop Shadow-0003": 8,
+                "ADBE Drop Shadow-0004": 15
+            });
         }
-    }
 
-    for (var a = 0; a < data.scenes.length; a++) {
-        var curScene = data.scenes[a];
-        if (curScene.sfx && curScene.sfx.sample) {
-            var relSample = curScene.sfx.sample.replace("assets/01_SFX/", "").replace("assets/sfx/", "");
-            var sfxFile = new File(rootFolder.fsName + "/assets/01_SFX/" + relSample);
-            if (!sfxFile.exists) {
-                sfxFile = new File(rootFolder.fsName + "/assets/sfx/" + relSample);
+        if (beat.proof_source && beat.proof_source !== "") {
+            var pFile = new File(beat.proof_source);
+            if (!pFile.exists) {
+                pFile = new File(rootFolder.fsName + "/" + beat.proof_source.replace(/\\/g, "/"));
             }
-            if (sfxFile.exists) {
+            if (pFile.exists) {
                 try {
-                    var audioOpts = new ImportOptions(sfxFile);
-                    var audioItem = app.project.importFile(audioOpts);
-                    var audioLayer = comp.layers.add(audioItem);
-                    var audioStartSec = (curScene.start_frame + (curScene.sfx.frame_offset || 0)) / compFps;
-                    audioLayer.startTime = audioStartSec;
-                    audioLayer.name = "SFX_" + curScene.name;
-                    var audioLevels = audioLayer.property("ADBE Audio Group").property("ADBE Audio Levels");
-                    if (audioLevels) {
-                        var vol = curScene.sfx.volume_db || -14;
-                        audioLevels.setValue([vol, vol]);
-                    }
-                } catch (audioErr) {
-                    $.writeln("[SFX Import Warning] " + audioErr.toString());
+                    var pOpts = new ImportOptions(pFile);
+                    var pItem = app.project.importFile(pOpts);
+                    var proofLayer = comp.layers.add(pItem);
+                    proofLayer.name = "Proof_Badge_Beat_" + b;
+                    proofLayer.label = 11;
+                    proofLayer.startTime = bStart;
+                    proofLayer.inPoint = bStart;
+                    proofLayer.outPoint = bEnd;
+                    proofLayer.property("ADBE Transform Group").property("ADBE Position").setValue([compWidth / 2, 600]);
+
+                    var pScale = proofLayer.property("ADBE Transform Group").property("ADBE Scale");
+                    pScale.setValueAtTime(bStart, [70, 70, 100]);
+                    pScale.setValueAtTime(bStart + 0.20, [103, 103, 100]);
+                    pScale.setValueAtTime(bStart + 0.35, [100, 100, 100]);
+
+                    safeApplyEffect(proofLayer, "ADBE Drop Shadow", null, {
+                        "ADBE Drop Shadow-0002": 150,
+                        "ADBE Drop Shadow-0003": 12,
+                        "ADBE Drop Shadow-0004": 30
+                    });
+                } catch (pErr) {
+                    $.writeln("Proof asset import failed: " + pErr.toString());
+                }
+            }
+        }
+
+        if (beat.sfx && beat.sfx !== "" && beat.sfx !== "TODO" && beat.sfx !== "none") {
+            var relSfx = beat.sfx.replace(/^assets\/sfx\//, "").replace(/^sfx\//, "");
+            var sFile = new File(rootFolder.fsName + "/assets/sfx/" + relSfx + (relSfx.indexOf(".wav") === -1 ? ".wav" : ""));
+            if (sFile.exists) {
+                try {
+                    var sOpts = new ImportOptions(sFile);
+                    var sItem = app.project.importFile(sOpts);
+                    var sLayer = comp.layers.add(sItem);
+                    sLayer.name = "SFX_Beat_" + b;
+                    sLayer.label = 7;
+                    sLayer.startTime = bStart;
+                    sLayer.inPoint = bStart;
+                    sLayer.outPoint = Math.min(compDuration, bStart + 2.0);
+                } catch (sErr) {
                 }
             }
         }
     }
 
-    var adjLayer = comp.layers.addSolid([1, 1, 1], "Adjustment_Master_Grade", compWidth, compHeight, 1.0, compDuration);
-    adjLayer.adjustmentLayer = true;
-
-    safeApplyEffect(adjLayer, "VIDEOCOPILOT OpticalGlow", "ADBE Glo2", {
-        "ADBE Glo2-0001": 55,
-        "ADBE Glo2-0002": 25,
-        "ADBE Glo2-0003": 0.8
-    });
-
-    safeApplyEffect(adjLayer, "REVision Plug-ins RSMB", "ADBE Motion Blur", {
-        "ADBE Motion Blur-0001": 0,
-        "ADBE Motion Blur-0002": 8
-    });
-
-    safeApplyEffect(adjLayer, "ADBE Noise2", null, {
-        "ADBE Noise2-0001": 3.5,
+    var grainLayer = comp.layers.addSolid([1, 1, 1], "Master_AntiSlop_Grain", compWidth, compHeight, 1.0, compDuration);
+    grainLayer.adjustmentLayer = true;
+    grainLayer.label = 8;
+    safeApplyEffect(grainLayer, "ADBE Noise2", null, {
+        "ADBE Noise2-0001": 3.0,
         "ADBE Noise2-0002": 0
     });
 
-    safeApplyEffect(adjLayer, "ADBE Optics Compensation", null, {
-        "ADBE Optics Compensation-0001": 12,
-        "ADBE Optics Compensation-0002": 1
-    });
-
     app.endUndoGroup();
-    alert("AI Video Build complete!\nCreated: " + compName + " (" + compWidth + "x" + compHeight + " @ " + compFps + " fps)");
+    alert("After Effects Project Assembled Successfully!\nComposition: " + compName + "\nDuration: " + compDuration + "s @ 30 fps\nBeats processed: " + beats.length);
 })();

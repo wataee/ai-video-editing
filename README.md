@@ -7,7 +7,7 @@ Production-ready vertical short-form video editing engine (9:16) powered by **Re
 ## 🚀 Key Features
 
 * **Primary Engine: Remotion (React 19):** Frame-accurate parametric motion design, kinetic karaoke captions, procedural camera rigs, and automated headless rendering.
-* **Secondary Engine: After Effects ExtendScript:** Driven via generated monolithic ExtendScript scripts (`scripts/build_ae_project.jsx` and `scripts/import_to_ae.jsx`) executed manually via `File -> Scripts -> Run Script File...` with undo group protection and safe plugin fallbacks (`safeApplyEffect`). No MCP bridge or external daemons needed.
+* **Secondary Engine: After Effects ExtendScript:** Driven via generated monolithic ExtendScript scripts (`scripts/build_ae_project.jsx`) executed manually via `File -> Scripts -> Run Script File...` with undo group protection and safe plugin fallbacks (`safeApplyEffect`). No MCP bridge or external daemons needed.
 * **Calibrated Sound Design (Relative to Speech RMS):**
   * Hits & Risers: `−14 dB` relative to measured speech RMS.
   * Textures (Clicks, Pops): `−16 dB` relative to speech RMS.

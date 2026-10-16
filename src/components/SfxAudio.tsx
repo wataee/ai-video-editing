@@ -16,13 +16,13 @@ export interface SfxAudioProps {
 
 const resolveLocalSfxPath = (path: string): string => {
   if (path.startsWith("http://") || path.startsWith("https://")) {
-    throw new Error(`[SfxAudio Security Error] External URLs are forbidden: '${path}'. Use only local assets/01_SFX/.`);
+    throw new Error(`[SfxAudio Security Error] External URLs are forbidden: '${path}'. Use only local assets/sfx/.`);
   }
   const clean = path.replace(/\\/g, "/");
-  if (!clean.includes("assets/01_SFX/") && !clean.includes("assets/sfx/")) {
+  if (!clean.includes("assets/sfx/")) {
     return `assets/sfx/${clean.replace(/^\/?(assets\/)?/, "")}`;
   }
-  return clean.replace("assets/01_SFX/", "assets/sfx/");
+  return clean;
 };
 
 export const SfxAudio: React.FC<SfxAudioProps> = ({

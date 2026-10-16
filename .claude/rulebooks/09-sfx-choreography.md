@@ -1,7 +1,7 @@
 # 09. Visual-to-SFX Choreography Matrix
 
 ## 1. Hard Rule: Local SFX via <Audio/> with Frame Precision
-- **Local Folder Only**: Использовать звуки **исключительно** из локальной папки `assets/01_SFX/` (`assets/sfx/`). Внешние URL, сторонние генераторы на лету и системные звуки запрещены.
+- **Local Folder Only**: Использовать звуки **исключительно** из локальной папки `assets/sfx/`. Внешние URL, сторонние генераторы на лету и системные звуки запрещены.
 - **Remotion <Audio/> Component**: Внутри Remotion композиций воспроизведение оформляется через `<SfxAudio />` или нативный `<Audio />` с точным расчетом фреймов:
   - `startFrom`: точный номер кадра сдвига внутри аудиофайла.
   - `durationInFrames`: длительность звучания клипа.
@@ -27,7 +27,7 @@ SFX loudness is strictly relative to dialogue RMS, never an arbitrary fixed slid
 
 ## 4. Visual Event to SFX Mapping
 
-| Visual Event | Primary SFX (`assets/01_SFX/`) | Timing Offset | Relative dB |
+| Visual Event | Primary SFX (`assets/sfx/`) | Timing Offset | Relative dB |
 |---|---|---|---|
 | **Card / Modal Entrance** | `pops/pop_bubble_high.wav` | `0 frames` | `−16 dB` |
 | **Scene Transition (Cut)** | `whooshes/whoosh_clean_fast.wav` | `-2 frames` | `−20 dB` |

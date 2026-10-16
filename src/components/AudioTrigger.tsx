@@ -14,11 +14,11 @@ export interface AudioTriggerProps {
 
 const resolveSfxPath = (samplePath: string): string => {
   if (samplePath.startsWith("http://") || samplePath.startsWith("https://")) {
-    throw new Error(`[AudioTrigger Error] External sound URLs are forbidden: '${samplePath}'. Use local assets/01_SFX/.`);
+    throw new Error(`[AudioTrigger Error] External sound URLs are forbidden: '${samplePath}'. Use local assets/sfx/.`);
   }
   const normalized = samplePath.replace(/\\/g, "/").replace(/^\/+/, "");
-  if (normalized.startsWith("assets/01_SFX/")) {
-    return normalized.replace("assets/01_SFX/", "sfx/");
+  if (normalized.startsWith("assets/sfx/")) {
+    return normalized.replace("assets/sfx/", "sfx/");
   }
   if (normalized.startsWith("assets/sfx/")) {
     return normalized.replace("assets/sfx/", "sfx/");

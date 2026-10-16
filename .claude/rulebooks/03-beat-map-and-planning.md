@@ -28,7 +28,7 @@ To prevent robotic AI slop and ensure the video meets live-editor quality, follo
 - Точные тайминги сцен (`start_frame`, `end_frame`, `duration_frames`).
 - Кадры ударов (`hit_frames`), где смысловой акцент фразы совпадает с визуальным или звуковым триггером.
 - Смены ракурсов камеры (`camera_angle`: `push-in`, `static`, `push-out`).
-- Точки запуска SFX (`sfx_triggers`) с привязкой к локальным файлам `assets/01_SFX/`.
+- Точки запуска SFX (`sfx_triggers`) с привязкой к локальным файлам `assets/sfx/`.
 - **Запрещено** приступать к написанию или редактированию React/Remotion компонентов до того, как структура утверждена человеком (`approved: true`).
 
 ## 3. Mandatory Approval Gate
@@ -48,7 +48,7 @@ To prevent robotic AI slop and ensure the video meets live-editor quality, follo
 | `proof_source` | string / null | Path to real verified artifact (screenshot, code, product, doc) |
 | `camera` | enum | `static` \| `push-in` \| `push-out` \| `pan-left` \| `pan-right` |
 | `cut_motivation` | enum | `THESIS_SHIFT` \| `EMOTIONAL_PUNCH` \| `PROOF_INJECTION` \| `RHYTHMIC_CONTRAST` \| `FATIGUE_RESET` |
-| `sfx` | string / null | ID from `assets/01_SFX/` (`assets/sfx/sfx_catalog.json`) or `none` |
+| `sfx` | string / null | ID from `assets/sfx/` (`assets/sfx/sfx_catalog.json`) or `none` |
 | `why` | string | Exactly one sentence justifying the visual choice and cut |
 | `approved` | boolean | `false` by default, toggled to `true` by human review |
 

@@ -28,10 +28,10 @@ AI Slop is the mindless, mechanical application of automation templates (bouncin
 4. **Natural Breathing (No Android Voice)**:
    - Keep natural intakes of breath and 0.2–0.4s pauses after conclusions. Cut only long pauses > 0.6s and filler sounds.
 5. **Calibrated SFX (No Whoosh Abuse)**:
-   - Использовать звуки только из локальной папки `assets/01_SFX/` через `<Audio/>` (`<SfxAudio />`) с расчетом фреймов и затуханием.
+   - Использовать звуки только из локальной папки `assets/sfx/` через `<Audio/>` (`<SfxAudio />`) с расчетом фреймов и затуханием.
    - Volume strictly at `−20 dB` relative to voice RMS. Zooms have NO sound. Max 6 SFX per 30 seconds.
 6. **Strict Typography Hierarchy**:
-   - Шрифты только локальные из `assets/02_FONTS/` (`Montserrat`, `Inter`, `Unbounded`, `Manrope`). Шрифты `Arial`, `Roboto`, `TheBoldFont` категорически запрещены.
+   - Шрифты только локальные из `assets/fonts/` (`Montserrat`, `Inter`, `Unbounded`, `Manrope`). Шрифты `Arial`, `Roboto`, `TheBoldFont` категорически запрещены.
 7. **Genre-Matched Music**:
    - Background music at `−22 dB` relative to voice RMS, ducked with sidechain during speech.
 8. **Closed Narrative Loops**:

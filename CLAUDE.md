@@ -7,13 +7,13 @@
 
 ---
 
-## 1. 9 HARD CONSTRAINTS (ЖЕСТКИЕ ОГРАНИЧЕНИЯ)
+## 1. 10 HARD CONSTRAINTS (ЖЕСТКИЕ ОГРАНИЧЕНИЯ)
 
-1. **PRIMARY ENGINE REMOTION & EXTENDSCRIPT MONOLITH:** Remotion (`src/components`, `src/config`) — главный движок. After Effects вторичен: взаимодействие с After Effects происходит ИСКЛЮЧИТЕЛЬНО путем генерации готового монолитного файла сценария ExtendScript (`scripts/build_ae_project.jsx` или `scripts/import_to_ae.jsx`), который пользователь запускает в AE вручную через `File -> Scripts -> Run Script File...`. Внутри каждого такого скрипта код обязан быть обернут в `app.beginUndoGroup("AI Video Build")` и `app.endUndoGroup()`. Использование любых MCP-серверов AE запрещено.
+1. **PRIMARY ENGINE REMOTION & EXTENDSCRIPT MONOLITH:** Remotion (`src/components`, `src/config`) — главный движок. After Effects вторичен: взаимодействие с After Effects происходит ИСКЛЮЧИТЕЛЬНО путем генерации готового монолитного файла сценария ExtendScript (`scripts/build_ae_project.jsx`), который пользователь запускает в AE вручную через `File -> Scripts -> Run Script File...`. Внутри каждого такого скрипта код обязан быть обернут в `app.beginUndoGroup("AI Video Build")` и `app.endUndoGroup()`. Использование любых MCP-серверов AE запрещено.
 2. **ZERO COMMENTS IN CODE:** Никаких комментариев (`//`, `/* */`, `#`) в коде (`.ts`, `.tsx`, `.js`, `.mjs`, `.json`, `.css`, `.jsx`).
 3. **STRICT SAFE ZONES (1080×1920):** Сверху 220 px, снизу 380 px, слева 100 px, справа 130 px (`x: 100..950`, `y: 220..1540`). Субтитры strictly `y: 1120..1380`. Все элементы оборачивать в `<SafeZoneContainer>`.
-4. **LOCAL FONTS ONLY (NO ARIAL/ROBOTO):** Загружать шрифты строго локально из `assets/02_FONTS/` (`Montserrat`, `Inter`, `Unbounded`, `Manrope`, `Caveat`) через нативные `@font-face` (`src/styles/fonts.css`). Системные дефолты (`Arial`, `Roboto`, `TheBoldFont`) КАТЕГОРИЧЕСКИ ЗАПРЕЩЕНЫ.
-5. **LOCAL SFX VIA <AUDIO/> WITH FRAME CALCULATION:** Использовать звуковые эффекты ТОЛЬКО из локальной папки `assets/01_SFX/` через компонент Remotion `<Audio/>` (`SfxAudio`) с точным расчетом фреймов (`startFrom`, кривая громкости, затухание fade-in/fade-out). Уровни strictly относительные: удары `−14 dB`, текстуры `−16 dB`, вуши `−20 dB`, музыка `−22 dB` с ducking. Не более 6 SFX на 30с. Зумы без звука!
+4. **LOCAL FONTS ONLY (NO ARIAL/ROBOTO):** Загружать шрифты строго локально из `assets/fonts/` (`Montserrat`, `Inter`, `Unbounded`, `Manrope`, `Caveat`) через нативные `@font-face` (`src/styles/fonts.css`). Системные дефолты (`Arial`, `Roboto`, `TheBoldFont`) КАТЕГОРИЧЕСКИ ЗАПРЕЩЕНЫ.
+5. **LOCAL SFX VIA <AUDIO/> WITH FRAME CALCULATION:** Использовать звуковые эффекты ТОЛЬКО из локальной папки `assets/sfx/` через компонент Remotion `<Audio/>` (`SfxAudio`) с точным расчетом фреймов (`startFrom`, кривая громкости, затухание fade-in/fade-out). Уровни strictly относительные: удары `−14 dB`, текстуры `−16 dB`, вуши `−20 dB`, музыка `−22 dB` с ducking. Не более 6 SFX на 30с. Зумы без звука!
 6. **REMOTION SPRING PHYSICS (NO CSS TRANSITIONS):** Категорически запрещены CSS-анимации (`@keyframes`) и обычные `transition: all`. Всё движение реализуется только математикой Remotion: `spring({ fps, frame, config: { damping, mass, stiffness } })` и `interpolate()` с овершутом/отскоком (2–5%).
 7. **ANTI-SLOP TEXTURING & CAMERA DRIFT:** Обязательный глобальный оверлей `<ProceduralNoiseOverlay/>` (SVG `<feTurbulence>`, непрозрачность 3–5%) поверх всех сцен против «стерильного векторного рендера». Легкий параллакс и плавный микро-дрифт камеры (`scale` от 1.0 до 1.03) за длительность сцены.
 8. **BEAT SHEET BEFORE CODE:** Агент обязан ПЕРВЫМ ШАГОМ всегда выводить JSON-структуру таймлайна (`beat_sheet.json`): тайминги сцен, кадры ударов (`hits`), смены ракурсов и точки запуска SFX, и ТОЛЬКО после утверждения структуры человеком писать рендер-компоненты.
@@ -47,8 +47,8 @@
 │   ├── 05-qa-checklist.md                   # Чек-лист контроля на 10 fps
 │   ├── 06-self-learning-notes.md            # Протокол самообучения на замечаниях
 │   ├── 07-creator-style-presets.md          # Стили авторов
-│   ├── 08-typography-pairings.md            # Шрифты: локальные assets/02_FONTS (запрет Arial/Roboto)
-│   ├── 09-sfx-choreography.md               # Звук: assets/01_SFX через <Audio/> с расчетом фреймов
+│   ├── 08-typography-pairings.md            # Шрифты: локальные assets/fonts (запрет Arial/Roboto)
+│   ├── 09-sfx-choreography.md               # Звук: assets/sfx через <Audio/> с расчетом фреймов
 │   ├── 10-hook-patterns.md                  # 6 архетипов хуков
 │   ├── 11-hook-library.md                   # Каталог хуков
 │   ├── 12-anti-slop.md                      # 8 правил anti-slop, процедурный шум и микро-дрифт
@@ -81,5 +81,6 @@
 - `python tools/plan_contact_sheet.py <plan.json>` — генерация контактного листа кадров до рендера.
 - `python tools/mix.py <voice.wav> <plan.json>` — сведение звука по относительным dB и сайдчейн.
 - `python tools/qa.py <video.mp4> [plan.json]` — автоматический аудит видео на 10 fps.
+- `python tools/check_paths.py` — валидация всех путей к ассетам и правилам в репозитории.
 - `python tools/sync_pinterest_references.py` — синхронизация каталога креативных референсов после добавления/удаления файлов.
-- **After Effects Build:** запуск `scripts/build_ae_project.jsx` или `scripts/import_to_ae.jsx` через `File -> Scripts -> Run Script File...`.
+- **After Effects Build:** запуск `scripts/build_ae_project.jsx` через `File -> Scripts -> Run Script File...`.

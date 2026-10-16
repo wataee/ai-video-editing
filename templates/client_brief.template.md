@@ -1,78 +1,68 @@
-# Client Brief — Intake Form
+# Client Intake Brief — Анкета клиента (Upwork / Прямые заказы)
 
-> **Usage:** Paste the raw Upwork job description below "RAW JOB POST", then ask Claude to fill the parsed fields automatically.
-
----
-
-## RAW JOB POST
-```
-[PASTE UPWORK JOB DESCRIPTION HERE]
-```
+> **Назначение:** Опросный лист для нового заказчика перед стартом монтажа.  
+> **Инструкция:** Скопируйте вопросы клиенту в чат Upwork или отправьте ссылкой/документом. Полученные ответы фиксируются в проекте клиента: `clients/<client_slug>/brief.json`.
 
 ---
 
-## PARSED OUTPUT (Claude fills this)
-
-### Project Identity
-- **client_slug:** `[e.g. john_doe_oct26]`
-- **platform:** `[ ] TikTok  [ ] Reels  [ ] Shorts  [ ] All`
-- **content_type:** `[ ] talking_head  [ ] product_demo  [ ] tutorial  [ ] storytime  [ ] montage`
-- **duration_target:** `[ ] 15s  [ ] 30s  [ ] 60s  [ ] 90s`
-- **language:** `[ ] EN  [ ] RU  [ ] Other: ___`
-
-### Style Mapping
-- **creator_archetype:** `[from 07-creator-style-presets.md]`
-- **tone:** `[ ] educational  [ ] hype  [ ] calm_authority  [ ] storytime  [ ] comedic`
-- **palette:** `[palette name from assets/design-system/palettes.json]`
-- **hook_pattern:** `[hook archetype # from 10-hook-patterns.md]`
-
-### Logistics
-- **deadline:** `YYYY-MM-DD`
-- **budget:** `$___`
-- **revision_rounds:** `2 (standard)`
-- **raw_footage_provided:** `[ ] Yes  [ ] No — client shoots on direction`
-- **voice_over:** `[ ] client records  [ ] synth (synth_speech.ps1)  [ ] existing`
-
-### Source Material
-- **reference_links:** 
-  - 
-- **raw_files_location:** `clients/<slug>/raw/`
-- **brand_kit:** `[ ] Logo  [ ] Colors  [ ] Fonts` → `clients/<slug>/brand/`
-
-### Deliverables
-- [ ] 1080×1920 MP4 (H.264, 30fps)
-- [ ] Captions burned in
-- [ ] SFX mixed
-- [ ] Optional: ProRes stems for client's editor
-
-### Notes / Special Requests
-```
-[paste any specific client notes]
-```
+## 1. Общая информация и площадки
+- **Название проекта / Бренд клиента:** `[Имя спикера или название компании]`
+- **Основная платформа публикации:**
+  - [ ] YouTube Shorts
+  - [ ] Instagram Reels
+  - [ ] TikTok
+  - [ ] VK Клипы / Дзен
+  - [ ] Мультиформат (все платформы)
+- **Целевая аудитория (ЦА):** `[Кто смотрит: предприниматели, студенты, специалисты, широкая аудитория]`
+- **Главная цель ролика:**
+  - [ ] Личный бренд и экспертный охват
+  - [ ] Продажа курса / услуги / консультации (с призывом к действию CTA)
+  - [ ] Рост подписчиков / вирусный трафик
+  - [ ] Промо подкаста / анонс большого выпуска
 
 ---
 
-## AUTO-GENERATED brief.json
+## 2. Стилистика и референсы
+- **Референсы, которые НРАВЯТСЯ (1–2 ссылки):**  
+  `1. [Ссылка на ролик]: что именно нравится (темп, шрифты, саунд-дизайн, плашки)`  
+  `2. [Ссылка на ролик]: что именно нравится`
+- **Референсы, которые НЕ НРАВЯТСЯ (анти-примеры):**  
+  `1. [Ссылка]: что раздражает (например: навязчивые эмодзи, кислотные цвета, слишком громкая музыка)`
+- **Брендбук и фирменные цвета:**
+  - Цветовая палитра: `[Основной цвет фона, цвет текста, 1 акцентный цвет (желтый, зеленый, синий)]`
+  - Логотип / Водяной знак: `[Приложен в clients/<slug>/brand/ или не требуется]`
+  - Предпочитаемый шрифт: `[Montserrat / Inter / Manrope или собственный OTF/TTF файл]`
 
-> After filling above, Claude will write this to `clients/<slug>/brief.json`:
+---
 
-```json
-{
-  "client_slug": "",
-  "platform": "",
-  "content_type": "",
-  "duration_target_s": 30,
-  "language": "en",
-  "creator_archetype": "",
-  "tone": "",
-  "palette": "",
-  "hook_pattern": 1,
-  "deadline": "",
-  "budget_usd": 0,
-  "revision_rounds": 2,
-  "raw_footage_provided": true,
-  "voice_path": null,
-  "reference_links": [],
-  "approved": false
-}
-```
+## 3. Терминология и глоссарий
+- **Специфические термины, аббревиатуры и имена собственные:**  
+  `[Перечислите правильное написание имен, брендов, англицизмов, чтобы авто-субтитры не допустили ошибок. Например: Remotion, SaaS, EBITDA, B2B, CRM]`
+
+---
+
+## 4. Ограничения и запреты («Чего делать нельзя»)
+- [ ] Не использовать выпрыгивающие 3D эмодзи
+- [ ] Не использовать агрессивные звуки («вуши» каждые 2 секунды)
+- [ ] Не обрезать паузы слишком агрессивно (сохранять дыхание)
+- [ ] Не менять естественный тон кожи спикера
+- [ ] Другие табу клиента: `[...]`
+
+---
+
+## 5. Права, конфиденциальность и отношение к ИИ-инструментам
+- **Права на материал:** Клиент гарантирует, что обладает полными авторскими правами на предоставленные исходники (видео, аудио, логотипы).
+- **Соглашение о неразглашении (NDA):**
+  - [ ] Стандартный режим (ролик публикуется клиентом в открытом доступе)
+  - [ ] Строгое NDA (материал не может быть включен в публичное портфолио монтажера до официального релиза)
+- **Использование инструментов автоматизации и ИИ:**
+  - Разрешено ли использование локальных инструментов автоматизации (распознавание речи Whisper, скриптыRemotion для пословных субтитров, фильтры шумоподавления)?
+  - [ ] Да, разрешено (при условии локальной обработки без передачи данных в публичные нейросети)
+  - [ ] Только ручной монтаж в Adobe Premiere Pro / After Effects без сторонних утилит
+
+---
+
+## 6. Логистика и формат сдачи
+- **Ссылка на исходники:** `[Google Drive / Dropbox / Яндекс Диск / Файл в чате Upwork]`
+- **Срок сдачи (Дедлайн):** `[ГГГГ-ММ-ДД]`
+- **Количество раундов правок:** 2 включенных раунда по таймлайну.

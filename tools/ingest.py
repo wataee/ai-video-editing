@@ -1,6 +1,7 @@
 import os
 import sys
 import json
+import argparse
 import subprocess
 import tempfile
 from pathlib import Path
@@ -20,7 +21,7 @@ def probe_video(video_path):
         "ffprobe", "-v", "error",
         "-select_streams", "v:0",
         "-show_entries",
-        "stream=width,height,pix_fmt,color_space,color_transfer,color_primaries,r_frame_rate,avg_frame_rate,duration:stream_tags=rotate",
+        "stream=width,height,pix_fmt,color_space,color_transfer,color_primaries,r_frame_rate,avg_frame_rate,duration:stream_tags=rotate:stream_side_data_list",
         "-show_entries", "format=duration",
         "-of", "json", str(video_path)
     ]
@@ -36,7 +37,12 @@ def probe_video(video_path):
     color_transfer = stream.get("color_transfer", "unknown")
     color_primaries = stream.get("color_primaries", "unknown")
     pix_fmt = stream.get("pix_fmt", "unknown")
+    
     rotate = stream.get("tags", {}).get("rotate", "0")
+    if rotate == "0" and "side_data_list" in stream:
+        for sd in stream["side_data_list"]:
+            if "rotation" in sd:
+                rotate = str(int(sd["rotation"]))
 
     is_hdr = (
         color_transfer in ["arib-std-b67", "smpte2084"]
@@ -45,9 +51,20 @@ def probe_video(video_path):
     )
     is_vfr = abs(r_fps - avg_fps) > 0.05
 
+    raw_w = stream.get("width", 1920)
+    raw_h = stream.get("height", 1080)
+    is_rotated = rotate in ["90", "-90", "270", "-270"]
+    eff_w = raw_h if is_rotated else raw_w
+    eff_h = raw_w if is_rotated else raw_h
+    is_horizontal = eff_w > eff_h
+
     return {
-        "width": stream.get("width"),
-        "height": stream.get("height"),
+        "width": raw_w,
+        "height": raw_h,
+        "effective_width": eff_w,
+        "effective_height": eff_h,
+        "is_horizontal": is_horizontal,
+        "aspect_ratio": f"{round(eff_w / max(1, eff_h), 2)}:1",
         "pix_fmt": pix_fmt,
         "color_transfer": color_transfer,
         "color_primaries": color_primaries,
@@ -61,19 +78,27 @@ def probe_video(video_path):
         "rotate": rotate
     }
 
-def convert_hdr_to_sdr(input_file, out_sdr, out_proxy, probe_info):
+def convert_hdr_to_sdr(input_file, out_sdr, out_proxy, probe_info, denoise=False):
     vf_libplacebo = (
         "libplacebo=tonemapping=bt.2390:colorspace=bt709:color_primaries=bt709:"
         "color_trc=bt709:range=tv:format=yuv420p,fps=fps=30"
     )
+    
+    audio_filters = []
+    if denoise:
+        audio_filters.append("highpass=f=80,lowpass=f=12000,afftdn=nf=-25")
+    
     cmd_sdr = [
         "ffmpeg", "-y", "-i", str(input_file),
         "-vf", vf_libplacebo,
         "-c:v", "libx264", "-crf", "18", "-preset", "fast",
-        "-c:a", "aac", "-b:a", "192k",
-        "-fps_mode", "cfr", "-r", "30",
-        str(out_sdr)
     ]
+    if audio_filters:
+        cmd_sdr.extend(["-af", ",".join(audio_filters), "-c:a", "aac", "-b:a", "192k"])
+    else:
+        cmd_sdr.extend(["-c:a", "aac", "-b:a", "192k"])
+    cmd_sdr.extend(["-fps_mode", "cfr", "-r", "30", str(out_sdr)])
+
     res = subprocess.run(cmd_sdr, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
     if res.returncode != 0:
         vf_zscale = (
@@ -84,10 +109,12 @@ def convert_hdr_to_sdr(input_file, out_sdr, out_proxy, probe_info):
             "ffmpeg", "-y", "-i", str(input_file),
             "-vf", vf_zscale,
             "-c:v", "libx264", "-crf", "18", "-preset", "fast",
-            "-c:a", "aac", "-b:a", "192k",
-            "-fps_mode", "cfr", "-r", "30",
-            str(out_sdr)
         ]
+        if audio_filters:
+            cmd_sdr_fallback.extend(["-af", ",".join(audio_filters), "-c:a", "aac", "-b:a", "192k"])
+        else:
+            cmd_sdr_fallback.extend(["-c:a", "aac", "-b:a", "192k"])
+        cmd_sdr_fallback.extend(["-fps_mode", "cfr", "-r", "30", str(out_sdr)])
         res_fb = subprocess.run(cmd_sdr_fallback, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
         if res_fb.returncode != 0:
             raise RuntimeError(f"HDR to SDR conversion failed:\n{res.stderr}\nFallback:\n{res_fb.stderr}")
@@ -104,7 +131,7 @@ def convert_hdr_to_sdr(input_file, out_sdr, out_proxy, probe_info):
         raise RuntimeError(f"Proxy generation failed:\n{res_prx.stderr}")
 
 def analyze_exposure(video_path, duration):
-    timestamps = np.linspace(0.5, max(1.0, duration - 1.0), 20)
+    timestamps = np.linspace(0.5, max(1.0, duration - 1.0), min(20, max(3, int(duration * 2))))
     overexp_center_list = []
     underexp_center_list = []
     overexp_full_list = []
@@ -119,7 +146,7 @@ def analyze_exposure(video_path, duration):
                 "-vframes", "1",
                 str(frame_path)
             ]
-            subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=True)
+            subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             if not frame_path.exists():
                 continue
 
@@ -197,17 +224,18 @@ def generate_comparison_sheet(raw_path, sdr_path, out_compare_path, duration):
             final_sheet.paste(rows[3], (1080, 960))
         final_sheet.save(out_compare_path)
 
-def ingest(input_file):
+def ingest(input_file, output_dir=None, denoise=False, compare=False):
     root = Path(__file__).resolve().parent.parent
-    in_path = Path(input_file)
-    if not in_path.is_absolute():
-        in_path = root / in_path
+    in_path = Path(input_file).resolve()
 
     if not in_path.exists():
         raise FileNotFoundError(f"Input file not found at {in_path}")
 
     base_name = in_path.stem
-    out_dir = root / "work" / "ingest"
+    if output_dir:
+        out_dir = Path(output_dir).resolve()
+    else:
+        out_dir = root / "work" / "ingest"
     out_dir.mkdir(parents=True, exist_ok=True)
 
     out_sdr = out_dir / f"{base_name}_sdr_cfr30.mp4"
@@ -218,16 +246,20 @@ def ingest(input_file):
     probe = probe_video(in_path)
 
     if probe["is_hdr"] or probe["is_vfr"]:
-        convert_hdr_to_sdr(in_path, out_sdr, out_proxy, probe)
+        convert_hdr_to_sdr(in_path, out_sdr, out_proxy, probe, denoise=denoise)
     else:
         cmd_copy = [
             "ffmpeg", "-y", "-i", str(in_path),
             "-c:v", "libx264", "-crf", "18", "-preset", "fast",
             "-fps_mode", "cfr", "-r", "30",
-            "-c:a", "copy",
-            str(out_sdr)
         ]
+        if denoise:
+            cmd_copy.extend(["-af", "highpass=f=80,lowpass=f=12000,afftdn=nf=-25", "-c:a", "aac", "-b:a", "192k"])
+        else:
+            cmd_copy.extend(["-c:a", "copy"])
+        cmd_copy.append(str(out_sdr))
         subprocess.run(cmd_copy, check=True)
+
         cmd_proxy = [
             "ffmpeg", "-y", "-i", str(out_sdr),
             "-vf", "scale=720:1280:force_original_aspect_ratio=decrease,pad=720:1280:(ow-iw)/2:(oh-ih)/2",
@@ -239,12 +271,13 @@ def ingest(input_file):
 
     exposure_data = analyze_exposure(out_sdr, probe["duration"])
 
-    if "2137" in base_name:
+    if compare and probe["duration"] >= 3.0:
         generate_comparison_sheet(in_path, out_sdr, out_compare, probe["duration"])
 
     report = {
         "source_file": str(in_path),
         "source_metadata": probe,
+        "denoise_applied": denoise,
         "ingest_outputs": {
             "sdr_cfr30": str(out_sdr),
             "proxy_720p": str(out_proxy),
@@ -259,8 +292,15 @@ def ingest(input_file):
     print(json.dumps(report, indent=2, ensure_ascii=False))
     return report
 
+def main():
+    parser = argparse.ArgumentParser(description="Hardware-calibrated SDR Rec.709 Ingest and Proxy Generator")
+    parser.add_argument("input_file", help="Path to raw video")
+    parser.add_argument("--output_dir", "--output-dir", "-o", default=None, help="Directory for output files")
+    parser.add_argument("--denoise", action="store_true", help="Apply gentle audio denoise filter")
+    parser.add_argument("--compare", action="store_true", help="Generate HDR vs SDR comparison contact sheet")
+    args = parser.parse_args()
+
+    ingest(args.input_file, output_dir=args.output_dir, denoise=args.denoise, compare=args.compare)
+
 if __name__ == "__main__":
-    if len(sys.argv) < 2:
-        print("Usage: python tools/ingest.py <raw_video_file>")
-        sys.exit(1)
-    ingest(sys.argv[1])
+    main()

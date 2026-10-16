@@ -45,7 +45,7 @@ export const ensureLocalFonts = async (): Promise<void> => {
 export const sanitizeFontFamily = (requested: string): string => {
   for (const forbidden of FORBIDDEN_FALLBACK_FONTS) {
     if (requested.toLowerCase().includes(forbidden.toLowerCase())) {
-      throw new Error(`[Font Error] Forbidden font '${requested}' detected. Use local fonts from assets/02_FONTS/.`);
+      throw new Error(`[Font Error] Forbidden font '${requested}' detected. Use local fonts from assets/fonts/.`);
     }
   }
   return requested;

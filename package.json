@@ -13,6 +13,8 @@
     "render:clip": "python tools/render_clip.py",
     "render:greenscreen": "remotion render src/index.ts GreenScreenOverlay out/greenscreen_overlay.mp4 --props=\"{\\\"chromaMode\\\":true}\"",
     "pipeline": "python tools/pipeline.py",
+    "batch": "python tools/batch_render.py",
+    "check": "python tools/check_paths.py",
     "upgrade": "remotion upgrade"
   },
   "dependencies": {

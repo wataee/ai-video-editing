@@ -1,7 +1,7 @@
 # 08. Typography Scale & Pairing Matrix (9:16)
 
 ## 1. Hard Rule: Local Fonts Only (No Arial / Roboto)
-- **Local Source**: Все шрифты обязаны загружаться исключительно локально из `assets/02_FONTS/` (`assets/fonts/`) через нативные правила `@font-face` в `src/styles/fonts.css` или `@remotion/google-fonts`.
+- **Local Source**: Все шрифты обязаны загружаться исключительно локально из `assets/fonts/` через нативные правила `@font-face` в `src/styles/fonts.css` или `@remotion/google-fonts`.
 - **Approved Font Stack**:
   - **Headlines / Key Hook**: `Montserrat` (ExtraBold/Black) или `Unbounded` (Black).
   - **Body / Subtitles / Captions**: `Manrope` (SemiBold/Bold) или `Inter` (SemiBold/Bold).

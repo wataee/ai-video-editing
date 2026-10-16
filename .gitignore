@@ -46,6 +46,7 @@ out/
 *.log
 _tmp_download/
 tests/fixtures/
+tests/out_robustness/
 
 # Private references
 references/library/_private/

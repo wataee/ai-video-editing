@@ -2,7 +2,7 @@
 
 ## 1. Role of After Effects in Pipeline
 - **Strictly Secondary**: Remotion is the primary engine. After Effects is used ONLY when an editable `.aep` project file is requested or for specialized complex motion graphics that cannot be created parametrically in React.
-- **Monolithic Script Execution**: Interaction with After Effects is performed EXCLUSIVELY by generating a self-contained ExtendScript file (`scripts/build_ae_project.jsx` or `scripts/import_to_ae.jsx`). The user executes the script manually via `File -> Scripts -> Run Script File...`.
+- **Monolithic Script Execution**: Interaction with After Effects is performed EXCLUSIVELY by generating a self-contained ExtendScript file (`scripts/build_ae_project.jsx`). The user executes the script manually via `File -> Scripts -> Run Script File...`.
 - **Mandatory Undo Group**: All ExtendScript code must be wrapped in `app.beginUndoGroup("AI Video Build")` and `app.endUndoGroup()`.
 - **No MCP Bridge**: Standalone MCP servers, background daemons, or socket bridges for AE are disabled.
 - **Mandatory Approval First**: No After Effects composition may be assembled without an approved `beat_sheet.json` or `edit_plan.json` (`approved: true`).

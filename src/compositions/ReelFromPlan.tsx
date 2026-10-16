@@ -37,6 +37,13 @@ export interface ReelPlanBeat {
   }>;
 }
 
+export interface ReframeKeyframe {
+  frame: number;
+  time_sec: number;
+  x_center: number;
+  y_center: number;
+}
+
 export interface ReelPlanData {
   project_id: string;
   target_duration_sec: number;
@@ -44,17 +51,24 @@ export interface ReelPlanData {
   proxy_path?: string;
   approved?: boolean;
   style_preset?: string;
+  reframe?: {
+    keyframes: ReframeKeyframe[];
+  };
   beats: ReelPlanBeat[];
 }
 
 export interface ReelFromPlanProps {
   plan: ReelPlanData;
   videoSrc?: string;
+  reframe?: {
+    keyframes: ReframeKeyframe[];
+  };
 }
 
 export const ReelFromPlan: React.FC<ReelFromPlanProps> = ({
   plan,
   videoSrc,
+  reframe,
 }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
@@ -92,6 +106,31 @@ export const ReelFromPlan: React.FC<ReelFromPlanProps> = ({
   });
   const finalScale = cameraScale * microDriftScale;
 
+  const reframeData = reframe || plan?.reframe;
+  let reframeX = 50;
+  let reframeY = 40;
+  if (reframeData && reframeData.keyframes && reframeData.keyframes.length > 0) {
+    const kfs = reframeData.keyframes;
+    const nextIdx = kfs.findIndex((k) => k.frame >= frame);
+    if (nextIdx === -1) {
+      const last = kfs[kfs.length - 1];
+      reframeX = last.x_center * 100;
+      reframeY = last.y_center * 100;
+    } else if (nextIdx === 0) {
+      reframeX = kfs[0].x_center * 100;
+      reframeY = kfs[0].y_center * 100;
+    } else {
+      const prev = kfs[nextIdx - 1];
+      const next = kfs[nextIdx];
+      const span = Math.max(1, next.frame - prev.frame);
+      const factor = (frame - prev.frame) / span;
+      const interpX = prev.x_center + factor * (next.x_center - prev.x_center);
+      const interpY = prev.y_center + factor * (next.y_center - prev.y_center);
+      reframeX = interpX * 100;
+      reframeY = interpY * 100;
+    }
+  }
+
   const resolvedVideo = videoSrc || plan?.sdr_path || plan?.proxy_path;
   const cleanVideoSrc = resolvedVideo
     ? resolvedVideo.replace(/^[a-zA-Z]:[\\\/].*?AI-Video-Editing[\\\/]/, "").replace(/\\/g, "/")
@@ -106,7 +145,7 @@ export const ReelFromPlan: React.FC<ReelFromPlanProps> = ({
           height: "100%",
           overflow: "hidden",
           transform: `scale(${finalScale})`,
-          transformOrigin: "center 40%",
+          transformOrigin: `${reframeX}% ${reframeY}%`,
         }}
       >
         {cleanVideoSrc ? (
@@ -116,6 +155,7 @@ export const ReelFromPlan: React.FC<ReelFromPlanProps> = ({
               width: "100%",
               height: "100%",
               objectFit: "cover",
+              objectPosition: `${reframeX}% ${reframeY}%`,
             }}
           />
         ) : (

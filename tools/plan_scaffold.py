@@ -74,6 +74,75 @@ def build_scaffold(words_data: list, project_id: str = "clip", proxy_path: str =
     }
     return plan
 
+def split_into_multiple_clips(master_plan: dict, max_clips: int) -> list[dict]:
+    beats = master_plan.get("beats", [])
+    if not beats:
+        return [master_plan]
+    
+    total_beats = len(beats)
+    n_clips = min(max_clips, max(1, total_beats // 4))
+    if n_clips <= 1:
+        return [master_plan]
+    
+    beats_per_clip = max(1, len(beats) // n_clips)
+    clip_plans = []
+    
+    for i in range(n_clips):
+        start_idx = i * beats_per_clip
+        if i == n_clips - 1:
+            chunk_beats = beats[start_idx:]
+        else:
+            chunk_beats = beats[start_idx : start_idx + beats_per_clip]
+            
+        if not chunk_beats:
+            continue
+            
+        t0 = chunk_beats[0]["time_range"][0]
+        reindexed_beats = []
+        for new_idx, b in enumerate(chunk_beats):
+            # Normalise time range relative to clip start
+            rel_start = round(b["time_range"][0] - t0, 2)
+            rel_end = round(b["time_range"][1] - t0, 2)
+            rel_words = []
+            for w in b.get("words", []):
+                rel_words.append({
+                    "text": w["text"],
+                    "start_sec": round(w["start_sec"] - t0, 2),
+                    "end_sec": round(w["end_sec"] - t0, 2)
+                })
+            
+            reindexed_beats.append({
+                "beat_index": new_idx,
+                "time_range": [rel_start, rel_end],
+                "duration_sec": b["duration_sec"],
+                "line": b["line"],
+                "words": rel_words,
+                "visual": b.get("visual", "TODO"),
+                "proof_source": b.get("proof_source"),
+                "camera": b.get("camera", "TODO"),
+                "cut_motivation": b.get("cut_motivation", "TODO"),
+                "sfx": b.get("sfx", "TODO"),
+                "why": b.get("why", "TODO")
+            })
+            
+        clip_dur = reindexed_beats[-1]["time_range"][1]
+        clip_plan = {
+            "project_id": f"{master_plan['project_id']}_clip_{i+1:02d}",
+            "clip_number": i + 1,
+            "version": master_plan.get("version", "2.2"),
+            "engine": master_plan.get("engine", "remotion"),
+            "approved": False,
+            "source_time_offset_sec": t0,
+            "target_duration_sec": clip_dur,
+            "proxy_path": master_plan.get("proxy_path"),
+            "sdr_path": master_plan.get("sdr_path"),
+            "style_preset": master_plan.get("style_preset", "editorial-authority"),
+            "beats": reindexed_beats
+        }
+        clip_plans.append(clip_plan)
+        
+    return clip_plans
+
 def validate_plan_schema(plan: dict) -> tuple[bool, str]:
     required_root = ["project_id", "version", "engine", "approved", "target_duration_sec", "beats"]
     for r in required_root:
@@ -102,6 +171,7 @@ def main():
     parser.add_argument("--output", "-o", default=None, help="Output edit_plan.json path")
     parser.add_argument("--proxy", default=None, help="Path to proxy video")
     parser.add_argument("--sdr", default=None, help="Path to SDR video")
+    parser.add_argument("--max-clips", type=int, default=1, help="Split long transcript into N distinct clip plans (3-10)")
     args = parser.parse_args()
 
     in_path = Path(args.transcript_json).resolve()
@@ -117,22 +187,34 @@ def main():
         sys.exit(1)
 
     proj_id = args.project_id or in_path.stem.replace("_proxy", "").replace("_sdr_cfr30", "")
-    out_path = Path(args.output).resolve() if args.output else (ROOT / "work" / "plan" / f"{proj_id}_plan_scaffold.json")
-    out_path.parent.mkdir(parents=True, exist_ok=True)
+    out_dir = Path(args.output).resolve().parent if args.output else (ROOT / "work" / "plan")
+    out_dir.mkdir(parents=True, exist_ok=True)
 
-    scaffold = build_scaffold(words_data, project_id=proj_id, proxy_path=args.proxy, sdr_path=args.sdr)
+    master_scaffold = build_scaffold(words_data, project_id=proj_id, proxy_path=args.proxy, sdr_path=args.sdr)
 
-    is_valid, err_msg = validate_plan_schema(scaffold)
+    if args.max_clips > 1:
+        clips = split_into_multiple_clips(master_scaffold, max_clips=args.max_clips)
+        generated_paths = []
+        for c in clips:
+            c_path = out_dir / f"{c['project_id']}_plan.json"
+            with open(c_path, "w", encoding="utf-8") as f:
+                json.dump(c, f, indent=2, ensure_ascii=False)
+            generated_paths.append(c_path)
+            print(f"Clip plan #{c.get('clip_number')} created: {c_path.name} ({len(c['beats'])} beats, {c['target_duration_sec']}s)")
+        return
+
+    out_path = Path(args.output).resolve() if args.output else (out_dir / f"{proj_id}_plan_scaffold.json")
+    is_valid, err_msg = validate_plan_schema(master_scaffold)
     if not is_valid:
         print(f"Schema Validation Error: {err_msg}", file=sys.stderr)
         sys.exit(1)
 
     with open(out_path, "w", encoding="utf-8") as f:
-        json.dump(scaffold, f, indent=2, ensure_ascii=False)
+        json.dump(master_scaffold, f, indent=2, ensure_ascii=False)
 
     print(f"Plan scaffold successfully created: {out_path}")
-    print(f"  Beats: {len(scaffold['beats'])}")
-    print(f"  Total Duration: {scaffold['target_duration_sec']}s")
+    print(f"  Beats: {len(master_scaffold['beats'])}")
+    print(f"  Total Duration: {master_scaffold['target_duration_sec']}s")
 
     beat_table_py = ROOT / "tools" / "beat_table.py"
     if beat_table_py.exists():
