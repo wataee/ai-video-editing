@@ -39,6 +39,7 @@ yarn-error.log*
 work/
 _archive/
 _sandbox/
+_scratch/
 out/
 .tmp/
 *.tmp

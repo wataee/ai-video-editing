@@ -1,0 +1,1256 @@
+{
+  "01_business_minimal": {
+    "title": "Бизнес & Экспертный минимализм (Clean Talking Head)",
+    "path": "references/pinterest/01_business_minimal",
+    "blueprint": "references/pinterest/01_business_minimal/assembly_blueprint.md",
+    "manifest": "references/pinterest/01_business_minimal/style_manifest.md",
+    "media_files": [
+      {
+        "name": "biz_saas_explainer_3d_wireframe.jpg",
+        "path": "references/pinterest/01_business_minimal/biz_saas_explainer_3d_wireframe.jpg",
+        "size_kb": 102.4,
+        "role": "ROLE_CALLOUT_UI (Плашки с метриками, графики, данные)"
+      },
+      {
+        "name": "business_minimal_01.jpg",
+        "path": "references/pinterest/01_business_minimal/business_minimal_01.jpg",
+        "size_kb": 55.5,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "business_minimal_02.jpg",
+        "path": "references/pinterest/01_business_minimal/business_minimal_02.jpg",
+        "size_kb": 61.3,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "business_minimal_03.jpg",
+        "path": "references/pinterest/01_business_minimal/business_minimal_03.jpg",
+        "size_kb": 39.4,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "business_minimal_04.jpg",
+        "path": "references/pinterest/01_business_minimal/business_minimal_04.jpg",
+        "size_kb": 37.0,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "business_minimal_07.jpg",
+        "path": "references/pinterest/01_business_minimal/business_minimal_07.jpg",
+        "size_kb": 69.5,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "business_minimal_08.jpg",
+        "path": "references/pinterest/01_business_minimal/business_minimal_08.jpg",
+        "size_kb": 30.9,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "davinci_talking_head_crop_subtitles.jpg",
+        "path": "references/pinterest/01_business_minimal/davinci_talking_head_crop_subtitles.jpg",
+        "size_kb": 71.8,
+        "role": "ROLE_SUBTITLE_ENGINE (Титры и подача спикера)"
+      },
+      {
+        "name": "production_timeline_breakdown_card.jpg",
+        "path": "references/pinterest/01_business_minimal/production_timeline_breakdown_card.jpg",
+        "size_kb": 90.3,
+        "role": "ROLE_DEVICE_MOCKUP (3D/2D презентация интерфейса и продукта)"
+      },
+      {
+        "name": "talking_head_flag_halo_callout.jpg",
+        "path": "references/pinterest/01_business_minimal/talking_head_flag_halo_callout.jpg",
+        "size_kb": 61.0,
+        "role": "ROLE_CALLOUT_UI (Плашки с метриками, графики, данные)"
+      },
+      {
+        "name": "talking_head_hook_attention.jpg",
+        "path": "references/pinterest/01_business_minimal/talking_head_hook_attention.jpg",
+        "size_kb": 77.3,
+        "role": "ROLE_HOOK_HERO (Захват внимания, 0-3s)"
+      },
+      {
+        "name": "viral_talking_head_business.jpg",
+        "path": "references/pinterest/01_business_minimal/viral_talking_head_business.jpg",
+        "size_kb": 67.5,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      }
+    ],
+    "cards": [
+      {
+        "name": "pin_business_minimal_01.md",
+        "path": "references/pinterest/01_business_minimal/pin_business_minimal_01.md"
+      },
+      {
+        "name": "pin_business_minimal_02.md",
+        "path": "references/pinterest/01_business_minimal/pin_business_minimal_02.md"
+      },
+      {
+        "name": "pin_business_minimal_03.md",
+        "path": "references/pinterest/01_business_minimal/pin_business_minimal_03.md"
+      },
+      {
+        "name": "pin_business_minimal_04.md",
+        "path": "references/pinterest/01_business_minimal/pin_business_minimal_04.md"
+      },
+      {
+        "name": "pin_business_minimal_05.md",
+        "path": "references/pinterest/01_business_minimal/pin_business_minimal_05.md"
+      },
+      {
+        "name": "pin_business_minimal_06.md",
+        "path": "references/pinterest/01_business_minimal/pin_business_minimal_06.md"
+      },
+      {
+        "name": "pin_business_minimal_07.md",
+        "path": "references/pinterest/01_business_minimal/pin_business_minimal_07.md"
+      },
+      {
+        "name": "pin_business_minimal_08.md",
+        "path": "references/pinterest/01_business_minimal/pin_business_minimal_08.md"
+      },
+      {
+        "name": "ref_01_split_metric_callout.md",
+        "path": "references/pinterest/01_business_minimal/ref_01_split_metric_callout.md"
+      },
+      {
+        "name": "ref_02_document_highlight_proof.md",
+        "path": "references/pinterest/01_business_minimal/ref_02_document_highlight_proof.md"
+      },
+      {
+        "name": "ref_talking_head_hook_attention.md",
+        "path": "references/pinterest/01_business_minimal/ref_talking_head_hook_attention.md"
+      },
+      {
+        "name": "ref_viral_talking_head_business.md",
+        "path": "references/pinterest/01_business_minimal/ref_viral_talking_head_business.md"
+      }
+    ]
+  },
+  "02_kinetic_viral_retention": {
+    "title": "Кинетическая типографика & Retention (Hormozi / Viral)",
+    "path": "references/pinterest/02_kinetic_viral_retention",
+    "blueprint": "references/pinterest/02_kinetic_viral_retention/assembly_blueprint.md",
+    "manifest": "references/pinterest/02_kinetic_viral_retention/style_manifest.md",
+    "media_files": [
+      {
+        "name": "alex_hormozi_billion_dollar_edit.jpg",
+        "path": "references/pinterest/02_kinetic_viral_retention/alex_hormozi_billion_dollar_edit.jpg",
+        "size_kb": 68.4,
+        "role": "ROLE_HOOK_HERO (Захват внимания, 0-3s)"
+      },
+      {
+        "name": "kinetic_typography_grid.jpg",
+        "path": "references/pinterest/02_kinetic_viral_retention/kinetic_typography_grid.jpg",
+        "size_kb": 50.3,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "kinetic_viral_01.jpg",
+        "path": "references/pinterest/02_kinetic_viral_retention/kinetic_viral_01.jpg",
+        "size_kb": 50.3,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "kinetic_viral_02.jpg",
+        "path": "references/pinterest/02_kinetic_viral_retention/kinetic_viral_02.jpg",
+        "size_kb": 68.4,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "kinetic_viral_03.jpg",
+        "path": "references/pinterest/02_kinetic_viral_retention/kinetic_viral_03.jpg",
+        "size_kb": 37.5,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "kinetic_viral_04.jpg",
+        "path": "references/pinterest/02_kinetic_viral_retention/kinetic_viral_04.jpg",
+        "size_kb": 53.2,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "kinetic_viral_06.jpg",
+        "path": "references/pinterest/02_kinetic_viral_retention/kinetic_viral_06.jpg",
+        "size_kb": 76.4,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "mahabur_viral_reel.jpg",
+        "path": "references/pinterest/02_kinetic_viral_retention/mahabur_viral_reel.jpg",
+        "size_kb": 63.8,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "mahabur_viral_reels_kinetic.jpg",
+        "path": "references/pinterest/02_kinetic_viral_retention/mahabur_viral_reels_kinetic.jpg",
+        "size_kb": 63.8,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "money_typography_animation.jpg",
+        "path": "references/pinterest/02_kinetic_viral_retention/money_typography_animation.jpg",
+        "size_kb": 55.2,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "short_form_retention_burst.jpg",
+        "path": "references/pinterest/02_kinetic_viral_retention/short_form_retention_burst.jpg",
+        "size_kb": 37.5,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "talking_head_lime_bold_captions.jpg",
+        "path": "references/pinterest/02_kinetic_viral_retention/talking_head_lime_bold_captions.jpg",
+        "size_kb": 61.3,
+        "role": "ROLE_SUBTITLE_ENGINE (Титры и подача спикера)"
+      },
+      {
+        "name": "viral_money_statue_cutout.jpg",
+        "path": "references/pinterest/02_kinetic_viral_retention/viral_money_statue_cutout.jpg",
+        "size_kb": 55.5,
+        "role": "ROLE_HOOK_HERO (Захват внимания, 0-3s)"
+      }
+    ],
+    "cards": [
+      {
+        "name": "pin_kinetic_viral_01.md",
+        "path": "references/pinterest/02_kinetic_viral_retention/pin_kinetic_viral_01.md"
+      },
+      {
+        "name": "pin_kinetic_viral_02.md",
+        "path": "references/pinterest/02_kinetic_viral_retention/pin_kinetic_viral_02.md"
+      },
+      {
+        "name": "pin_kinetic_viral_03.md",
+        "path": "references/pinterest/02_kinetic_viral_retention/pin_kinetic_viral_03.md"
+      },
+      {
+        "name": "pin_kinetic_viral_04.md",
+        "path": "references/pinterest/02_kinetic_viral_retention/pin_kinetic_viral_04.md"
+      },
+      {
+        "name": "pin_kinetic_viral_05.md",
+        "path": "references/pinterest/02_kinetic_viral_retention/pin_kinetic_viral_05.md"
+      },
+      {
+        "name": "pin_kinetic_viral_06.md",
+        "path": "references/pinterest/02_kinetic_viral_retention/pin_kinetic_viral_06.md"
+      },
+      {
+        "name": "ref_01_word_bounce_sticker.md",
+        "path": "references/pinterest/02_kinetic_viral_retention/ref_01_word_bounce_sticker.md"
+      },
+      {
+        "name": "ref_02_cutout_mask_punchin.md",
+        "path": "references/pinterest/02_kinetic_viral_retention/ref_02_cutout_mask_punchin.md"
+      },
+      {
+        "name": "ref_kinetic_typography_grid.md",
+        "path": "references/pinterest/02_kinetic_viral_retention/ref_kinetic_typography_grid.md"
+      },
+      {
+        "name": "ref_mahabur_viral_reels_kinetic.md",
+        "path": "references/pinterest/02_kinetic_viral_retention/ref_mahabur_viral_reels_kinetic.md"
+      },
+      {
+        "name": "ref_money_typography_animation.md",
+        "path": "references/pinterest/02_kinetic_viral_retention/ref_money_typography_animation.md"
+      },
+      {
+        "name": "ref_short_form_retention_burst.md",
+        "path": "references/pinterest/02_kinetic_viral_retention/ref_short_form_retention_burst.md"
+      }
+    ]
+  },
+  "03_vox_documentary_story": {
+    "title": "Vox-документалистика & Сторителлинг (Paper, Charts, Parallax)",
+    "path": "references/pinterest/03_vox_documentary_story",
+    "blueprint": "references/pinterest/03_vox_documentary_story/assembly_blueprint.md",
+    "manifest": "references/pinterest/03_vox_documentary_story/style_manifest.md",
+    "media_files": [
+      {
+        "name": "marketing_breakdown_vox.jpg",
+        "path": "references/pinterest/03_vox_documentary_story/marketing_breakdown_vox.jpg",
+        "size_kb": 55.5,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "storytelling_idea_reels.jpg",
+        "path": "references/pinterest/03_vox_documentary_story/storytelling_idea_reels.jpg",
+        "size_kb": 159.3,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "vox_isometric_brain_counter_metric.jpg",
+        "path": "references/pinterest/03_vox_documentary_story/vox_isometric_brain_counter_metric.jpg",
+        "size_kb": 50.3,
+        "role": "ROLE_CALLOUT_UI (Плашки с метриками, графики, данные)"
+      },
+      {
+        "name": "vox_story_01.jpg",
+        "path": "references/pinterest/03_vox_documentary_story/vox_story_01.jpg",
+        "size_kb": 77.3,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "vox_story_02.jpg",
+        "path": "references/pinterest/03_vox_documentary_story/vox_story_02.jpg",
+        "size_kb": 67.4,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "vox_story_03.jpg",
+        "path": "references/pinterest/03_vox_documentary_story/vox_story_03.jpg",
+        "size_kb": 61.0,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "vox_story_04.jpg",
+        "path": "references/pinterest/03_vox_documentary_story/vox_story_04.jpg",
+        "size_kb": 67.5,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "vox_story_05.jpg",
+        "path": "references/pinterest/03_vox_documentary_story/vox_story_05.jpg",
+        "size_kb": 77.3,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "vox_story_06.jpg",
+        "path": "references/pinterest/03_vox_documentary_story/vox_story_06.jpg",
+        "size_kb": 39.1,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "vox_story_07.jpg",
+        "path": "references/pinterest/03_vox_documentary_story/vox_story_07.jpg",
+        "size_kb": 53.2,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "vox_story_08.jpg",
+        "path": "references/pinterest/03_vox_documentary_story/vox_story_08.jpg",
+        "size_kb": 115.9,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "vox_venezuela_map_newspaper_highlighter.jpg",
+        "path": "references/pinterest/03_vox_documentary_story/vox_venezuela_map_newspaper_highlighter.jpg",
+        "size_kb": 21.4,
+        "role": "ROLE_DOCUMENT_PROOF (Пруф-материалы, статьи, хайлайтер)"
+      }
+    ],
+    "cards": [
+      {
+        "name": "pin_vox_story_01.md",
+        "path": "references/pinterest/03_vox_documentary_story/pin_vox_story_01.md"
+      },
+      {
+        "name": "pin_vox_story_02.md",
+        "path": "references/pinterest/03_vox_documentary_story/pin_vox_story_02.md"
+      },
+      {
+        "name": "pin_vox_story_03.md",
+        "path": "references/pinterest/03_vox_documentary_story/pin_vox_story_03.md"
+      },
+      {
+        "name": "pin_vox_story_04.md",
+        "path": "references/pinterest/03_vox_documentary_story/pin_vox_story_04.md"
+      },
+      {
+        "name": "pin_vox_story_05.md",
+        "path": "references/pinterest/03_vox_documentary_story/pin_vox_story_05.md"
+      },
+      {
+        "name": "pin_vox_story_06.md",
+        "path": "references/pinterest/03_vox_documentary_story/pin_vox_story_06.md"
+      },
+      {
+        "name": "pin_vox_story_07.md",
+        "path": "references/pinterest/03_vox_documentary_story/pin_vox_story_07.md"
+      },
+      {
+        "name": "pin_vox_story_08.md",
+        "path": "references/pinterest/03_vox_documentary_story/pin_vox_story_08.md"
+      },
+      {
+        "name": "ref_01_paper_fold_map_route.md",
+        "path": "references/pinterest/03_vox_documentary_story/ref_01_paper_fold_map_route.md"
+      },
+      {
+        "name": "ref_02_polaroid_parallax_stack.md",
+        "path": "references/pinterest/03_vox_documentary_story/ref_02_polaroid_parallax_stack.md"
+      },
+      {
+        "name": "ref_marketing_breakdown_vox.md",
+        "path": "references/pinterest/03_vox_documentary_story/ref_marketing_breakdown_vox.md"
+      },
+      {
+        "name": "ref_storytelling_idea_reels.md",
+        "path": "references/pinterest/03_vox_documentary_story/ref_storytelling_idea_reels.md"
+      }
+    ]
+  },
+  "04_luxury_dark_aesthetic": {
+    "title": "Luxury Dark & Glassmorphism (Apple-Style, Liquid Glass)",
+    "path": "references/pinterest/04_luxury_dark_aesthetic",
+    "blueprint": "references/pinterest/04_luxury_dark_aesthetic/assembly_blueprint.md",
+    "manifest": "references/pinterest/04_luxury_dark_aesthetic/style_manifest.md",
+    "media_files": [
+      {
+        "name": "ae_3d_reality_dark_luxury.jpg",
+        "path": "references/pinterest/04_luxury_dark_aesthetic/ae_3d_reality_dark_luxury.jpg",
+        "size_kb": 73.9,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "luxury_3d_glass_chromatic_poster.jpg",
+        "path": "references/pinterest/04_luxury_dark_aesthetic/luxury_3d_glass_chromatic_poster.jpg",
+        "size_kb": 120.5,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "luxury_dark_01.jpg",
+        "path": "references/pinterest/04_luxury_dark_aesthetic/luxury_dark_01.jpg",
+        "size_kb": 55.2,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "luxury_dark_02.jpg",
+        "path": "references/pinterest/04_luxury_dark_aesthetic/luxury_dark_02.jpg",
+        "size_kb": 50.6,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "luxury_dark_03.jpg",
+        "path": "references/pinterest/04_luxury_dark_aesthetic/luxury_dark_03.jpg",
+        "size_kb": 34.6,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "luxury_dark_04.jpg",
+        "path": "references/pinterest/04_luxury_dark_aesthetic/luxury_dark_04.jpg",
+        "size_kb": 159.3,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "luxury_dark_05.jpg",
+        "path": "references/pinterest/04_luxury_dark_aesthetic/luxury_dark_05.jpg",
+        "size_kb": 24.5,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "podcast_million_dollar_gold_glow.jpg",
+        "path": "references/pinterest/04_luxury_dark_aesthetic/podcast_million_dollar_gold_glow.jpg",
+        "size_kb": 77.3,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "premium_fluid_motion_glass.jpg",
+        "path": "references/pinterest/04_luxury_dark_aesthetic/premium_fluid_motion_glass.jpg",
+        "size_kb": 34.6,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "talking_head_gold_director_punch.jpg",
+        "path": "references/pinterest/04_luxury_dark_aesthetic/talking_head_gold_director_punch.jpg",
+        "size_kb": 37.0,
+        "role": "ROLE_SUBTITLE_ENGINE (Титры и подача спикера)"
+      }
+    ],
+    "cards": [
+      {
+        "name": "pin_luxury_dark_01.md",
+        "path": "references/pinterest/04_luxury_dark_aesthetic/pin_luxury_dark_01.md"
+      },
+      {
+        "name": "pin_luxury_dark_02.md",
+        "path": "references/pinterest/04_luxury_dark_aesthetic/pin_luxury_dark_02.md"
+      },
+      {
+        "name": "pin_luxury_dark_03.md",
+        "path": "references/pinterest/04_luxury_dark_aesthetic/pin_luxury_dark_03.md"
+      },
+      {
+        "name": "pin_luxury_dark_04.md",
+        "path": "references/pinterest/04_luxury_dark_aesthetic/pin_luxury_dark_04.md"
+      },
+      {
+        "name": "pin_luxury_dark_05.md",
+        "path": "references/pinterest/04_luxury_dark_aesthetic/pin_luxury_dark_05.md"
+      },
+      {
+        "name": "pin_luxury_dark_06.md",
+        "path": "references/pinterest/04_luxury_dark_aesthetic/pin_luxury_dark_06.md"
+      },
+      {
+        "name": "pin_luxury_dark_07.md",
+        "path": "references/pinterest/04_luxury_dark_aesthetic/pin_luxury_dark_07.md"
+      },
+      {
+        "name": "pin_luxury_dark_08.md",
+        "path": "references/pinterest/04_luxury_dark_aesthetic/pin_luxury_dark_08.md"
+      },
+      {
+        "name": "ref_01_liquid_glass_card_glow.md",
+        "path": "references/pinterest/04_luxury_dark_aesthetic/ref_01_liquid_glass_card_glow.md"
+      },
+      {
+        "name": "ref_02_dynamic_island_expand.md",
+        "path": "references/pinterest/04_luxury_dark_aesthetic/ref_02_dynamic_island_expand.md"
+      },
+      {
+        "name": "ref_ae_3d_reality_dark_luxury.md",
+        "path": "references/pinterest/04_luxury_dark_aesthetic/ref_ae_3d_reality_dark_luxury.md"
+      },
+      {
+        "name": "ref_premium_fluid_motion_glass.md",
+        "path": "references/pinterest/04_luxury_dark_aesthetic/ref_premium_fluid_motion_glass.md"
+      }
+    ]
+  },
+  "05_cyber_tech_breakdown": {
+    "title": "Cyber & Tech Breakdown (Fireship, Code, HUD, UI Overlays)",
+    "path": "references/pinterest/05_cyber_tech_breakdown",
+    "blueprint": "references/pinterest/05_cyber_tech_breakdown/assembly_blueprint.md",
+    "manifest": "references/pinterest/05_cyber_tech_breakdown/style_manifest.md",
+    "media_files": [
+      {
+        "name": "cyber_talkinghead_rgb_timeline.jpg",
+        "path": "references/pinterest/05_cyber_tech_breakdown/cyber_talkinghead_rgb_timeline.jpg",
+        "size_kb": 50.8,
+        "role": "ROLE_CALLOUT_UI (Плашки с метриками, графики, данные)"
+      },
+      {
+        "name": "cyber_tech_01.jpg",
+        "path": "references/pinterest/05_cyber_tech_breakdown/cyber_tech_01.jpg",
+        "size_kb": 50.4,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "cyber_tech_02.jpg",
+        "path": "references/pinterest/05_cyber_tech_breakdown/cyber_tech_02.jpg",
+        "size_kb": 73.9,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "cyber_tech_03.jpg",
+        "path": "references/pinterest/05_cyber_tech_breakdown/cyber_tech_03.jpg",
+        "size_kb": 31.6,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "cyber_tech_04.jpg",
+        "path": "references/pinterest/05_cyber_tech_breakdown/cyber_tech_04.jpg",
+        "size_kb": 51.4,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "cyber_tech_05.jpg",
+        "path": "references/pinterest/05_cyber_tech_breakdown/cyber_tech_05.jpg",
+        "size_kb": 58.3,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "cyber_tech_07.jpg",
+        "path": "references/pinterest/05_cyber_tech_breakdown/cyber_tech_07.jpg",
+        "size_kb": 50.4,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "cyber_tech_08.jpg",
+        "path": "references/pinterest/05_cyber_tech_breakdown/cyber_tech_08.jpg",
+        "size_kb": 31.6,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "cyber_telemetry_waveform_dashboard.jpg",
+        "path": "references/pinterest/05_cyber_tech_breakdown/cyber_telemetry_waveform_dashboard.jpg",
+        "size_kb": 77.9,
+        "role": "ROLE_CALLOUT_UI (Плашки с метриками, графики, данные)"
+      },
+      {
+        "name": "ui_tech_screen_breakdown.jpg",
+        "path": "references/pinterest/05_cyber_tech_breakdown/ui_tech_screen_breakdown.jpg",
+        "size_kb": 53.2,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      }
+    ],
+    "cards": [
+      {
+        "name": "pin_cyber_tech_01.md",
+        "path": "references/pinterest/05_cyber_tech_breakdown/pin_cyber_tech_01.md"
+      },
+      {
+        "name": "pin_cyber_tech_02.md",
+        "path": "references/pinterest/05_cyber_tech_breakdown/pin_cyber_tech_02.md"
+      },
+      {
+        "name": "pin_cyber_tech_03.md",
+        "path": "references/pinterest/05_cyber_tech_breakdown/pin_cyber_tech_03.md"
+      },
+      {
+        "name": "pin_cyber_tech_04.md",
+        "path": "references/pinterest/05_cyber_tech_breakdown/pin_cyber_tech_04.md"
+      },
+      {
+        "name": "pin_cyber_tech_05.md",
+        "path": "references/pinterest/05_cyber_tech_breakdown/pin_cyber_tech_05.md"
+      },
+      {
+        "name": "pin_cyber_tech_06.md",
+        "path": "references/pinterest/05_cyber_tech_breakdown/pin_cyber_tech_06.md"
+      },
+      {
+        "name": "pin_cyber_tech_07.md",
+        "path": "references/pinterest/05_cyber_tech_breakdown/pin_cyber_tech_07.md"
+      },
+      {
+        "name": "pin_cyber_tech_08.md",
+        "path": "references/pinterest/05_cyber_tech_breakdown/pin_cyber_tech_08.md"
+      },
+      {
+        "name": "ref_01_terminal_typewriter_hud.md",
+        "path": "references/pinterest/05_cyber_tech_breakdown/ref_01_terminal_typewriter_hud.md"
+      },
+      {
+        "name": "ref_02_split_code_benchmark.md",
+        "path": "references/pinterest/05_cyber_tech_breakdown/ref_02_split_code_benchmark.md"
+      },
+      {
+        "name": "ref_tech_editor_breakdown.md",
+        "path": "references/pinterest/05_cyber_tech_breakdown/ref_tech_editor_breakdown.md"
+      },
+      {
+        "name": "ref_ui_tech_screen_breakdown.md",
+        "path": "references/pinterest/05_cyber_tech_breakdown/ref_ui_tech_screen_breakdown.md"
+      }
+    ]
+  },
+  "06_podcast_splitscreen_subtitles": {
+    "title": "Подкасты & Сплит-Скрин Интервью (Podcast & Multi-Speaker)",
+    "path": "references/pinterest/06_podcast_splitscreen_subtitles",
+    "blueprint": "references/pinterest/06_podcast_splitscreen_subtitles/assembly_blueprint.md",
+    "manifest": "references/pinterest/06_podcast_splitscreen_subtitles/style_manifest.md",
+    "media_files": [
+      {
+        "name": "podcast_01.jpg",
+        "path": "references/pinterest/06_podcast_splitscreen_subtitles/podcast_01.jpg",
+        "size_kb": 67.5,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "podcast_02.jpg",
+        "path": "references/pinterest/06_podcast_splitscreen_subtitles/podcast_02.jpg",
+        "size_kb": 77.3,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "podcast_03.jpg",
+        "path": "references/pinterest/06_podcast_splitscreen_subtitles/podcast_03.jpg",
+        "size_kb": 99.2,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "podcast_05.jpg",
+        "path": "references/pinterest/06_podcast_splitscreen_subtitles/podcast_05.jpg",
+        "size_kb": 52.0,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "podcast_06.jpg",
+        "path": "references/pinterest/06_podcast_splitscreen_subtitles/podcast_06.jpg",
+        "size_kb": 55.5,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "podcast_07.jpg",
+        "path": "references/pinterest/06_podcast_splitscreen_subtitles/podcast_07.jpg",
+        "size_kb": 76.4,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "podcast_08.jpg",
+        "path": "references/pinterest/06_podcast_splitscreen_subtitles/podcast_08.jpg",
+        "size_kb": 67.2,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "podcast_09.jpg",
+        "path": "references/pinterest/06_podcast_splitscreen_subtitles/podcast_09.jpg",
+        "size_kb": 77.0,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "podcast_10.jpg",
+        "path": "references/pinterest/06_podcast_splitscreen_subtitles/podcast_10.jpg",
+        "size_kb": 67.5,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "podcast_modern_wisdom_serif_punch.jpg",
+        "path": "references/pinterest/06_podcast_splitscreen_subtitles/podcast_modern_wisdom_serif_punch.jpg",
+        "size_kb": 67.5,
+        "role": "ROLE_SUBTITLE_ENGINE (Титры и подача спикера)"
+      },
+      {
+        "name": "podcast_multicam_timeline_whip.jpg",
+        "path": "references/pinterest/06_podcast_splitscreen_subtitles/podcast_multicam_timeline_whip.jpg",
+        "size_kb": 118.4,
+        "role": "ROLE_SPLIT_SCREEN (Сравнения до/после, 2 спикера)"
+      },
+      {
+        "name": "podcast_ranveer_vertical_crop.jpg",
+        "path": "references/pinterest/06_podcast_splitscreen_subtitles/podcast_ranveer_vertical_crop.jpg",
+        "size_kb": 99.2,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      }
+    ],
+    "cards": [
+      {
+        "name": "pin_podcast_01.md",
+        "path": "references/pinterest/06_podcast_splitscreen_subtitles/pin_podcast_01.md"
+      },
+      {
+        "name": "pin_podcast_02.md",
+        "path": "references/pinterest/06_podcast_splitscreen_subtitles/pin_podcast_02.md"
+      },
+      {
+        "name": "pin_podcast_03.md",
+        "path": "references/pinterest/06_podcast_splitscreen_subtitles/pin_podcast_03.md"
+      },
+      {
+        "name": "pin_podcast_04.md",
+        "path": "references/pinterest/06_podcast_splitscreen_subtitles/pin_podcast_04.md"
+      },
+      {
+        "name": "pin_podcast_05.md",
+        "path": "references/pinterest/06_podcast_splitscreen_subtitles/pin_podcast_05.md"
+      },
+      {
+        "name": "pin_podcast_06.md",
+        "path": "references/pinterest/06_podcast_splitscreen_subtitles/pin_podcast_06.md"
+      },
+      {
+        "name": "pin_podcast_07.md",
+        "path": "references/pinterest/06_podcast_splitscreen_subtitles/pin_podcast_07.md"
+      },
+      {
+        "name": "pin_podcast_08.md",
+        "path": "references/pinterest/06_podcast_splitscreen_subtitles/pin_podcast_08.md"
+      },
+      {
+        "name": "pin_podcast_09.md",
+        "path": "references/pinterest/06_podcast_splitscreen_subtitles/pin_podcast_09.md"
+      },
+      {
+        "name": "pin_podcast_10.md",
+        "path": "references/pinterest/06_podcast_splitscreen_subtitles/pin_podcast_10.md"
+      }
+    ]
+  },
+  "07_mixed_media_paper_collage": {
+    "title": "Mixed Media & Рваный Коллаж (Paper Tear & Grunge)",
+    "path": "references/pinterest/07_mixed_media_paper_collage",
+    "blueprint": "references/pinterest/07_mixed_media_paper_collage/assembly_blueprint.md",
+    "manifest": "references/pinterest/07_mixed_media_paper_collage/style_manifest.md",
+    "media_files": [
+      {
+        "name": "mixed_media_01.jpg",
+        "path": "references/pinterest/07_mixed_media_paper_collage/mixed_media_01.jpg",
+        "size_kb": 81.0,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "mixed_media_02.jpg",
+        "path": "references/pinterest/07_mixed_media_paper_collage/mixed_media_02.jpg",
+        "size_kb": 76.4,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "mixed_media_03.jpg",
+        "path": "references/pinterest/07_mixed_media_paper_collage/mixed_media_03.jpg",
+        "size_kb": 129.0,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "mixed_media_04.jpg",
+        "path": "references/pinterest/07_mixed_media_paper_collage/mixed_media_04.jpg",
+        "size_kb": 102.3,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "mixed_media_05.jpg",
+        "path": "references/pinterest/07_mixed_media_paper_collage/mixed_media_05.jpg",
+        "size_kb": 53.2,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "mixed_media_06.jpg",
+        "path": "references/pinterest/07_mixed_media_paper_collage/mixed_media_06.jpg",
+        "size_kb": 115.9,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "mixed_media_07.jpg",
+        "path": "references/pinterest/07_mixed_media_paper_collage/mixed_media_07.jpg",
+        "size_kb": 39.7,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "mixed_media_08.jpg",
+        "path": "references/pinterest/07_mixed_media_paper_collage/mixed_media_08.jpg",
+        "size_kb": 34.8,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "mixed_media_09.jpg",
+        "path": "references/pinterest/07_mixed_media_paper_collage/mixed_media_09.jpg",
+        "size_kb": 163.7,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "mixed_media_10.jpg",
+        "path": "references/pinterest/07_mixed_media_paper_collage/mixed_media_10.jpg",
+        "size_kb": 202.9,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "paper_collage_street_flow_grunge.jpg",
+        "path": "references/pinterest/07_mixed_media_paper_collage/paper_collage_street_flow_grunge.jpg",
+        "size_kb": 76.4,
+        "role": "ROLE_TEXTURE_TACTILE (Тактильная фактура и нарезка)"
+      },
+      {
+        "name": "paper_crumpled_moody_stencil.jpg",
+        "path": "references/pinterest/07_mixed_media_paper_collage/paper_crumpled_moody_stencil.jpg",
+        "size_kb": 102.3,
+        "role": "ROLE_HOOK_HERO (Захват внимания, 0-3s)"
+      }
+    ],
+    "cards": [
+      {
+        "name": "pin_mixed_media_01.md",
+        "path": "references/pinterest/07_mixed_media_paper_collage/pin_mixed_media_01.md"
+      },
+      {
+        "name": "pin_mixed_media_02.md",
+        "path": "references/pinterest/07_mixed_media_paper_collage/pin_mixed_media_02.md"
+      },
+      {
+        "name": "pin_mixed_media_03.md",
+        "path": "references/pinterest/07_mixed_media_paper_collage/pin_mixed_media_03.md"
+      },
+      {
+        "name": "pin_mixed_media_04.md",
+        "path": "references/pinterest/07_mixed_media_paper_collage/pin_mixed_media_04.md"
+      },
+      {
+        "name": "pin_mixed_media_05.md",
+        "path": "references/pinterest/07_mixed_media_paper_collage/pin_mixed_media_05.md"
+      },
+      {
+        "name": "pin_mixed_media_06.md",
+        "path": "references/pinterest/07_mixed_media_paper_collage/pin_mixed_media_06.md"
+      },
+      {
+        "name": "pin_mixed_media_07.md",
+        "path": "references/pinterest/07_mixed_media_paper_collage/pin_mixed_media_07.md"
+      },
+      {
+        "name": "pin_mixed_media_08.md",
+        "path": "references/pinterest/07_mixed_media_paper_collage/pin_mixed_media_08.md"
+      },
+      {
+        "name": "pin_mixed_media_09.md",
+        "path": "references/pinterest/07_mixed_media_paper_collage/pin_mixed_media_09.md"
+      },
+      {
+        "name": "pin_mixed_media_10.md",
+        "path": "references/pinterest/07_mixed_media_paper_collage/pin_mixed_media_10.md"
+      }
+    ]
+  },
+  "08_product_3d_mockup_showcase": {
+    "title": "Продуктовый Моушн & E-Commerce 3D (Product Showcase)",
+    "path": "references/pinterest/08_product_3d_mockup_showcase",
+    "blueprint": "references/pinterest/08_product_3d_mockup_showcase/assembly_blueprint.md",
+    "manifest": "references/pinterest/08_product_3d_mockup_showcase/style_manifest.md",
+    "media_files": [
+      {
+        "name": "3d_ketone_drink_sliced_can.jpg",
+        "path": "references/pinterest/08_product_3d_mockup_showcase/3d_ketone_drink_sliced_can.jpg",
+        "size_kb": 76.0,
+        "role": "ROLE_DEVICE_MOCKUP (3D/2D презентация интерфейса и продукта)"
+      },
+      {
+        "name": "3d_starbucks_brand_story_cup.jpg",
+        "path": "references/pinterest/08_product_3d_mockup_showcase/3d_starbucks_brand_story_cup.jpg",
+        "size_kb": 66.1,
+        "role": "ROLE_DEVICE_MOCKUP (3D/2D презентация интерфейса и продукта)"
+      },
+      {
+        "name": "aftereffects_3d_phone_mockup_breakdown.jpg",
+        "path": "references/pinterest/08_product_3d_mockup_showcase/aftereffects_3d_phone_mockup_breakdown.jpg",
+        "size_kb": 77.4,
+        "role": "ROLE_DEVICE_MOCKUP (3D/2D презентация интерфейса и продукта)"
+      },
+      {
+        "name": "glassmorphism_spotify_folder_mockup.jpg",
+        "path": "references/pinterest/08_product_3d_mockup_showcase/glassmorphism_spotify_folder_mockup.jpg",
+        "size_kb": 34.4,
+        "role": "ROLE_DEVICE_MOCKUP (3D/2D презентация интерфейса и продукта)"
+      },
+      {
+        "name": "product_01.jpg",
+        "path": "references/pinterest/08_product_3d_mockup_showcase/product_01.jpg",
+        "size_kb": 50.6,
+        "role": "ROLE_DEVICE_MOCKUP (3D/2D презентация интерфейса и продукта)"
+      },
+      {
+        "name": "product_02.jpg",
+        "path": "references/pinterest/08_product_3d_mockup_showcase/product_02.jpg",
+        "size_kb": 45.8,
+        "role": "ROLE_DEVICE_MOCKUP (3D/2D презентация интерфейса и продукта)"
+      },
+      {
+        "name": "product_03.jpg",
+        "path": "references/pinterest/08_product_3d_mockup_showcase/product_03.jpg",
+        "size_kb": 76.0,
+        "role": "ROLE_DEVICE_MOCKUP (3D/2D презентация интерфейса и продукта)"
+      },
+      {
+        "name": "product_04.jpg",
+        "path": "references/pinterest/08_product_3d_mockup_showcase/product_04.jpg",
+        "size_kb": 42.3,
+        "role": "ROLE_DEVICE_MOCKUP (3D/2D презентация интерфейса и продукта)"
+      },
+      {
+        "name": "product_05.jpg",
+        "path": "references/pinterest/08_product_3d_mockup_showcase/product_05.jpg",
+        "size_kb": 98.0,
+        "role": "ROLE_DEVICE_MOCKUP (3D/2D презентация интерфейса и продукта)"
+      },
+      {
+        "name": "product_06.jpg",
+        "path": "references/pinterest/08_product_3d_mockup_showcase/product_06.jpg",
+        "size_kb": 33.3,
+        "role": "ROLE_DEVICE_MOCKUP (3D/2D презентация интерфейса и продукта)"
+      },
+      {
+        "name": "product_07.jpg",
+        "path": "references/pinterest/08_product_3d_mockup_showcase/product_07.jpg",
+        "size_kb": 69.6,
+        "role": "ROLE_DEVICE_MOCKUP (3D/2D презентация интерфейса и продукта)"
+      },
+      {
+        "name": "product_08.jpg",
+        "path": "references/pinterest/08_product_3d_mockup_showcase/product_08.jpg",
+        "size_kb": 63.5,
+        "role": "ROLE_DEVICE_MOCKUP (3D/2D презентация интерфейса и продукта)"
+      },
+      {
+        "name": "product_09.jpg",
+        "path": "references/pinterest/08_product_3d_mockup_showcase/product_09.jpg",
+        "size_kb": 69.2,
+        "role": "ROLE_DEVICE_MOCKUP (3D/2D презентация интерфейса и продукта)"
+      },
+      {
+        "name": "product_10.jpg",
+        "path": "references/pinterest/08_product_3d_mockup_showcase/product_10.jpg",
+        "size_kb": 34.6,
+        "role": "ROLE_DEVICE_MOCKUP (3D/2D презентация интерфейса и продукта)"
+      }
+    ],
+    "cards": [
+      {
+        "name": "pin_product_01.md",
+        "path": "references/pinterest/08_product_3d_mockup_showcase/pin_product_01.md"
+      },
+      {
+        "name": "pin_product_02.md",
+        "path": "references/pinterest/08_product_3d_mockup_showcase/pin_product_02.md"
+      },
+      {
+        "name": "pin_product_03.md",
+        "path": "references/pinterest/08_product_3d_mockup_showcase/pin_product_03.md"
+      },
+      {
+        "name": "pin_product_04.md",
+        "path": "references/pinterest/08_product_3d_mockup_showcase/pin_product_04.md"
+      },
+      {
+        "name": "pin_product_05.md",
+        "path": "references/pinterest/08_product_3d_mockup_showcase/pin_product_05.md"
+      },
+      {
+        "name": "pin_product_06.md",
+        "path": "references/pinterest/08_product_3d_mockup_showcase/pin_product_06.md"
+      },
+      {
+        "name": "pin_product_07.md",
+        "path": "references/pinterest/08_product_3d_mockup_showcase/pin_product_07.md"
+      },
+      {
+        "name": "pin_product_08.md",
+        "path": "references/pinterest/08_product_3d_mockup_showcase/pin_product_08.md"
+      },
+      {
+        "name": "pin_product_09.md",
+        "path": "references/pinterest/08_product_3d_mockup_showcase/pin_product_09.md"
+      },
+      {
+        "name": "pin_product_10.md",
+        "path": "references/pinterest/08_product_3d_mockup_showcase/pin_product_10.md"
+      }
+    ]
+  },
+  "09_cinematic_travel_story": {
+    "title": "Кинематографичный Тревел & Лайфстайл (Cinematic Travel)",
+    "path": "references/pinterest/09_cinematic_travel_story",
+    "blueprint": "references/pinterest/09_cinematic_travel_story/assembly_blueprint.md",
+    "manifest": "references/pinterest/09_cinematic_travel_story/style_manifest.md",
+    "media_files": [
+      {
+        "name": "cinematic_kinetic_title_card_neon.jpg",
+        "path": "references/pinterest/09_cinematic_travel_story/cinematic_kinetic_title_card_neon.jpg",
+        "size_kb": 103.0,
+        "role": "ROLE_HOOK_HERO (Захват внимания, 0-3s)"
+      },
+      {
+        "name": "travel_01.jpg",
+        "path": "references/pinterest/09_cinematic_travel_story/travel_01.jpg",
+        "size_kb": 60.3,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "travel_02.jpg",
+        "path": "references/pinterest/09_cinematic_travel_story/travel_02.jpg",
+        "size_kb": 46.2,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "travel_03.jpg",
+        "path": "references/pinterest/09_cinematic_travel_story/travel_03.jpg",
+        "size_kb": 158.7,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "travel_04.jpg",
+        "path": "references/pinterest/09_cinematic_travel_story/travel_04.jpg",
+        "size_kb": 109.2,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "travel_05.jpg",
+        "path": "references/pinterest/09_cinematic_travel_story/travel_05.jpg",
+        "size_kb": 174.9,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "travel_06.jpg",
+        "path": "references/pinterest/09_cinematic_travel_story/travel_06.jpg",
+        "size_kb": 81.7,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "travel_07.jpg",
+        "path": "references/pinterest/09_cinematic_travel_story/travel_07.jpg",
+        "size_kb": 75.1,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "travel_08.jpg",
+        "path": "references/pinterest/09_cinematic_travel_story/travel_08.jpg",
+        "size_kb": 48.8,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "travel_09.jpg",
+        "path": "references/pinterest/09_cinematic_travel_story/travel_09.jpg",
+        "size_kb": 132.7,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "travel_10.jpg",
+        "path": "references/pinterest/09_cinematic_travel_story/travel_10.jpg",
+        "size_kb": 78.1,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "travel_agency_motion_reel_title.jpg",
+        "path": "references/pinterest/09_cinematic_travel_story/travel_agency_motion_reel_title.jpg",
+        "size_kb": 161.3,
+        "role": "ROLE_HOOK_HERO (Захват внимания, 0-3s)"
+      }
+    ],
+    "cards": [
+      {
+        "name": "pin_travel_01.md",
+        "path": "references/pinterest/09_cinematic_travel_story/pin_travel_01.md"
+      },
+      {
+        "name": "pin_travel_02.md",
+        "path": "references/pinterest/09_cinematic_travel_story/pin_travel_02.md"
+      },
+      {
+        "name": "pin_travel_03.md",
+        "path": "references/pinterest/09_cinematic_travel_story/pin_travel_03.md"
+      },
+      {
+        "name": "pin_travel_04.md",
+        "path": "references/pinterest/09_cinematic_travel_story/pin_travel_04.md"
+      },
+      {
+        "name": "pin_travel_05.md",
+        "path": "references/pinterest/09_cinematic_travel_story/pin_travel_05.md"
+      },
+      {
+        "name": "pin_travel_06.md",
+        "path": "references/pinterest/09_cinematic_travel_story/pin_travel_06.md"
+      },
+      {
+        "name": "pin_travel_07.md",
+        "path": "references/pinterest/09_cinematic_travel_story/pin_travel_07.md"
+      },
+      {
+        "name": "pin_travel_08.md",
+        "path": "references/pinterest/09_cinematic_travel_story/pin_travel_08.md"
+      },
+      {
+        "name": "pin_travel_09.md",
+        "path": "references/pinterest/09_cinematic_travel_story/pin_travel_09.md"
+      },
+      {
+        "name": "pin_travel_10.md",
+        "path": "references/pinterest/09_cinematic_travel_story/pin_travel_10.md"
+      }
+    ]
+  },
+  "10_fitness_motivation_grit": {
+    "title": "Фитнес & Жесткая Мотивация (Fitness & Grit)",
+    "path": "references/pinterest/10_fitness_motivation_grit",
+    "blueprint": "references/pinterest/10_fitness_motivation_grit/assembly_blueprint.md",
+    "manifest": "references/pinterest/10_fitness_motivation_grit/style_manifest.md",
+    "media_files": [
+      {
+        "name": "fitness_01.jpg",
+        "path": "references/pinterest/10_fitness_motivation_grit/fitness_01.jpg",
+        "size_kb": 68.9,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "fitness_02.jpg",
+        "path": "references/pinterest/10_fitness_motivation_grit/fitness_02.jpg",
+        "size_kb": 79.9,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "fitness_03.jpg",
+        "path": "references/pinterest/10_fitness_motivation_grit/fitness_03.jpg",
+        "size_kb": 139.3,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "fitness_04.jpg",
+        "path": "references/pinterest/10_fitness_motivation_grit/fitness_04.jpg",
+        "size_kb": 118.2,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "fitness_05.jpg",
+        "path": "references/pinterest/10_fitness_motivation_grit/fitness_05.jpg",
+        "size_kb": 84.8,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "fitness_06.jpg",
+        "path": "references/pinterest/10_fitness_motivation_grit/fitness_06.jpg",
+        "size_kb": 64.3,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "fitness_07.jpg",
+        "path": "references/pinterest/10_fitness_motivation_grit/fitness_07.jpg",
+        "size_kb": 67.0,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "fitness_08.jpg",
+        "path": "references/pinterest/10_fitness_motivation_grit/fitness_08.jpg",
+        "size_kb": 71.4,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "fitness_09.jpg",
+        "path": "references/pinterest/10_fitness_motivation_grit/fitness_09.jpg",
+        "size_kb": 73.2,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "fitness_10.jpg",
+        "path": "references/pinterest/10_fitness_motivation_grit/fitness_10.jpg",
+        "size_kb": 98.7,
+        "role": "ROLE_SUPPORTING_ASSET (Фоновый ассет / B-Roll)"
+      },
+      {
+        "name": "fitness_gym_breakdown_target_hud.jpg",
+        "path": "references/pinterest/10_fitness_motivation_grit/fitness_gym_breakdown_target_hud.jpg",
+        "size_kb": 241.0,
+        "role": "ROLE_SPLIT_SCREEN (Сравнения до/после, 2 спикера)"
+      },
+      {
+        "name": "sports_motion_kit_typography_crest.jpg",
+        "path": "references/pinterest/10_fitness_motivation_grit/sports_motion_kit_typography_crest.jpg",
+        "size_kb": 100.4,
+        "role": "ROLE_HOOK_HERO (Захват внимания, 0-3s)"
+      }
+    ],
+    "cards": [
+      {
+        "name": "pin_fitness_01.md",
+        "path": "references/pinterest/10_fitness_motivation_grit/pin_fitness_01.md"
+      },
+      {
+        "name": "pin_fitness_02.md",
+        "path": "references/pinterest/10_fitness_motivation_grit/pin_fitness_02.md"
+      },
+      {
+        "name": "pin_fitness_03.md",
+        "path": "references/pinterest/10_fitness_motivation_grit/pin_fitness_03.md"
+      },
+      {
+        "name": "pin_fitness_04.md",
+        "path": "references/pinterest/10_fitness_motivation_grit/pin_fitness_04.md"
+      },
+      {
+        "name": "pin_fitness_05.md",
+        "path": "references/pinterest/10_fitness_motivation_grit/pin_fitness_05.md"
+      },
+      {
+        "name": "pin_fitness_06.md",
+        "path": "references/pinterest/10_fitness_motivation_grit/pin_fitness_06.md"
+      },
+      {
+        "name": "pin_fitness_07.md",
+        "path": "references/pinterest/10_fitness_motivation_grit/pin_fitness_07.md"
+      },
+      {
+        "name": "pin_fitness_08.md",
+        "path": "references/pinterest/10_fitness_motivation_grit/pin_fitness_08.md"
+      },
+      {
+        "name": "pin_fitness_09.md",
+        "path": "references/pinterest/10_fitness_motivation_grit/pin_fitness_09.md"
+      },
+      {
+        "name": "pin_fitness_10.md",
+        "path": "references/pinterest/10_fitness_motivation_grit/pin_fitness_10.md"
+      }
+    ]
+  }
+}

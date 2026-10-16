@@ -49,3 +49,27 @@
 - **Typography**: Giant Montserrat Black or Rubik ExtraBold, word-by-word bold highlighting, 2-word groups.
 - **Motion**: Instantaneous snaps (damping: 10, stiffness: 200), explosive scale-ups, screen shake.
 - **SFX**: Heavy whip whooshes, boxing punches, cash register dings, comic pops.
+
+---
+
+## 2. Creative Reference Mapping (Pinterest Library)
+
+При формировании `beat_sheet.json` и `edit_plan.json` агент обязан брать конкретные приемы, параметры spring и хуки из папки `references/pinterest/`:
+
+| Архетип | Папка референсов | Манифест стиля | Сборочный чертеж |
+|---|---|---|---|
+| `ali-minimal-workspace` | `references/pinterest/01_business_minimal/` | [style_manifest.md](file:///c:/Users/timur/Videos/AI-Video-Editing/references/pinterest/01_business_minimal/style_manifest.md) | [assembly_blueprint.md](file:///c:/Users/timur/Videos/AI-Video-Editing/references/pinterest/01_business_minimal/assembly_blueprint.md) |
+| `hormozi-kinetic-punch` | `references/pinterest/02_kinetic_viral_retention/` | [style_manifest.md](file:///c:/Users/timur/Videos/AI-Video-Editing/references/pinterest/02_kinetic_viral_retention/style_manifest.md) | [assembly_blueprint.md](file:///c:/Users/timur/Videos/AI-Video-Editing/references/pinterest/02_kinetic_viral_retention/assembly_blueprint.md) |
+| `vox-editorial-data` | `references/pinterest/03_vox_documentary_story/` | [style_manifest.md](file:///c:/Users/timur/Videos/AI-Video-Editing/references/pinterest/03_vox_documentary_story/style_manifest.md) | [assembly_blueprint.md](file:///c:/Users/timur/Videos/AI-Video-Editing/references/pinterest/03_vox_documentary_story/assembly_blueprint.md) |
+| `apple-liquid-glass` | `references/pinterest/04_luxury_dark_aesthetic/` | [style_manifest.md](file:///c:/Users/timur/Videos/AI-Video-Editing/references/pinterest/04_luxury_dark_aesthetic/style_manifest.md) | [assembly_blueprint.md](file:///c:/Users/timur/Videos/AI-Video-Editing/references/pinterest/04_luxury_dark_aesthetic/assembly_blueprint.md) |
+| `cyber-tech-breakdown` | `references/pinterest/05_cyber_tech_breakdown/` | [style_manifest.md](file:///c:/Users/timur/Videos/AI-Video-Editing/references/pinterest/05_cyber_tech_breakdown/style_manifest.md) | [assembly_blueprint.md](file:///c:/Users/timur/Videos/AI-Video-Editing/references/pinterest/05_cyber_tech_breakdown/assembly_blueprint.md) |
+| `podcast-splitscreen` | `references/pinterest/06_podcast_splitscreen_subtitles/` | [style_manifest.md](file:///c:/Users/timur/Videos/AI-Video-Editing/references/pinterest/06_podcast_splitscreen_subtitles/style_manifest.md) | [assembly_blueprint.md](file:///c:/Users/timur/Videos/AI-Video-Editing/references/pinterest/06_podcast_splitscreen_subtitles/assembly_blueprint.md) |
+| `mixed-media-collage` | `references/pinterest/07_mixed_media_paper_collage/` | [style_manifest.md](file:///c:/Users/timur/Videos/AI-Video-Editing/references/pinterest/07_mixed_media_paper_collage/style_manifest.md) | [assembly_blueprint.md](file:///c:/Users/timur/Videos/AI-Video-Editing/references/pinterest/07_mixed_media_paper_collage/assembly_blueprint.md) |
+| `product-3d-showcase` | `references/pinterest/08_product_3d_mockup_showcase/` | [style_manifest.md](file:///c:/Users/timur/Videos/AI-Video-Editing/references/pinterest/08_product_3d_mockup_showcase/style_manifest.md) | [assembly_blueprint.md](file:///c:/Users/timur/Videos/AI-Video-Editing/references/pinterest/08_product_3d_mockup_showcase/assembly_blueprint.md) |
+| `cinematic-travel` | `references/pinterest/09_cinematic_travel_story/` | [style_manifest.md](file:///c:/Users/timur/Videos/AI-Video-Editing/references/pinterest/09_cinematic_travel_story/style_manifest.md) | [assembly_blueprint.md](file:///c:/Users/timur/Videos/AI-Video-Editing/references/pinterest/09_cinematic_travel_story/assembly_blueprint.md) |
+| `fitness-motivation-grit` | `references/pinterest/10_fitness_motivation_grit/` | [style_manifest.md](file:///c:/Users/timur/Videos/AI-Video-Editing/references/pinterest/10_fitness_motivation_grit/style_manifest.md) | [assembly_blueprint.md](file:///c:/Users/timur/Videos/AI-Video-Editing/references/pinterest/10_fitness_motivation_grit/assembly_blueprint.md) |
+
+Полный каталог референсов доступен в [`references/pinterest/CATALOG.md`](file:///c:/Users/timur/Videos/AI-Video-Editing/references/pinterest/CATALOG.md).
+Правила связности стилей и защита от солянки: [`.claude/rulebooks/16-anti-mishmash-cohesion.md`](file:///c:/Users/timur/Videos/AI-Video-Editing/.claude/rulebooks/16-anti-mishmash-cohesion.md).
+Обновление каталога после ручной чистки файлов: `python tools/sync_pinterest_references.py`.
+

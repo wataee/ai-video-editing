@@ -6,6 +6,7 @@ import {
   ProofCard,
   SpeakerBadge,
   HookHeadline,
+  PlanBeatStill,
 } from "./components";
 import { Scene01_Intro, Scene02_Main, Scene03_Outro } from "./scenes";
 import beatSheet from "./data/beat_sheet.json";
@@ -180,6 +181,24 @@ export const Root: React.FC = () => {
         fps={60}
         width={1080}
         height={1920}
+      />
+      <Composition
+        id="PlanBeatStill"
+        component={PlanBeatStill}
+        durationInFrames={1}
+        fps={30}
+        width={1080}
+        height={1920}
+        defaultProps={{
+          beatIndex: 0,
+          timeRange: [0, 3] as [number, number],
+          line: "Пример реплики спикера для раскадровки",
+          visual: "speaker",
+          camera: "push-in",
+          proofSource: null,
+          sfx: "hits/sub_bass_thud",
+          why: "Хук привлекает внимание спикером",
+        }}
       />
     </>
   );

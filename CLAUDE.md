@@ -18,6 +18,7 @@
 7. **ANTI-SLOP TEXTURING & CAMERA DRIFT:** Обязательный глобальный оверлей `<ProceduralNoiseOverlay/>` (SVG `<feTurbulence>`, непрозрачность 3–5%) поверх всех сцен против «стерильного векторного рендера». Легкий параллакс и плавный микро-дрифт камеры (`scale` от 1.0 до 1.03) за длительность сцены.
 8. **BEAT SHEET BEFORE CODE:** Агент обязан ПЕРВЫМ ШАГОМ всегда выводить JSON-структуру таймлайна (`beat_sheet.json`): тайминги сцен, кадры ударов (`hits`), смены ракурсов и точки запуска SFX, и ТОЛЬКО после утверждения структуры человеком писать рендер-компоненты.
 9. **MANDATORY INGEST & APPROVAL GATE:** iPhone HDR обязан проходить `tools/ingest.py` (SDR Rec.709, CFR 30 fps). В плане поле `"approved"` по умолчанию `false`. Финальный рендер заблокирован до утверждения человеком. Автоматический QA проверяет ролик с частотой 10 кадров/сек.
+10. **ANTI-MISHMASH PROTOCOL & STYLE ISOLATION:** Ровно 1 пресет стиля на проект. Смешивание элементов из разных категорий (например, рваная бумага в бизнес-минимализме или кибер-HUD в нуаре) категорически запрещено. Всегда следовать `references/pinterest/<style>/assembly_blueprint.md` и `.claude/rulebooks/16-anti-mishmash-cohesion.md`.
 
 ---
 
@@ -52,11 +53,17 @@
 │   ├── 11-hook-library.md                   # Каталог хуков
 │   ├── 12-anti-slop.md                      # 8 правил anti-slop, процедурный шум и микро-дрифт
 │   ├── 13-ae-secondary-engine.md            # Регламент After Effects ExtendScript (монолитные скрипты)
-│   └── 14-production-pipeline.md            # Сквозной пайплайн производства
-└── design-system/
-    ├── creator-archetypes.md
-    ├── typography-scale.md
-    └── sfx-mapping.md
+│   ├── 14-production-pipeline.md            # Сквозной пайплайн производства
+│   ├── 15-upwork-ops.md                     # Upwork воронка: intake brief, proposal, delivery & rates
+│   └── 16-anti-mishmash-cohesion.md         # Защита от «солянки», карантин стиля и 5-фазовая анатомия
+├── design-system/
+│   ├── creator-archetypes.md
+│   ├── typography-scale.md
+│   └── sfx-mapping.md
+└── references/
+    └── pinterest/                           # Креативные референсы по 10 стилям (119 проверенных ассетов)
+        ├── assembly_blueprint.md            # Пошаговые рецепты сборки таймлайна для каждого стиля
+        └── CATALOG.md                       # Структурированный индекс стилей, хуков и приемов по ролям
 ```
 
 ---
@@ -74,4 +81,5 @@
 - `python tools/plan_contact_sheet.py <plan.json>` — генерация контактного листа кадров до рендера.
 - `python tools/mix.py <voice.wav> <plan.json>` — сведение звука по относительным dB и сайдчейн.
 - `python tools/qa.py <video.mp4> [plan.json]` — автоматический аудит видео на 10 fps.
+- `python tools/sync_pinterest_references.py` — синхронизация каталога креативных референсов после добавления/удаления файлов.
 - **After Effects Build:** запуск `scripts/build_ae_project.jsx` или `scripts/import_to_ae.jsx` через `File -> Scripts -> Run Script File...`.
