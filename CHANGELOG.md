@@ -4,32 +4,40 @@
 
 ## [Unreleased] - 2026-10-17
 
-### Блок B. Сборка и зависимости
-- **B1 (`package.json`, `package-lock.json`):** Добавлено поле `"engines": { "node": ">=22.0.0" }`. Выполнена пересборка `package-lock.json` через `npm install`, устранен конфликт `@types/node` и `undici-types`. Обеспечена чистая воспроизводимая установка `npm ci` на Node.js 22 и 24.
-- **B2 (`package.json`):** Добавлен npm-скрипт `"typecheck": "tsc --noEmit"`. Проверено: `npm run typecheck` завершается с 0 ошибок.
-- **B3 (`.github/workflows/ci.yml`, `pytest.ini`):** Создан GitHub Actions CI workflow на базе Ubuntu Linux с матрицей Node 22/24 и Python 3.12. Включены шаги: `npm ci`, `npm run typecheck`, компиляция Python (`python -m py_compile tools/*.py`), прогон тестов (`pytest tests/ -m "not slow"`). В `pytest.ini` зарегистрирован маркер `slow`.
+### Пункт 2. Чистка личных путей и устаревших ссылок
+- **Пути рабочей станции:** Заменены пути `C:\Users\timur\...` и `file:///C:/Users/timur/...` на `<ROOT>`, `<USER_HOME>` и `<PYTHON_HOME>` в `install-report.md`, `logs/*.md` и `docs/*.md`. Проверено отсутствие упоминаний личных путей вне `references/` и `node_modules`.
+- **Устаревшие ссылки:** В `logs/v3-report.md` и сопутствующих логах заменены устаревшие ссылки `"npm start"` на `"npm run preview"`, а ссылка на несуществующий рулбук `07-qa-review.md` заменена на `.claude/rulebooks/05-qa-checklist.md`.
+- **Install Report:** Приведена версия Python к диапазону `>= 3.10` (включая протестированные 3.12 и 3.14) и добавлено примечание, что отчёт фиксирует параметры конкретной сборочной машины.
+- **Rules Audit:** В `docs/rules-audit.md` обновлены упоминания каталога `rules/templates`: отражено его удаление и фиксация единого источника `.claude/rulebooks/templates/`.
 
-### Блок C. Рендер на реальном видео
-- **C1 (`src/compositions/ReelFromPlan.tsx`, `tools/render_clip.py`):** Удалена хрупкая Windows-специфичная регулярка путей `C:\...AI-Video-Editing`. Видео передается надежно: `render_clip.py` создает изолированную структуру временной public-папки со ссылками на `assets/` и исходный видеоролик, передавая `--public-dir` в Remotion. Относительные пути клиентов (`clients/<имя>/work/...`) корректно разрешаются.
-- **C2 (`src/compositions/ReelFromPlan.tsx`, `src/Root.tsx`):** В композицию `ReelFromPlan` добавлена функция `calculateMetadata`: динамический расчет длительности `durationInFrames = Math.round(plan.target_duration_sec * fps)`, а также габаритов (по умолчанию 1080×1920) и fps (30) из плана.
-- **C3 (`tools/render_clip.py`, `src/components/SfxAudio.tsx`):**
-  - Убран вызов `cmd.exe /c`; запуск `npx` реализован кросс-платформенно (`shutil.which("npx.cmd")` / `shutil.which("npx")`).
-  - Ошибки FFmpeg не глушатся: вывод перенаправлен в `stderr`.
-  - Ошибки сведения звука (`tools/mix.py`) приводят к остановке с ошибкой (exit code 1). Для явного разрешения использования исходного голоса добавлен флаг `--allow-voice-fallback`.
-  - Добавлена валидация готового MP4 через `ffprobe` (наличие видеопотока, аудиопотока и совпадение длительности с планом в пределах допуска).
-  - В `SfxAudio.tsx` поддержаны расширения `.wav` при их отсутствии в идентификаторе бита и предотвращена загрузка пустых/'TODO' звуков.
-- **C4 (`tests/test_e2e.py`):** Разработан сквозной E2E-тест: синтез 10-секундного тестового ролика (testsrc + sine) через `ffmpeg` -> `tools/ingest.py` -> `tools/plan_scaffold.py` -> установка `approved: true` -> `tools/render_clip.py` -> валидация контейнера через `ffprobe` (1080×1920, 30 fps, аудиопоток, длительность ±0.2 с). Тест помечен `@pytest.mark.slow`.
+### Пункт 3. Approval Gate в render:clip
+- **`package.json`:** Команда `npm run render:clip` защищена предварительным вызовом `node tools/check_approval.mjs`.
+- **`tools/check_approval.mjs`:** Добавлена гибкая обработка аргументов: первый позиционный аргумент, оканчивающийся на `.json` или являющийся директорией (поиск `edit_plan.json`), считается файлом плана. Поддерживается проброс аргументов через `npm run render:clip -- <путь>`.
+- **`tests/test_approval_gate.py`:** Разработан быстрый набор тестов без рендера:
+  - План с `approved: false` -> exit code 1.
+  - План с `approved: true` -> exit code 0.
+  - Несуществующий план -> exit code 1.
 
-### Блок D. Approval Gate
-- **D1 (`package.json`):** Гейт `node tools/check_approval.mjs` подключен во все финальные npm-скрипты рендера: `render:full`, `render:stems`, `render:greenscreen`. Скрипт `draft` оставлен без гейта для свободного чернового предпросмотра.
-- **D2 (`tools/check_approval.mjs`):** Исправлено поведение гейта: при отсутствии файла плана монтажа процесс немедленно завершается с ошибкой (`process.exit(1)`). Добавлена поддержка аргумента `--plan <путь>`.
+### Пункт 4. Тесты, линтер комментариев и CI
+- **Быстрые тесты пайплайна (без Chromium):**
+  - `tests/test_render_clip_helpers.py`: тестирование `resolve_file_path` (абсолютный путь, относительный от плана, относительный от корня, несуществующий) и `verify_output_mp4` (валидный файл, файл без аудио, файл с неверной длительностью).
+  - `tests/test_calculate_metadata.py`: проверка функции расчета длительности `round(target_duration_sec * fps)` и габаритов 1080×1920 @ 30 fps по умолчанию.
+- **CI пайплайн (`.github/workflows/ci.yml`):**
+  - Разделены быстрые и тяжелые тесты: на каждый `push` и `pull_request` запускаются `npm ci`, `npm run typecheck`, проверка отсутствия комментариев, компиляция `tools/*.py` и быстрые тесты `pytest tests/ -m "not slow"`.
+  - Сквозной E2E-тест вынесен в отдельный job с запуском по расписанию (`schedule` раз в неделю) и вручную (`workflow_dispatch`) с предварительным выполнением `npx remotion browser ensure`.
+- **Линтер комментариев (`tools/check_no_comments.py`):**
+  - Создан строгий верификатор отсутствия любых комментариев (`//`, `/* */`, `#`, `"//"`) в файлах `.ts`, `.tsx`, `.js`, `.mjs`, `.json`, `.css`, `.jsx`.
+  - Удалены устаревшие комментарии из компонентов `assets/motion/`.
 
-### Блок E. Документация и порядок
-- **E1 (`CLAUDE.md`):** Сокращен до 42 строк: содержит 10 жестких правил проекта и карту всех 16 рулбуков со ссылками. Избыточные дублирующие описания удалены.
-- **E2 (`docs/`, `rules/`, `tools/qa.py`):**
-  - Устранены ссылки на несуществующие `GEMINI.md` и `sync_gemini.py`.
-  - Зафиксировано актуальное число рулбуков (16 рулбуков, включая `07-creator-style-presets.md`).
-  - Документ `docs/after-effects-mcp-integration.md` помечен как архивный и запрещенный к использованию в продакшене.
-  - Устаревшая директория `rules/templates` удалена, единым источником шаблонов объявлена `.claude/rulebooks/templates/`.
-- **E3 (`README.md`):** Убрано заявление "production-ready". Добавлен подробный раздел «Статус» с четким разделением на проверенное и UNVERIFIED, требования к окружению и пошаговый быстрый старт на синтетическом видео.
-- **E4 (`.gitignore`, `.claude/settings.json`):** Добавлен `.claude/settings.json` с директивой `permissions.deny` на `references/**` и `tools/_scratch/**`. В `.gitignore` внесены `tools/_scratch/` и сторонние каталоги `references/`.
+### Пункт 5. Надежность render_clip.py
+- **Контроль подбора источника:** При отсутствии `sdr_path`/`proxy_path` автоматический подбор случайного файла из `work/ingest` заблокирован по умолчанию. Выводится предупреждение с путем кандидата и требуется явный флаг `--allow-source-guess`, иначе процесс завершается с exit code 1.
+- **Флаг `--no-source`:** Если видеофайл не найден вовсе, рендер без видеослоя допускается только при явной передаче флага `--no-source`.
+- **Валидация аудиодорожки:** Перед запуском рендера Remotion выполняется проверка через `ffprobe`, что у `voice_source` присутствует аудиопоток; при отсутствии выводится понятная ошибка и выполнение прерывается.
+- **Управление параллелизмом:** Добавлен флаг `--concurrency` (по умолчанию 2) для предотвращения исчерпания памяти и сбоев видеокомпозитора Remotion (`No frame found at position`).
+- **Раздел Troubleshooting в `README.md`:** Документированы решения для проблем с загрузкой Chromium (`npx remotion browser ensure`), отсутствием FFmpeg/FFprobe в PATH и разрешением `npx`.
+
+### Блоки B, C, D, E (базовые требования)
+- **B1-B3:** Пересборка `package-lock.json`, Node `engines`, скрипт `typecheck`, базовый CI workflow.
+- **C1-C4:** Очистка Windows-путей в `ReelFromPlan.tsx`, `calculateMetadata`, кросс-платформенный запуск `npx`, сквозной `tests/test_e2e.py`.
+- **D1-D2:** Подключение `check_approval.mjs` во все финальные скрипты, падение с кодом 1 при отсутствии плана.
+- **E1-E4:** Сокращение `CLAUDE.md` до 42 строк, устранение устаревших ссылок и дублей, обновление `README.md`, изоляция `references/` и `tools/_scratch/`.
