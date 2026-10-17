@@ -54,11 +54,29 @@ def get_npx_executable() -> str:
         sys.exit(1)
     return npx_bin
 
+def check_voice_has_audio(voice_file: Path) -> bool:
+    ffprobe_bin = shutil.which("ffprobe")
+    if not ffprobe_bin:
+        print("Error: 'ffprobe' executable not found in PATH.", file=sys.stderr)
+        sys.exit(1)
+    cmd = [
+        ffprobe_bin,
+        "-v", "error",
+        "-select_streams", "a",
+        "-show_entries", "stream=codec_type",
+        "-of", "default=noprint_wrappers=1:nokey=1",
+        str(voice_file)
+    ]
+    res = subprocess.run(cmd, capture_output=True, text=True)
+    if res.returncode != 0:
+        return False
+    return "audio" in res.stdout
+
 def verify_output_mp4(mp4_path: Path, expected_duration: float, tolerance: float = 0.5):
     ffprobe_bin = shutil.which("ffprobe")
     if not ffprobe_bin:
-        print("Warning: ffprobe not found in PATH, skipping stream verification.", file=sys.stderr)
-        return
+        print("Error: 'ffprobe' executable not found in PATH.", file=sys.stderr)
+        sys.exit(1)
 
     cmd = [
         ffprobe_bin,
@@ -95,10 +113,20 @@ def verify_output_mp4(mp4_path: Path, expected_duration: float, tolerance: float
     print(f"Verification passed: audio and video streams present, duration {actual_dur:.2f}s matches expected {expected_duration:.2f}s (±{tolerance}s).")
 
 def main():
+    if not shutil.which("ffmpeg"):
+        print("Error: 'ffmpeg' executable not found in PATH.", file=sys.stderr)
+        sys.exit(1)
+    if not shutil.which("ffprobe"):
+        print("Error: 'ffprobe' executable not found in PATH.", file=sys.stderr)
+        sys.exit(1)
+
     parser = argparse.ArgumentParser(description="Render final clip from edit_plan.json using Remotion + audio mix mux")
     parser.add_argument("target", nargs="?", default="work/plan/edit_plan.json", help="Path to edit_plan.json or client dir")
     parser.add_argument("--output", "-o", default=None, help="Output MP4 file path")
+    parser.add_argument("--concurrency", default="2", help="Remotion render concurrency (default: 2)")
     parser.add_argument("--allow-voice-fallback", action="store_true", help="Allow fallback to raw voice if tools/mix.py fails")
+    parser.add_argument("--allow-source-guess", action="store_true", help="Allow fallback to candidate video in work/ingest if sdr_path/proxy_path not found")
+    parser.add_argument("--no-source", action="store_true", help="Allow rendering without source video layer")
     args = parser.parse_args()
 
     target_path = Path(args.target).resolve()
@@ -134,10 +162,43 @@ def main():
         ]
         if plan_file.parent.parent.exists():
             fallback_candidates.extend(list((plan_file.parent.parent / "ingest").glob("*.mp4")))
+
+        found_candidate = None
         for cand in fallback_candidates:
             if cand.exists():
-                resolved_video = cand.resolve()
+                found_candidate = cand.resolve()
                 break
+
+        if found_candidate:
+            print(f"Warning: Source video not specified or not found in plan. Found candidate in work/ingest: {found_candidate}", file=sys.stderr)
+            if not args.allow_source_guess:
+                print("Error: Fallback to guessed video is disabled by default. Pass --allow-source-guess to permit using this candidate.", file=sys.stderr)
+                sys.exit(1)
+            resolved_video = found_candidate
+        else:
+            resolved_video = None
+
+    if not resolved_video or not resolved_video.exists():
+        if not args.no_source:
+            print("Error: Source video not found. Rendering without source video is only permitted with --no-source.", file=sys.stderr)
+            sys.exit(1)
+        resolved_video = None
+
+    voice_candidate = resolve_file_path(plan_data.get("voice_path") or plan_data.get("audio_path"), plan_file)
+    if voice_candidate and voice_candidate.exists():
+        voice_source = voice_candidate
+    elif resolved_video and resolved_video.exists():
+        voice_source = resolved_video
+    else:
+        voice_source = None
+
+    if not voice_source or not voice_source.exists():
+        print("Error: No voice source video or audio file found.", file=sys.stderr)
+        sys.exit(1)
+
+    if not check_voice_has_audio(voice_source):
+        print(f"Error: Voice source '{voice_source}' has no audio stream.", file=sys.stderr)
+        sys.exit(1)
 
     with tempfile.TemporaryDirectory() as tmp_dir:
         tmp_path = Path(tmp_dir)
@@ -196,6 +257,7 @@ def main():
             "src/index.ts", "ReelFromPlan", str(silent_video),
             f"--props={str(props_file)}",
             f"--public-dir={str(tmp_public)}",
+            f"--concurrency={args.concurrency}",
             "--muted",
             "--log=error"
         ]
@@ -208,8 +270,6 @@ def main():
             if res_r.stdout:
                 print(res_r.stdout, file=sys.stderr)
             sys.exit(1)
-
-        voice_source = resolved_video if resolved_video and resolved_video.exists() else silent_video
 
         audio_tmp_dir = tmp_path / "audio"
         audio_tmp_dir.mkdir(parents=True, exist_ok=True)

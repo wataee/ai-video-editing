@@ -71,3 +71,32 @@ python tools/render_clip.py work/plan/edit_plan.json --output out/test_final.mp4
 | `npm run render:clip` | Сквозной продакшен-рендер с калибровкой аудио и проверкой ffprobe |
 | `pytest tests/ -m "not slow"` | Запуск быстрых модульных тестов пайплайна |
 | `pytest tests/test_e2e.py` | Полный сквозной интеграционный E2E-тест |
+
+---
+
+## 🔧 Устранение неполадок (Troubleshooting)
+
+### 1. Chromium не скачивается или ошибки рендера Remotion
+Remotion использует headless Chromium для рендера кадров. Если при первом запуске браузер не скачался автоматически или возникли проблемы с сетью/правами:
+```bash
+npx remotion browser ensure
+```
+В средах с ограниченным доступом к сети или за прокси можно указать путь к установленному браузеру через переменную окружения `PUPPETEER_EXECUTABLE_PATH` или параметры Remotion.
+
+### 2. Ошибка "ffmpeg / ffprobe not found in PATH"
+Движок требует утилиты FFmpeg и FFprobe для транскодирования, микширования и верификации контейнеров.
+- **Windows:** Установите через `winget install Gyan.FFmpeg` или скачайте с [gyan.dev/ffmpeg](https://www.gyan.dev/ffmpeg/builds/) и добавьте папку `bin` в системную переменную `PATH`.
+- **Linux (Ubuntu/Debian):** `sudo apt-get update && sudo apt-get install -y ffmpeg`
+- **macOS:** `brew install ffmpeg`
+Проверьте доступность:
+```bash
+ffmpeg -version
+ffprobe -version
+```
+
+### 3. 'npx' не найден или npx.cmd
+Убедитесь, что Node.js (>= 22.0.0) установлен и добавлен в системный `PATH`. На Windows скрипт `tools/render_clip.py` автоматически разрешает `npx.cmd`. Проверьте вызов в консоли:
+```bash
+node -v
+npx -v
+```
