@@ -10,97 +10,97 @@
 ### Хук 1. Парадокс найма (Михаил Гребенюк)
 - **Архетип:** 1. The Counter-Intuitive Claim
 - **Структура:** `«Кто в НАЙМЕ, ловите инсайт: если ты думаешь что [миф о карьере], ты ошибаешься.»`
-- **Подтвержденный ролик:** [YouTube Shorts V6O-ZAAXn4A](https://www.youtube.com/shorts/V6O-ZAAXn4A) ([Карточка ru-01](file:///C:/Users/timur/Videos/AI-Video-Editing/references/library/cards/ru-01-grebenuk-naim.md))
+- **Подтвержденный ролик:** [YouTube Shorts V6O-ZAAXn4A](https://www.youtube.com/shorts/V6O-ZAAXn4A) ([Карточка ru-01](references/library/cards/ru-01-grebenuk-naim.md))
 - **Материал (Пруф):** Крупный план спикера ➔ всплывающий документ штатного расписания.
 
 ### Хук 2. Большая цифра инсайта (Михаил Гребенюк)
 - **Архетип:** 3. The Data Anomaly / Big Number
 - **Структура:** `«Мой главный инсайт года, который сэкономил мне [сумма/ресурс].»`
-- **Подтвержденный ролик:** [YouTube Shorts Rud7OeBBrjw](https://www.youtube.com/shorts/Rud7OeBBrjw) ([Карточка ru-02](file:///C:/Users/timur/Videos/AI-Video-Editing/references/library/cards/ru-02-grebenuk-insight.md))
+- **Подтвержденный ролик:** [YouTube Shorts Rud7OeBBrjw](https://www.youtube.com/shorts/Rud7OeBBrjw) ([Карточка ru-02](references/library/cards/ru-02-grebenuk-insight.md))
 - **Материал (Пруф):** Счетчик `NumberTicker` ➔ выписка из банковского приложения.
 
 ### Хук 3. Ошибка на высокий чек (Михаил Гребенюк)
 - **Архетип:** 5. The Extreme Negative Warning
 - **Структура:** `«Почему клиенты никогда не купят на высокий чек, если ты делаешь [ошибка].»`
-- **Подтвержденный ролик:** [YouTube Shorts 60nGxHE_aUU](https://www.youtube.com/shorts/60nGxHE_aUU) ([Карточка ru-03](file:///C:/Users/timur/Videos/AI-Video-Editing/references/library/cards/ru-03-grebenuk-sales.md))
+- **Подтвержденный ролик:** [YouTube Shorts 60nGxHE_aUU](https://www.youtube.com/shorts/60nGxHE_aUU) ([Карточка ru-03](references/library/cards/ru-03-grebenuk-sales.md))
 - **Материал (Пруф):** Реальный договор с замазанным чеком и выделением маркером.
 
 ### Хук 4. Разница 1% и 99% (Александр Соколовский)
 - **Архетип:** 6. The Split Reality
 - **Структура:** `«Разница между тем кто зарабатывает [сумма] и тем кто топчется на месте.»`
-- **Подтвержденный ролик:** [YouTube Shorts NBqK6g0AScQ](https://www.youtube.com/shorts/NBqK6g0AScQ) ([Карточка ru-04](file:///C:/Users/timur/Videos/AI-Video-Editing/references/library/cards/ru-04-sokolovskiy-mindset.md))
+- **Подтвержденный ролик:** [YouTube Shorts NBqK6g0AScQ](https://www.youtube.com/shorts/NBqK6g0AScQ) ([Карточка ru-04](references/library/cards/ru-04-sokolovskiy-mindset.md))
 - **Материал (Пруф):** Плашка цитаты гостя `LiquidGlassCard` со статусом верификации.
 
 ### Хук 5. Ловушка выгорания (Александр Соколовский)
 - **Архетип:** 1. The Counter-Intuitive Claim
 - **Структура:** `«Ты думаешь что выгорание от [привычное действие], но на самом деле от этого.»`
-- **Подтвержденный ролик:** [YouTube Shorts hkRGnhSyt2I](https://www.youtube.com/shorts/hkRGnhSyt2I) ([Карточка ru-05](file:///C:/Users/timur/Videos/AI-Video-Editing/references/library/cards/ru-05-sokolovskiy-habits.md))
+- **Подтвержденный ролик:** [YouTube Shorts hkRGnhSyt2I](https://www.youtube.com/shorts/hkRGnhSyt2I) ([Карточка ru-05](references/library/cards/ru-05-sokolovskiy-habits.md))
 - **Материал (Пруф):** Скриншот научного исследования о дофамине и перегрузке.
 
 ### Хук 6. Горизонт планирования (Александр Соколовский)
 - **Архетип:** 2. The Rapid Zoom Question
 - **Структура:** `«Пока ты планируешь на [короткий срок], они строят стратегию на [длинный срок].»`
-- **Подтвержденный ролик:** [YouTube Shorts XSwTZ6_Oia8](https://www.youtube.com/shorts/XSwTZ6_Oia8) ([Карточка ru-06](file:///C:/Users/timur/Videos/AI-Video-Editing/references/library/cards/ru-06-sokolovskiy-growth.md))
+- **Подтвержденный ролик:** [YouTube Shorts XSwTZ6_Oia8](https://www.youtube.com/shorts/XSwTZ6_Oia8) ([Карточка ru-06](references/library/cards/ru-06-sokolovskiy-growth.md))
 - **Материал (Пруф):** Сравнительная инфографика горизонтов планирования.
 
 ### Хук 7. Скепсис к хайпу (Максим Батырев)
 - **Архетип:** 4. The Screen Grab Reality
 - **Структура:** `«Как так быстро все стали экспертами по [хайповая тема]?»`
-- **Подтвержденный ролик:** [YouTube Shorts nDLtFvMid-0](https://www.youtube.com/shorts/nDLtFvMid-0) ([Карточка ru-07](file:///C:/Users/timur/Videos/AI-Video-Editing/references/library/cards/ru-07-batyrev-ai.md))
+- **Подтвержденный ролик:** [YouTube Shorts nDLtFvMid-0](https://www.youtube.com/shorts/nDLtFvMid-0) ([Карточка ru-07](references/library/cards/ru-07-batyrev-ai.md))
 - **Материал (Пруф):** Скриншоты профилей соцсетей с внезапной сменой позиционирования.
 
 ### Хук 8. Запрет на партнерство (Максим Батырев)
 - **Архетип:** 5. The Extreme Negative Warning
 - **Структура:** `«Никогда не начинай совместный бизнес с [кто-то], пока не подпишешь это.»`
-- **Подтвержденный ролик:** [YouTube Shorts TbM6Uujl9M0](https://www.youtube.com/shorts/TbM6Uujl9M0) ([Карточка ru-08](file:///C:/Users/timur/Videos/AI-Video-Editing/references/library/cards/ru-08-batyrev-partnership.md))
+- **Подтвержденный ролик:** [YouTube Shorts TbM6Uujl9M0](https://www.youtube.com/shorts/TbM6Uujl9M0) ([Карточка ru-08](references/library/cards/ru-08-batyrev-partnership.md))
 - **Материал (Пруф):** Текст партнерского соглашения с пунктами выхода.
 
 ### Хук 9. Ошибка делегирования (Максим Батырев)
 - **Архетип:** 1. The Counter-Intuitive Claim
 - **Структура:** `«Если сотрудник переспрашивает тебя три раза, виноват не он, а ты.»`
-- **Подтвержденный ролик:** [YouTube Shorts U30Ap13NFuA](https://www.youtube.com/shorts/U30Ap13NFuA) ([Карточка ru-09](file:///C:/Users/timur/Videos/AI-Video-Editing/references/library/cards/ru-09-batyrev-delegate.md))
+- **Подтвержденный ролик:** [YouTube Shorts U30Ap13NFuA](https://www.youtube.com/shorts/U30Ap13NFuA) ([Карточка ru-09](references/library/cards/ru-09-batyrev-delegate.md))
 - **Материал (Пруф):** Чек-лист постановки задачи из 4 пунктов.
 
 ### Хук 10. Токсичный вопрос диалога (Радислав Гандапас)
 - **Архетип:** 5. The Extreme Negative Warning
 - **Структура:** `«Когда тебя спрашивают [дежурный вопрос] и ты отвечаешь [банальный ответ], ты убиваешь разговор.»`
-- **Подтвержденный ролик:** [YouTube Shorts GhbKCB2K78w](https://www.youtube.com/shorts/GhbKCB2K78w) ([Карточка ru-10](file:///C:/Users/timur/Videos/AI-Video-Editing/references/library/cards/ru-10-gandapas-dialog.md))
+- **Подтвержденный ролик:** [YouTube Shorts GhbKCB2K78w](https://www.youtube.com/shorts/GhbKCB2K78w) ([Карточка ru-10](references/library/cards/ru-10-gandapas-dialog.md))
 - **Материал (Пруф):** Плашка с 3 вариантами сильного ответа.
 
 ### Хук 11. Фраза из детства (Радислав Гандапас)
 - **Архетип:** 1. The Counter-Intuitive Claim
 - **Структура:** `«Одна фраза в детстве, которая формирует [комплекс] на всю взрослую жизнь.»`
-- **Подтвержденный ролик:** [YouTube Shorts 6BTit2HaRUI](https://www.youtube.com/shorts/6BTit2HaRUI) ([Карточка ru-11](file:///C:/Users/timur/Videos/AI-Video-Editing/references/library/cards/ru-11-gandapas-education.md))
+- **Подтвержденный ролик:** [YouTube Shorts 6BTit2HaRUI](https://www.youtube.com/shorts/6BTit2HaRUI) ([Карточка ru-11](references/library/cards/ru-11-gandapas-education.md))
 - **Материал (Пруф):** Цитата из исследования возрастной психологии.
 
 ### Хук 12. Секрет уверенности (Радислав Гандапас)
 - **Архетип:** 1. The Counter-Intuitive Claim
 - **Структура:** `«Страх сцены невозможно победить, но его можно превратить в [ресурс].»`
-- **Подтвержденный ролик:** [YouTube Shorts Q5VQPlNqjZY](https://www.youtube.com/shorts/Q5VQPlNqjZY) ([Карточка ru-12](file:///C:/Users/timur/Videos/AI-Video-Editing/references/library/cards/ru-12-gandapas-public.md))
+- **Подтвержденный ролик:** [YouTube Shorts Q5VQPlNqjZY](https://www.youtube.com/shorts/Q5VQPlNqjZY) ([Карточка ru-12](references/library/cards/ru-12-gandapas-public.md))
 - **Материал (Пруф):** Схема переработки гормонального стресса.
 
 ### Хук 13. Срочная новость (Илья Варламов)
 - **Архетип:** 3. The Data Anomaly / News
 - **Структура:** `«[Организация] подверглась крупнейшей атаке и вот что произошло с вашими [активы].»`
-- **Подтвержденный ролик:** [YouTube Shorts a5t5DQOSGiA](https://www.youtube.com/shorts/a5t5DQOSGiA) ([Карточка ru-13](file:///C:/Users/timur/Videos/AI-Video-Editing/references/library/cards/ru-13-varlamov-sber.md))
+- **Подтвержденный ролик:** [YouTube Shorts a5t5DQOSGiA](https://www.youtube.com/shorts/a5t5DQOSGiA) ([Карточка ru-13](references/library/cards/ru-13-varlamov-sber.md))
 - **Материал (Пруф):** Официальный пресс-релиз и системные уведомления.
 
 ### Хук 14. Ценовой шок (Илья Варламов)
 - **Архетип:** 4. The Screen Grab Reality
 - **Структура:** `«Почему [базовая услуга] теперь стоит как [дорогая вещь]?»`
-- **Подтвержденный ролик:** [YouTube Shorts q8ykAX41ut4](https://www.youtube.com/shorts/q8ykAX41ut4) ([Карточка ru-14](file:///C:/Users/timur/Videos/AI-Video-Editing/references/library/cards/ru-14-varlamov-taxi.md))
+- **Подтвержденный ролик:** [YouTube Shorts q8ykAX41ut4](https://www.youtube.com/shorts/q8ykAX41ut4) ([Карточка ru-14](references/library/cards/ru-14-varlamov-taxi.md))
 - **Материал (Пруф):** Скриншот приложения заказа с аномальной ценой.
 
 ### Хук 15. Техника быстрого засыпания (Алексей Ситников)
 - **Архетип:** 1. The Counter-Intuitive Claim / How-to
 - **Структура:** `«Простая техника [действие], которая отключает мысли ровно за [время].»`
-- **Подтвержденный ролик:** [YouTube Shorts c8fx_Y_EqCk](https://www.youtube.com/shorts/c8fx_Y_EqCk) ([Карточка ru-15](file:///C:/Users/timur/Videos/AI-Video-Editing/references/library/cards/ru-15-sitnikov-sleep.md))
+- **Подтвержденный ролик:** [YouTube Shorts c8fx_Y_EqCk](https://www.youtube.com/shorts/c8fx_Y_EqCk) ([Карточка ru-15](references/library/cards/ru-15-sitnikov-sleep.md))
 - **Материал (Пруф):** Схема фаз сна и графика выработки мелатонина.
 
 ### Хук 16. Снятие тревоги за 30 секунд (Алексей Ситников)
 - **Архетип:** 1. The Counter-Intuitive Claim
 - **Структура:** `«Это простое физиологическое действие снижает стресс быстрее любых таблеток.»`
-- **Подтвержденный ролик:** [YouTube Shorts QQQK8Y9e43Y](https://www.youtube.com/shorts/QQQK8Y9e43Y) ([Карточка ru-16](file:///C:/Users/timur/Videos/AI-Video-Editing/references/library/cards/ru-16-sitnikov-stress.md))
+- **Подтвержденный ролик:** [YouTube Shorts QQQK8Y9e43Y](https://www.youtube.com/shorts/QQQK8Y9e43Y) ([Карточка ru-16](references/library/cards/ru-16-sitnikov-stress.md))
 - **Материал (Пруф):** Диаграмма вегетативной нервной системы на плашке ProofCard.
 
 ---

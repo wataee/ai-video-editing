@@ -1,6 +1,6 @@
 # Итоговый отчёт по ревизии v3 (17 октября 2026 г.)
 
-> **Рабочий каталог:** `C:\Users\timur\Videos\AI-Video-Editing`  
+> **Рабочий каталог:** `<ROOT>`  
 > **Лог операций:** [`logs/v3-2026-10-17.md`](v3-2026-10-17.md)  
 > **Журнал архитектурных решений:** [`logs/decisions.md`](decisions.md)  
 > **Окружение (фактический вывод системных утилит):**  
@@ -9,7 +9,7 @@
 > - `ffmpeg -version`: `ffmpeg version 9.0.2-full_build-www.gyan.dev`  
 > - `where AfterFX.exe`: Не обнаружен в системном PATH (код 1).  
 > - `Поиск в C:\Program Files\Adobe`: Обнаружен установленный Adobe After Effects 2026 (`C:\Program Files\Adobe\Adobe After Effects 2026\Support Files\AfterFX.exe`), а также Adobe Premiere Pro 2025, Adobe Premiere Pro 2026, Adobe Media Encoder 2026, Adobe Creative Cloud Experience.  
-> **Статус валидации путей:** [`npm run check`](file:///c:/Users/timur/Videos/AI-Video-Editing/tools/check_paths.py) -> **PASS**  
+> **Статус валидации путей:** [`npm run check`](tools/check_paths.py) -> **PASS**  
 > **Статус компиляции TypeScript:** `npx tsc --noEmit` -> **0 ошибок**
 
 ---
@@ -45,7 +45,7 @@
 
 4. **Оценка драматургии хука, эмоционального ритма и клипового удержания**
    - *Причина:* Ни одна LLM или CV-система не способна объективно оценить человеческую скуку или эмоциональную вовлеченность при просмотре первого 3-секундного блока.
-   - *Где зафиксировано:* `.claude/rulebooks/07-qa-review.md`.
+   - *Где зафиксировано:* `.claude/rulebooks/05-qa-checklist.md`.
 
 ---
 
@@ -62,7 +62,7 @@
 2. **Визуальная проверка кадрирования на собственном видео (5 минут):**
    - Записать или взять собственное горизонтальное видео (1920×1080 или 3840×2160) с говорящей головой.
    - Выполнить: `python tools/reframe.py <путь_к_видео> --out work/reframe.json`.
-   - Проверить в Remotion Preview (`npm start`), нет ли неестественного «плавания» кадра при поворотах головы. При необходимости подправить коэффициент `alpha` в `reframe.py` под персональную моторику спикера.
+   - Проверить в Remotion Preview (`npm run preview`), нет ли неестественного «плавания» кадра при поворотах головы. При необходимости подправить коэффициент `alpha` в `reframe.py` под персональную моторику спикера.
 
 3. **Аудио-контроль на телефоне (3 минуты):**
    - Скинуть файл `clients/_demo2/out/final_reel.mp4` на реальный смартфон (через Telegram/AirDrop).

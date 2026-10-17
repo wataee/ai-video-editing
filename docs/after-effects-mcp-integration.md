@@ -8,12 +8,12 @@
 ## 🛡️ Внесённые патчи безопасности и производительности
 
 ### 1. Полная изоляция файлового обмена (IPC)
-* **Было:** Сервер создавал папки и файлы обмена в корневом каталоге пользователя `C:\Users\timur\.ae-mcp\`.
+* **Было:** Сервер создавал папки и файлы обмена в корневом каталоге пользователя `<USER_HOME>/.ae-mcp\`.
 * **Стало:** Все очереди команд, результаты, логи и временные превью-рендеры перенаправлены строго внутрь проекта:
-  `C:\Users\timur\Videos\AI-Video-Editing\work\.ae-mcp\`
+  `<ROOT>\work\.ae-mcp\`
 * **Файлы:**
   * `tools\after-effects-mcp\src\util\paths.ts` — значение по умолчанию для `getDataRoot()` переопределено на `work\.ae-mcp`.
-  * `tools\after-effects-mcp\host-scripts\ae-mcp-engine.jsx` — функция `getDataDir()` читает `AE_MCP_DATA_DIR` с жестким фоллбэком на `C:/Users/timur/Videos/AI-Video-Editing/work/.ae-mcp`.
+  * `tools\after-effects-mcp\host-scripts\ae-mcp-engine.jsx` — функция `getDataDir()` читает `AE_MCP_DATA_DIR` с жестким фоллбэком на `<ROOT>/work/.ae-mcp`.
   * `tools\after-effects-mcp\host-scripts\ae-mcp-methods.jsx` — директория рендера превью `previews/` перенаправлена в `work\.ae-mcp\previews`.
   * `tools\after-effects-mcp\host-scripts\ae-mcp-status.jsx` — статусная панель отслеживает файлы в `work\.ae-mcp`.
 
@@ -21,7 +21,7 @@
 * **Было:** Инструмент `ae_run_jsx` принимал произвольный код без проверки, позволяя вызывать системные команды Windows через `system.callSystem(...)` и удалять файлы через `.remove()`.
 * **Стало:** В `tools\after-effects-mcp\src\mcp\tools\index.ts` перед выполнением JSX добавлен строгий guard-фильтр:
   * **Блокировка опасных вызовов:** немедленный отказ при наличии `callSystem`, `system.`, `.remove`, `.execute`, `Folder.startup`, `File.encode`.
-  * **Блокировка путей вне проекта:** проверка всех путей файловой системы по регулярному выражению — запрещены любые пути за пределами `C:/Users/timur/Videos/AI-Video-Editing`.
+  * **Блокировка путей вне проекта:** проверка всех путей файловой системы по регулярному выражению — запрещены любые пути за пределами `<ROOT>`.
 
 ### 3. Увеличение скорости отклика (Polling)
 * **Было:** Интервал проверки очереди в After Effects составлял 1500 мс (1.5 с).
@@ -43,18 +43,18 @@
 *(Продублировано в `26.3` для совместимости со всеми патчами версии 2026).*
 
 ### 2. Локальный конфиг MCP:
-В корне проекта создан файл [`.mcp.json`](file:///C:/Users/timur/Videos/AI-Video-Editing/.mcp.json):
+В корне проекта создан файл [`.mcp.json`](.mcp.json):
 ```json
 {
   "mcpServers": {
     "after-effects": {
       "command": "C:/Program Files/nodejs/node.exe",
       "args": [
-        "C:/Users/timur/Videos/AI-Video-Editing/tools/after-effects-mcp/dist/index.js",
+        "<ROOT>/tools/after-effects-mcp/dist/index.js",
         "serve"
       ],
       "env": {
-        "AE_MCP_DATA_DIR": "C:/Users/timur/Videos/AI-Video-Editing/work/.ae-mcp"
+        "AE_MCP_DATA_DIR": "<ROOT>/work/.ae-mcp"
       }
     }
   }
@@ -62,7 +62,7 @@
 ```
 
 ### 3. Быстрая диагностика:
-Создан батник [`tools\after-effects-mcp.bat`](file:///C:/Users/timur/Videos/AI-Video-Editing/tools/after-effects-mcp.bat):
+Создан батник [`tools\after-effects-mcp.bat`](tools/after-effects-mcp.bat):
 * `tools\after-effects-mcp.bat health` — статус подключения и процесса AE.
 * `tools\after-effects-mcp.bat ensure` — ручной перезапуск моста в запущенном AE.
 

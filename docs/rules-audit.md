@@ -21,8 +21,8 @@
 | `rules/modes/ae-montage.md` | 90 | Подключаемый регламент монтажа в After Effects MCP |
 | `rules/modes/content-hook.md` | 40 | Регламент генерации хуков для социальных сетей |
 | `rules/modes/remotion-render.md` | 67 | Регламент сборки и рендера в Remotion |
-| `rules/templates/edit_plan.template.json` | 96 | Устаревший шаблон плана монтажа |
-| `rules/templates/project_state.template.md` | 23 | Шаблон фиксации состояния проекта клиента |
+| `.claude/rulebooks/templates/edit_plan.template.json` | 96 | Шаблон плана монтажа (единый источник) |
+| `.claude/rulebooks/templates/project_state.template.md` | 23 | Шаблон фиксации состояния проекта клиента |
 | `.claude/design-system/creator-archetypes.md` | 132 | Дизайн-токены и архетипы авторов (Minimalist, Noir, Vox, etc.) |
 | `.claude/design-system/sfx-mapping.md` | 43 | Маппинг визуальных триггеров на звуковые файлы |
 | `.claude/design-system/typography-scale.md` | 68 | Типографическая шкала, размеры кеглей и караоке-подсветка |
@@ -52,7 +52,7 @@
 | **Шрифт заголовков и титров** | `TheBoldFont` (не имеет кириллицы, латиница only) | `clients/_template/brief.json`, старые скрипты AE | **Заголовок: Montserrat (ExtraBold/Black); Текст/субтитры: Manrope или Inter; Акцент 2-й слой: Caveat.** Шрифт `TheBoldFont` полностью запрещен. | `.claude/rulebooks/08-typography-pairings.md`, `clients/_template/brief.json` |
 | **Громкость SFX в миксе** | Абсолютные уровни: вуши -10..-12 dB, текстуры -6..-7 dB, удары -5 dB, в скриптах AE до -3 dB | `assets/05_RULES/*`, `rules/sound-design-guide.md`, `tools/build_perfect_master_reel.mjs` | **Громкость SFX строго относительно RMS речи:** удары и райзеры **−14 dB**, текстуры (клики/поп) **−16 dB**, свисты (whoosh) **−20 dB**, музыка **−22 dB** и ниже с сайдчейном. Лимит: не более 6 SFX на 30 сек. Зумы без звука! | `.claude/rulebooks/09-sfx-choreography.md`, `tools/mix.py` |
 | **Цветокоррекция iPhone HDR** | Наложение слоя Exposure -2.2 и Gamma 0.92 поверх кадра в After Effects + черная виньетка 30% | `tools/build_perfect_master_reel.mjs`, `tools/polish_ae_comp.mjs`, `assets/05_RULES/` | **Запрещено лечить HDR слоями Exposure в AE.** Исходник обязан проходить аппаратный `ingest` в SDR Rec.709 (BT.2390/hable tonemapping) на этапе подготовки. Виньетки, затемняющие кадр, запрещены. | `.claude/rulebooks/02-cut-and-audio-sync.md`, `tools/ingest.py` |
-| **Схема плана монтажа (Edit Plan)** | Свободная нарезка без доказательств, без полей мотивации, без утверждения человеком | `rules/templates/edit_plan.template.json` | **Построчный план (beat table)** на каждый бит: `line`, `visual`, `proof_source`, `camera`, `cut_motivation`, `sfx`, `why`, `approved: false` (финальный рендер заблокирован до `approved: true`). | `.claude/rulebooks/03-beat-map-and-planning.md`, `edit_plan.template.json` |
+| **Схема плана монтажа (Edit Plan)** | Свободная нарезка без доказательств, без полей мотивации, без утверждения человеком | `.claude/rulebooks/templates/edit_plan.template.json` | **Построчный план (beat table)** на каждый бит: `line`, `visual`, `proof_source`, `camera`, `cut_motivation`, `sfx`, `why`, `approved: false` (финальный рендер заблокирован до `approved: true`). | `.claude/rulebooks/03-beat-map-and-planning.md`, `.claude/rulebooks/templates/edit_plan.template.json` |
 
 ---
 

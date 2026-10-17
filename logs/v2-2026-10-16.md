@@ -28,7 +28,7 @@
 ## Шаг 2. Порядок в репозитории
 - **Команды и действия:**
   - 16 одноразовых файлов (`test_*`, `fix_*`, `build_perfect_*`, `build_viral_*`, `apply_perfect_*`, `refine_*`, `polish_*`, `check_*`, `parse_drive*`) перенесены в `tools/_scratch/`.
-  - Удалены жестко зашитые абсолютные пути `C:\Users\timur\...` из `.mcp.json`, `tools/after-effects-mcp.bat`, `tools/auto-editor.bat`, `tools/capture_ae_frame.mjs`, `tools/capture_all_scenes.mjs`, `tools/run_ae_command.mjs`, `tools/send_ae_command.mjs`, `tools/inventory_and_backup.py`, `tools/pack_for_gemini.py`, `tools/after-effects-mcp/src/util/paths.ts` и `tools/after-effects-mcp/src/mcp/tools/index.ts`.
+  - Удалены жестко зашитые абсолютные пути `<USER_HOME>\...` из `.mcp.json`, `tools/after-effects-mcp.bat`, `tools/auto-editor.bat`, `tools/capture_ae_frame.mjs`, `tools/capture_all_scenes.mjs`, `tools/run_ae_command.mjs`, `tools/send_ae_command.mjs`, `tools/inventory_and_backup.py`, `tools/pack_for_gemini.py`, `tools/after-effects-mcp/src/util/paths.ts` и `tools/after-effects-mcp/src/mcp/tools/index.ts`.
   - Пересобран пакет `tools/after-effects-mcp` (`tsup` build).
   - Создан `.mcp.json.example`, а `.mcp.json` исключен из индекса git (`git rm --cached`).
   - Устранены дубли ассетов: `assets/01_SFX/`, `assets/02_FONTS/`, `assets/03_GRAPHICS/` объединены в единую структуру (`assets/sfx/`, `assets/fonts/`, `assets/overlays/`, `assets/ui/`), а исходные дублирующие папки перенесены в `_archive/2026-10-16/assets_duplicates/`.

@@ -13,7 +13,7 @@
    `Файл` ➔ `Сценарии` ➔ `Выполнить файл сценария...`  
    (`File` ➔ `Scripts` ➔ `Run Script File...`).
 4. Выберите файл сценария:  
-   `C:\Users\timur\Videos\AI-Video-Editing\scripts\build_ae_project.jsx`.
+   `<ROOT>\scripts\build_ae_project.jsx`.
 5. Если диалог запросит выбор плана монтажа, укажите `clients/<client>/work/plan/edit_plan.json` (или тестовый `work/plan/edit_plan.json`).
 
 ---

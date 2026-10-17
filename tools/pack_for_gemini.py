@@ -67,7 +67,7 @@ def generate_gemini_header(files):
 # 🎬 AI-VIDEO-EDITING WORKSPACE: FULL KNOWLEDGE BASE & CODEBASE FOR GEMINI
 # ================================================================================
 # Дата генерации: {now}
-# Корневая директория (ROOT): C:\\Users\\timur\\Videos\\AI-Video-Editing
+# Корневая директория (ROOT): <ROOT>
 # Операционная система: Windows 11 Pro 64-bit (AMD64)
 # Аппаратная спецификация: Intel Core i7-12700H (14 ядер / 20 потоков), NVIDIA GeForce RTX 3060 Laptop (4 ГБ VRAM), 16 ГБ RAM
 # Всего файлов в пакете: {len(files)}

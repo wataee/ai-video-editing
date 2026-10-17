@@ -71,7 +71,7 @@
 ### Шаг 5. Автоматизация пайплайна и сухой прогон
 - Разработан единый оркестратор `tools/pipeline.py` и добавлен скрипт `npm run pipeline` в `package.json`.
 - Последовательность этапов: Ingest -> Transcribe -> Cut Silence -> Beat Table -> Plan Contact Sheet -> Mix Audio -> 10 FPS QA.
-- Проведен сухой прогон на реальном вертикальном 4K-видео `C:\Users\timur\Downloads\C1612_3.mp4` (15.47с после отсечения тишины):
+- Проведен сухой прогон на реальном вертикальном 4K-видео `<DOWNLOADS>\C1612_3.mp4` (15.47с после отсечения тишины):
   - Ingest: 48.03с
   - Transcribe: 3.15с
   - Cut Silence: 20.18с

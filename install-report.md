@@ -1,8 +1,9 @@
 # 📊 Итоговый отчёт о подготовке рабочей среды AI-Video-Editing
 
 > **Дата составления:** 14 октября 2026 г.  
-> **Рабочая директория:** `C:\Users\timur\Videos\AI-Video-Editing`  
-> **Цель:** Развёртывание и верификация автономной бесплатной локальной рабочей среды для AI-монтажа коротких (Shorts/Reels/TikTok) и длинных видео на Windows 11.
+> **Рабочая директория:** `<ROOT>`  
+> **Цель:** Развёртывание и верификация автономной бесплатной локальной рабочей среды для AI-монтажа коротких (Shorts/Reels/TikTok) и длинных видео на Windows 11.  
+> **Примечание:** Данный отчёт описывает конфигурацию конкретной рабочей машины разработчика (Windows 11, RTX 3060). Общесистемные требования проекта: Python >= 3.10 (CI использует Python 3.12, локально установлены 3.12 / 3.14), Node.js >= 22 (тестируется на Node 22 и 24), FFmpeg >= 6.0.
 
 ---
 
@@ -15,9 +16,9 @@
 | **FFprobe** | `9.0.2-full_build-www.gyan.dev` | Предустановлен в системе | `C:\Program Files\ffmpeg\bin\ffprobe.exe` | **ПРЕДУСТАНОВЛЕНО И ПРОВЕРЕНО** |
 | **Node.js LTS** | `v24.20.0` | `winget install OpenJS.NodeJS.LTS` | `C:\Program Files\nodejs\node.exe` | **УСТАНОВЛЕНО И ПРОВЕРЕНО** |
 | **npm** | `11.19.0` | В составе Node.js LTS | `C:\Program Files\nodejs\npm.cmd` | **УСТАНОВЛЕНО И ПРОВЕРЕНО** |
-| **Python** | `3.12.10` (64-bit) | `winget install Python.Python.3.12` | `C:\Users\timur\AppData\Local\Programs\Python\Python312\python.exe` | **УСТАНОВЛЕНО И ПРОВЕРЕНО** |
-| **auto-editor** | `29.3.1` | Standalone binary + venv (Python 3.12) | `C:\Users\timur\Videos\AI-Video-Editing\tools\auto-editor.bat` | **УСТАНОВЛЕНО И ПРОВЕРЕНО** |
-| **faster-whisper** | `1.2.1` (CTranslate2 4.8.3, CUDA 12.9) | Изолированный venv (Python 3.12) + NVIDIA cu12 DLLs | `C:\Users\timur\Videos\AI-Video-Editing\tools\transcribe.bat` | **УСТАНОВЛЕНО И ПРОВЕРЕНО (GPU CUDA)** |
+| **Python** | `3.12 / 3.14` (требования: `>= 3.10`) | `winget install Python.Python.3.12` / CI: 3.12 | `<PYTHON_HOME>\python.exe` | **УСТАНОВЛЕНО И ПРОВЕРЕНО** |
+| **auto-editor** | `29.3.1` | Standalone binary + venv (Python 3.12) | `<ROOT>\tools\auto-editor.bat` | **УСТАНОВЛЕНО И ПРОВЕРЕНО** |
+| **faster-whisper** | `1.2.1` (CTranslate2 4.8.3, CUDA 12.9) | Изолированный venv (Python 3.12) + NVIDIA cu12 DLLs | `<ROOT>\tools\transcribe.bat` | **УСТАНОВЛЕНО И ПРОВЕРЕНО (GPU CUDA)** |
 | **Remotion CLI / Core** | `4.0.535` | npm пакеты в стартовых проектах | `projects\remotion-*-starter\node_modules` | **УСТАНОВЛЕНО И ПРОВЕРЕНО** |
 | **Remotion Starter (TikTok)** | `4.0.535` | `npx create-video --tiktok` | `projects\remotion-tiktok-starter` | **УСТАНОВЛЕНО И ПРОВЕРЕНО** |
 | **Remotion Starter (Blank)** | `4.0.535` | `npx create-video --blank` | `projects\remotion-blank-starter` | **УСТАНОВЛЕНО И ПРОВЕРЕНО** |
@@ -78,7 +79,7 @@
   - `small`: 3.15 с (4.1x realtime), WER: 0.0% (рекомендован для живой речи).
   - `medium`: 8.53 с (1.5x realtime), WER: 0.0%.
   - `large-v3-turbo`: 21.10 с (0.6x realtime), WER: 0.0%.
-- **Отчёт:** [`clients\_demo\work\model-comparison.md`](file:///C:/Users/timur/Videos/AI-Video-Editing/clients/_demo/work/model-comparison.md).
+- **Отчёт:** [`clients\_demo\work\model-comparison.md`](clients/_demo/work/model-comparison.md).
 
 ### Тест 7: Автоматизированный контроль качества готового видео (QA)
 - **Утилита:** `tools\qa.py` / `tools\qa.bat`
@@ -89,7 +90,7 @@
   - Артефакты: 0 чёрных кадров (`blackdetect`), 0 зависаний (`freezedetect`), 0 провалов тишины (`silencedetect`).
   - Рассинхрон субтитров: медианное отклонение **0.0 мс**, максимальное **20.0 мс** (норма: до 80 мс).
   - Сгенерированы визуальные материалы: `safe_zones_overlay.png`, `contact_sheet.png`.
-- **Отчёт:** [`clients\_demo\out\qa\test_tiktok_render.qa.md`](file:///C:/Users/timur/Videos/AI-Video-Editing/clients/_demo/out/qa/test_tiktok_render.qa.md).
+- **Отчёт:** [`clients\_demo\out\qa\test_tiktok_render.qa.md`](clients/_demo/out/qa/test_tiktok_render.qa.md).
 
 ---
 
@@ -118,13 +119,13 @@
 - **npm:** `11.19.0` (`C:\Program Files\nodejs\npm.cmd`)
 - **Git:** `2.49.0.windows.1` (`C:\Program Files\Git\cmd\git.exe`)
 - **FFmpeg & FFprobe:** `9.0.2-full_build` (`C:\Program Files\ffmpeg\bin\ffmpeg.exe`)
-- **Python:** `3.12.10` (`C:\Users\timur\AppData\Local\Programs\Python\Python312\python.exe`)
-- **auto-editor:** `29.3.1` (батник `C:\Users\timur\Videos\AI-Video-Editing\tools\auto-editor.bat`)
-- **faster-whisper:** `1.2.1` (батник `C:\Users\timur\Videos\AI-Video-Editing\tools\transcribe.bat`)
+- **Python:** `3.12.10` (`<PYTHON_HOME>\python.exe`)
+- **auto-editor:** `29.3.1` (батник `<ROOT>\tools\auto-editor.bat`)
+- **faster-whisper:** `1.2.1` (батник `<ROOT>\tools\transcribe.bat`)
 - **Remotion:** `4.0.535` (в директориях проектов `projects/remotion-*-starter`)
 
 ### 2. Где находятся созданные проекты и шаблоны?
-- **Рабочая директория:** `C:\Users\timur\Videos\AI-Video-Editing`
+- **Рабочая директория:** `<ROOT>`
 - **Проект с субтитрами TikTok/Shorts:** `projects/remotion-tiktok-starter`
 - **Чистый проект Remotion:** `projects/remotion-blank-starter`
 - **Каталог и коллекция из 81 шаблона:** `references/remotion-templates-rve` (каталог: `references/remotion-templates-catalog.md`)
@@ -149,7 +150,7 @@
    - Нажмите **Free Download Now** и выберите левую бесплатную версию **DaVinci Resolve** (не Studio).
    - Заполните короткую форму регистрации и скачайте ZIP-архив (~2.5 ГБ).
    - Запустите инсталлятор и согласитесь на установку с правами администратора (UAC).
-   - Подробная инструкция по связке с auto-editor и экспорту таймлайнов: [docs/davinci-resolve-guide.md](file:///C:/Users/timur/Videos/AI-Video-Editing/docs/davinci-resolve-guide.md).
+   - Подробная инструкция по связке с auto-editor и экспорту таймлайнов: [docs/davinci-resolve-guide.md](docs/davinci-resolve-guide.md).
 2. **Активация и авторизация Claude CLI** (при наличии подписки Anthropic):
    - Установите `claude` глобально через npm: `npm install -g @anthropic-ai/claude-code`.
    - Авторизуйтесь: запустите `claude` в корневой папке проекта и завершите OAuth в браузере.
