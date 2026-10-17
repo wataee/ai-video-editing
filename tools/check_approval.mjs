@@ -16,12 +16,32 @@ for (let i = 0; i < args.length; i++) {
 }
 
 if (!targetPlan) {
+  for (let i = 0; i < args.length; i++) {
+    const a = args[i];
+    if (a.startsWith("-")) continue;
+    const resolved = path.resolve(a);
+    if (a.endsWith(".json")) {
+      targetPlan = resolved;
+      break;
+    }
+    if (fs.existsSync(resolved) && fs.statSync(resolved).isDirectory()) {
+      targetPlan = resolved;
+      break;
+    }
+  }
+}
+
+if (!targetPlan) {
   for (const p of planCandidates) {
     if (fs.existsSync(p)) {
       targetPlan = p;
       break;
     }
   }
+}
+
+if (targetPlan && fs.existsSync(targetPlan) && fs.statSync(targetPlan).isDirectory()) {
+  targetPlan = path.join(targetPlan, "edit_plan.json");
 }
 
 if (!targetPlan || !fs.existsSync(targetPlan)) {
