@@ -8,10 +8,7 @@ interface DeviceMockupProps {
   title?: string;
 }
 
-/**
- * DeviceMockup — Минималистичный премиальный мокап смартфона / браузера.
- * Без перегруженных градиентов, со стильной темной рамкой и spring-анимацией.
- */
+
 export const DeviceMockup: React.FC<DeviceMockupProps> = ({
   imageSrc,
   type = 'phone',
@@ -52,7 +49,7 @@ export const DeviceMockup: React.FC<DeviceMockupProps> = ({
           position: 'relative',
         }}
       >
-        {/* Dynamic Island / Notch */}
+        {}
         <div
           style={{
             position: 'absolute',
@@ -67,7 +64,7 @@ export const DeviceMockup: React.FC<DeviceMockupProps> = ({
           }}
         />
 
-        {/* Экран устройства */}
+        {}
         <div
           style={{
             width: '100%',
@@ -95,7 +92,6 @@ export const DeviceMockup: React.FC<DeviceMockupProps> = ({
     );
   }
 
-  // Browser Mockup
   return (
     <div
       style={{
@@ -110,7 +106,7 @@ export const DeviceMockup: React.FC<DeviceMockupProps> = ({
         opacity,
       }}
     >
-      {/* Header bar with dots */}
+      {}
       <div
         style={{
           height: 40,
@@ -136,7 +132,7 @@ export const DeviceMockup: React.FC<DeviceMockupProps> = ({
           {title}
         </div>
       </div>
-      {/* Content Area */}
+      {}
       <div style={{ padding: 12, backgroundColor: '#09090B' }}>
         {imageSrc && (
           <img

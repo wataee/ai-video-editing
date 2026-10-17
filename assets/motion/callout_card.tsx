@@ -8,10 +8,7 @@ interface CalloutCardProps {
   styleMode?: 'dark_glass' | 'monochrome' | 'documentary';
 }
 
-/**
- * CalloutCard — Премиальная карточка выноса (стиль Alex Hormozi 2.0 / Iman Gadzhi)
- * Детерминированная spring-анимация с мягким овершутом без нейрослопа.
- */
+
 export const CalloutCard: React.FC<CalloutCardProps> = ({
   title,
   badge = 'ФАКТ',
@@ -21,7 +18,6 @@ export const CalloutCard: React.FC<CalloutCardProps> = ({
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
-  // Snappy spring pop entrance (200-250ms)
   const pop = spring({
     frame,
     fps,

@@ -5,15 +5,11 @@ interface SplitScreenProps {
   speakerVideoSrc: string;
   speakerStartTimeSec?: number;
   bottomContent: React.ReactNode;
-  splitRatio?: number; // default 0.5 (50% / 50%)
+  splitRatio?: number; 
   dividerColor?: string;
 }
 
-/**
- * SplitScreen — Классический виральный лейаут (Joseph Eid / Iman Gadzhi / Ali Abdaal)
- * Верхняя половина: Спикер (A-Roll)
- * Нижняя половина: Доказательство / Скриншот / Браузер / График с плавной spring-анимацией
- */
+
 export const SplitScreen: React.FC<SplitScreenProps> = ({
   speakerVideoSrc,
   speakerStartTimeSec = 0,
@@ -24,7 +20,6 @@ export const SplitScreen: React.FC<SplitScreenProps> = ({
   const frame = useCurrentFrame();
   const { fps, width, height } = useVideoConfig();
 
-  // Плавный spring въезд нижнего контента
   const slideUp = spring({
     frame,
     fps,
@@ -51,7 +46,7 @@ export const SplitScreen: React.FC<SplitScreenProps> = ({
         overflow: 'hidden',
       }}
     >
-      {/* Верхняя половина: Спикер */}
+      {}
       <div
         style={{
           position: 'absolute',
@@ -74,7 +69,7 @@ export const SplitScreen: React.FC<SplitScreenProps> = ({
         />
       </div>
 
-      {/* Разделитель */}
+      {}
       <div
         style={{
           position: 'absolute',
@@ -87,7 +82,7 @@ export const SplitScreen: React.FC<SplitScreenProps> = ({
         }}
       />
 
-      {/* Нижняя половина: UI / Графика */}
+      {}
       <div
         style={{
           position: 'absolute',
