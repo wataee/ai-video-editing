@@ -56,13 +56,12 @@
 
 ---
 
-## 3. План консолидации файлов правил
-
 1. **Единый источник правды:**
-   - Короткий индекс: `CLAUDE.md` (до 120 строк).
-   - Генератор: `tools/sync_gemini.py` автоматически создает `GEMINI.md` из `CLAUDE.md`.
-   - Подробные регламенты: `.claude/rulebooks/` (номера 01–15).
+   - Короткий индекс: `CLAUDE.md` (до 50 строк).
+   - Подробные регламенты: `.claude/rulebooks/` (рулбуки 01–16).
+   - Шаблоны: `.claude/rulebooks/templates/` (`edit_plan.template.json`, `project_state.template.md`, `beat_sheet.template.json`).
    - Дизайн-токены: `.claude/design-system/`.
 2. **Перенос и архивация дубликатов:**
-   - Дубликаты из `assets/05_RULES/` переносятся в `_archive/2026-10-16/assets_05_RULES/`.
-   - Корневые `hooks.md`, `style-guide.md`, `qa-checklist.md`, `production-pipeline.md`, `rules/*` интегрируются в сквозную нумерацию `.claude/rulebooks/`, а старые дублирующие файлы переносятся в `_archive/2026-10-16/`.
+   - Дубликаты из `rules/templates/` консолидированы в `.claude/rulebooks/templates/`.
+   - Несуществующие скрипты генерации (`sync_gemini.py`, `GEMINI.md`) упразднены.
+   - MCP After Effects помечен как архивный. Единственный путь работы с AE — монолитный ExtendScript (`scripts/build_ae_project.jsx`).

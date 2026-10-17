@@ -1,6 +1,7 @@
 import React from "react";
 import {
   AbsoluteFill,
+  CalculateMetadataFunction,
   OffthreadVideo,
   Sequence,
   staticFile,
@@ -47,6 +48,9 @@ export interface ReframeKeyframe {
 export interface ReelPlanData {
   project_id: string;
   target_duration_sec: number;
+  width?: number;
+  height?: number;
+  fps?: number;
   sdr_path?: string;
   proxy_path?: string;
   approved?: boolean;
@@ -63,7 +67,26 @@ export interface ReelFromPlanProps {
   reframe?: {
     keyframes: ReframeKeyframe[];
   };
+  [key: string]: unknown;
 }
+
+export const calculateReelMetadata: CalculateMetadataFunction<ReelFromPlanProps> = async ({
+  props,
+}) => {
+  const fps = props?.plan?.fps ?? 30;
+  const width = props?.plan?.width ?? 1080;
+  const height = props?.plan?.height ?? 1920;
+  const targetDuration = props?.plan?.target_duration_sec ?? 15;
+  const durationInFrames = Math.max(1, Math.round(targetDuration * fps));
+
+  return {
+    fps,
+    width,
+    height,
+    durationInFrames,
+    props,
+  };
+};
 
 export const ReelFromPlan: React.FC<ReelFromPlanProps> = ({
   plan,
@@ -133,7 +156,11 @@ export const ReelFromPlan: React.FC<ReelFromPlanProps> = ({
 
   const resolvedVideo = videoSrc || plan?.sdr_path || plan?.proxy_path;
   const cleanVideoSrc = resolvedVideo
-    ? resolvedVideo.replace(/^[a-zA-Z]:[\\\/].*?AI-Video-Editing[\\\/]/, "").replace(/\\/g, "/")
+    ? resolvedVideo.startsWith("http://") ||
+      resolvedVideo.startsWith("https://") ||
+      resolvedVideo.startsWith("data:")
+      ? resolvedVideo
+      : staticFile(resolvedVideo.replace(/\\/g, "/").replace(/^\/+/, ""))
     : null;
 
   return (
@@ -150,7 +177,7 @@ export const ReelFromPlan: React.FC<ReelFromPlanProps> = ({
       >
         {cleanVideoSrc ? (
           <OffthreadVideo
-            src={staticFile(cleanVideoSrc)}
+            src={cleanVideoSrc}
             style={{
               width: "100%",
               height: "100%",
@@ -202,7 +229,7 @@ export const ReelFromPlan: React.FC<ReelFromPlanProps> = ({
                   height: "100%",
                 }}
               >
-                {b.sfx && (
+                {b.sfx && b.sfx !== "TODO" && b.sfx.trim() !== "" && (
                   <SfxAudio
                     localPath={b.sfx}
                     frame={0}

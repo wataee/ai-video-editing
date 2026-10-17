@@ -49,8 +49,16 @@ _tmp_download/
 tests/fixtures/
 tests/out_robustness/
 
-# Private references
+# Private & Bulk references
+tools/_scratch/
 references/library/_private/
+references/joseph_drive/
+references/library/
+references/official-remotion-templates/
+references/patterns/
+references/remotion-skills-official/
+references/remotion-templates-rve/
+references/third-party-skills/
 
 # Client data (only clients/_template is tracked)
 clients/*

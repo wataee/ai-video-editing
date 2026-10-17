@@ -321,8 +321,7 @@ def main():
     if not plan_path:
         candidates = [
             Path("work/plan/edit_plan.json"),
-            Path(".claude/rulebooks/templates/edit_plan.template.json"),
-            Path("rules/templates/edit_plan.template.json")
+            Path(".claude/rulebooks/templates/edit_plan.template.json")
         ]
         for c in candidates:
             if c.exists():

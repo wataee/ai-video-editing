@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "deny": [
+      "references/**",
+      "tools/_scratch/**"
+    ]
+  }
+}

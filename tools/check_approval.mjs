@@ -4,8 +4,6 @@ import path from "path";
 const rootDir = process.cwd();
 const planCandidates = [
   path.join(rootDir, "work", "plan", "edit_plan.json"),
-  path.join(rootDir, "rules", "templates", "edit_plan.template.json"),
-  path.join(rootDir, ".claude", "rulebooks", "templates", "edit_plan.template.json"),
 ];
 
 let targetPlan = null;
@@ -27,8 +25,13 @@ if (!targetPlan) {
 }
 
 if (!targetPlan || !fs.existsSync(targetPlan)) {
-  console.log("ℹ️ Файл edit_plan.json не найден. Продолжение без блокировки.");
-  process.exit(0);
+  console.error("==================================================================");
+  console.error("❌ ПЛАН МОНТАЖА НЕ НАЙДЕН (APPROVAL GATE BLOCKED)");
+  console.error(`Указанный или стандартный файл плана не существует: ${targetPlan || "work/plan/edit_plan.json"}`);
+  console.error("Для финального рендера требуется существующий утвержденный edit_plan.json.");
+  console.error("Используйте --plan <путь> для указания пути к плану монтажа.");
+  console.error("==================================================================");
+  process.exit(1);
 }
 
 try {

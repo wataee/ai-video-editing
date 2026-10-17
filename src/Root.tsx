@@ -9,7 +9,7 @@ import {
   PlanBeatStill,
 } from "./components";
 import { Scene01_Intro, Scene02_Main, Scene03_Outro } from "./scenes";
-import { ReelFromPlan } from "./compositions/ReelFromPlan";
+import { ReelFromPlan, calculateReelMetadata } from "./compositions/ReelFromPlan";
 import beatSheet from "./data/beat_sheet.json";
 import { BeatSheet } from "./types/beatSheet";
 import { loadProjectFonts } from "./config";
@@ -208,6 +208,7 @@ export const Root: React.FC = () => {
         fps={30}
         width={1080}
         height={1920}
+        calculateMetadata={calculateReelMetadata as any}
         defaultProps={{
           plan: {
             project_id: "preview_reel",

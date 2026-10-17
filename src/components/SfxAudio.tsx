@@ -18,7 +18,10 @@ const resolveLocalSfxPath = (path: string): string => {
   if (path.startsWith("http://") || path.startsWith("https://")) {
     throw new Error(`[SfxAudio Security Error] External URLs are forbidden: '${path}'. Use only local assets/sfx/.`);
   }
-  const clean = path.replace(/\\/g, "/");
+  let clean = path.replace(/\\/g, "/");
+  if (!clean.endsWith(".wav") && !clean.endsWith(".mp3") && !clean.endsWith(".ogg")) {
+    clean = `${clean}.wav`;
+  }
   if (!clean.includes("assets/sfx/")) {
     return `assets/sfx/${clean.replace(/^\/?(assets\/)?/, "")}`;
   }
